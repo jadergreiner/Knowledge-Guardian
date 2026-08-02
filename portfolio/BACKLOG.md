@@ -20,7 +20,7 @@ Items are prioritized using:
 ### KG-001 — Define the trusted finding contract
 
 **Type:** Product foundation  
-**Status:** Draft complete — contract hardening approved, then golden-baseline validation  
+**Status:** Hardened draft complete — pending golden-baseline validation  
 **Outcome:** Reviewers can understand, reproduce and decide on every finding.
 
 **Completed outputs:**
@@ -31,37 +31,42 @@ Items are prioritized using:
 - distinction between normative and interpretative findings;
 - mandatory impact model with explicit uncertainty states;
 - confidence model and six treatment groups;
-- explicit human decision states: `pending_review`, `accepted`, `revision_requested` and `cancelled`.
+- explicit human decision states: `pending_review`, `accepted`, `revision_requested` and `cancelled`;
+- explicit observation and inference structures;
+- mandatory deterministic `fingerprint`;
+- explicit finding-contract name and semantic version;
+- exact or explicitly justified location semantics.
 
-**Contract hardening required before baseline:**
+**Contract hardening:**
 
-- [ ] add explicit observation and inference structures;
-- [ ] make deterministic `fingerprint` mandatory for logical identity and deduplication;
-- [ ] add explicit finding contract name and semantic version;
-- [ ] require exact location or an explicit resource-level/not-applicable rationale.
+- [x] add explicit observation and inference structures;
+- [x] make deterministic `fingerprint` mandatory for logical identity and deduplication;
+- [x] add explicit finding contract name and semantic version;
+- [x] require exact location or an explicit resource-level/not-available rationale.
 
 **Acceptance criteria:**
 
-- [~] finding contains stable ID and rule ID; `id` and `rule_id` exist, but mandatory fingerprint is pending;
+- [x] finding contains stable logical identity, human-facing ID and rule ID;
 - [x] category, type, confidence and treatment group are explicit;
-- [~] repository resource, location and reproducible evidence are provided; location semantics require hardening;
-- [~] observation is separated from inference; conceptual rule exists, schema structure is pending;
+- [x] repository resource, location semantics and reproducible evidence are provided;
+- [x] observation is separated from inference;
 - [x] authority source is mandatory and traceable;
 - [x] impact is mandatory and may explicitly be `known`, `potential`, `unknown` or `not_applicable`;
 - [x] recommendation is actionable without becoming an automatic decision at the conceptual level;
 - [x] human review and final disposition are represented;
-- [~] JSON schema is versioned; schema standard and `$id` exist, explicit contract version is pending;
+- [x] JSON schema and finding contract are explicitly versioned;
 - [ ] golden baseline validates representative findings and non-findings;
 - [ ] reviewer feedback confirms that the contract is understandable, reproducible and actionable;
 - [ ] false-positive, ambiguity and cancellation cases are exercised.
 
 **Validation dependency:** `KG-010 — Establish the v0.1 evaluation baseline`.
 
-**Exit condition:** KG-001 may be marked validated only after contract hardening is complete, the golden baseline is reviewed by the human Tech Lead, and any required contract revisions are incorporated.
+**Exit condition:** KG-001 may be marked validated only after the golden baseline is reviewed by the human Tech Lead and any required contract revisions are incorporated.
 
 ### KG-002 — Define the repository document model
 
-**Type:** Technical foundation
+**Type:** Technical foundation  
+**Status:** Not started — gated by KG-001 validation  
 **Outcome:** Documents can be consistently discovered and classified.
 
 **Acceptance criteria:**
@@ -158,18 +163,29 @@ Items are prioritized using:
 
 ### KG-010 — Establish the v0.1 evaluation baseline
 
-**Type:** Quality
+**Type:** Quality and discovery validation  
+**Status:** Shaped — ready for deterministic case curation  
 **Outcome:** Product quality can be measured before CI/CD integration.
 
-**Entry dependency:** KG-001 contract hardening completed.
+**Entry dependency:** KG-001 contract hardening completed. **Satisfied.**
+
+**Shaping output:** `portfolio/GOLDEN_BASELINE.md`.
 
 **Acceptance criteria:**
 
-- golden repositories or fixtures exist;
-- expected findings and non-findings are versioned;
-- precision and reviewer acceptance are measured;
-- false positives and false negatives are catalogued;
-- regression tests protect rule behavior.
+- [x] baseline purpose, bounded scope and case structure are defined;
+- [x] reviewer rubric and human disposition rules are defined;
+- [x] initial 12-case catalogue is defined;
+- [x] measurement formulas and ambiguity logging are defined;
+- [ ] a stable Knowledge Guardian repository snapshot is selected;
+- [ ] 12 golden cases or fixtures are versioned;
+- [ ] expected findings and non-findings are represented;
+- [ ] all positive fixtures pass schema validation;
+- [ ] reviewer acceptance is measured;
+- [ ] false positives, false negatives and ambiguities are catalogued;
+- [ ] regression tests protect rule behavior.
+
+**Next bounded increment:** Select the repository snapshot and curate `GB-001` through `GB-004`, the deterministic batch.
 
 ## Discovery queue
 
