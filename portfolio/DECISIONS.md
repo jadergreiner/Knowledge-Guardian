@@ -89,3 +89,34 @@ Each material decision should record:
 **Rationale:** Report volume does not represent value; trusted actionable findings do.
 
 **Review trigger:** Reassess after the first two repository baselines and reviewer workflow tests.
+
+### KGD-007 — Findings require an explicit authority source
+
+**Date:** 2026-08-02  
+**Type:** Product and governance  
+**Status:** Accepted
+
+**Context:** A finding must not represent an undocumented preference or an unsupported opinion from an AI agent. The product needs to state which authority establishes the expected state used in the comparison.
+
+**Decision:** Every finding must reference one explicit authority source from the following model:
+
+1. native framework rule;
+2. project profile rule;
+3. formal schema or executable contract;
+4. repository-declared canonical source.
+
+The first three sources produce **normative findings** when the evidence is deterministic. Canonical-source comparisons and other semantic interpretations produce **interpretative findings**, which must expose confidence and require human review before being treated as confirmed divergence.
+
+**Rationale:** This separation prevents probabilistic semantic claims from receiving the same authority as broken references, schema violations or explicit policy failures.
+
+**Consequences:**
+
+- the finding contract must include authority type and authority reference;
+- native rules must be configurable when they are not universal;
+- interpretative findings cannot silently become blocking quality gates;
+- confidence and review state are mandatory for interpretative findings;
+- findings without an identifiable authority source are invalid.
+
+**Evidence and confidence:** Approved jointly by the human Tech Lead and Virtual Product Manager during the finding-model discovery session. Confidence: high.
+
+**Review trigger:** Reassess after the first golden baseline and the first scan of Meu PDI.
