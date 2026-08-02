@@ -194,3 +194,34 @@ Only a human reviewer may move a finding from `pending_review` to one of the ter
 **Evidence and confidence:** Approved jointly by the human Tech Lead and Virtual Product Manager. Confidence: high.
 
 **Review trigger:** Reassess group boundaries, names, and review states after the golden baseline and first reviewer workflow test.
+
+### KGD-010 — Harden the finding contract before baseline validation
+
+**Date:** 2026-08-02  
+**Type:** Product and technical  
+**Status:** Accepted
+
+**Context:** Review of the KG-001 acceptance criteria found that the conceptual model is complete enough for shaping, but the executable contract still leaves ambiguity around fact versus inference, identity across scans, contract compatibility, and evidence location.
+
+**Decision:** Before constructing the golden baseline, the finding contract must receive four bounded hardening changes:
+
+1. introduce an explicit separation between observation and inference;
+2. require a deterministic fingerprint for logical identity and deduplication across scans;
+3. declare the finding contract version within each finding;
+4. require either an exact location or an explicit resource-level/not-applicable location rationale.
+
+Matrix coherence, recommendation quality, reviewer workflow sufficiency, exceptions, false positives, and non-findings will be validated through the golden baseline rather than exhaustively designed in advance.
+
+**Rationale:** These four changes are prerequisites for reliable testing. The remaining questions require representative cases and human review to avoid speculative over-design.
+
+**Consequences:**
+
+- KG-001 remains draft complete but requires contract hardening before baseline execution;
+- `FINDING_MODEL.md` and `finding.schema.json` must be revised;
+- KG-010 cannot begin formal case validation until the hardened schema is available;
+- the golden baseline remains the validation mechanism for treatment coherence and reviewer usability;
+- the project must not mark KG-001 validated based only on document completeness.
+
+**Evidence and confidence:** Gap review approved jointly by the human Tech Lead and Virtual Product Manager. Confidence: high.
+
+**Review trigger:** Reassess after the hardened schema is reviewed and the first baseline cases are authored.
