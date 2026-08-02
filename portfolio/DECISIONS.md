@@ -151,3 +151,46 @@ When impact is `known` or `potential`, the finding should identify relevant dime
 **Evidence and confidence:** Approved jointly by the human Tech Lead and Virtual Product Manager after review of prioritization, agent-risk, governance and remediation use cases. Confidence: high.
 
 **Review trigger:** Reassess the impact taxonomy after the golden baseline and initial reviewer feedback.
+
+### KGD-009 — Findings use a six-group treatment matrix under human authority
+
+**Date:** 2026-08-02  
+**Type:** Product and governance  
+**Status:** Accepted
+
+**Context:** Impact and confidence need to produce an operational treatment without collapsing uncertainty into a single severity value. At the same time, Knowledge Guardian must preserve its proposal-first nature and must never silently convert analysis into an autonomous decision.
+
+**Decision:** Findings are classified into six treatment groups derived from impact and confidence:
+
+1. `confirmed_critical` — confirmed high-consequence finding requiring immediate human attention;
+2. `confirmed_actionable` — confirmed material finding recommended for prioritized correction;
+3. `probable_risk` — material risk with incomplete evidence requiring prioritized human review;
+4. `investigative` — potentially serious finding with low confidence requiring investigation;
+5. `routine_improvement` — confirmed medium- or low-impact improvement suitable for normal backlog flow;
+6. `informational` — low-urgency observation or weak signal retained for visibility.
+
+The treatment group is a recommendation produced by the system. It does not authorize remediation, rejection, gate blocking, or any other final action by itself.
+
+Every finding must expose a human decision state. The initial v0.1 states are:
+
+- `pending_review`;
+- `accepted`;
+- `revision_requested`;
+- `cancelled`.
+
+Only a human reviewer may move a finding from `pending_review` to one of the terminal or revision states. Automated systems may recommend a treatment, route a finding for review, or enforce an already approved policy, but they may not impersonate human acceptance or cancellation.
+
+**Rationale:** The matrix preserves prioritization and urgency while separating machine analysis from accountable human judgment.
+
+**Consequences:**
+
+- the finding contract must include `treatment.group`, `treatment.recommended_action`, and `review.status`;
+- `impact`, `confidence`, and `treatment` remain distinct concepts;
+- interpretative findings always require human review;
+- normative findings may support automated gates only when a human-approved policy explicitly authorizes that behavior;
+- audit data must record who decided, when, and the decision rationale;
+- reports must clearly distinguish system recommendation from human decision.
+
+**Evidence and confidence:** Approved jointly by the human Tech Lead and Virtual Product Manager. Confidence: high.
+
+**Review trigger:** Reassess group boundaries, names, and review states after the golden baseline and first reviewer workflow test.
