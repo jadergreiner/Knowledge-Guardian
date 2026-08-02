@@ -120,3 +120,34 @@ The first three sources produce **normative findings** when the evidence is dete
 **Evidence and confidence:** Approved jointly by the human Tech Lead and Virtual Product Manager during the finding-model discovery session. Confidence: high.
 
 **Review trigger:** Reassess after the first golden baseline and the first scan of Meu PDI.
+
+### KGD-008 — Impact is mandatory in the finding contract
+
+**Date:** 2026-08-02  
+**Type:** Product and governance  
+**Status:** Accepted
+
+**Context:** A finding describes a divergence, but without impact it is difficult to prioritize remediation, explain relevance to stakeholders, assess risk to AI agents, or distinguish cosmetic inconsistency from material knowledge debt.
+
+**Decision:** Every finding in v0.1 must include an `impact` section. The impact must not be invented when repository context is insufficient. It must declare one of these states:
+
+- `known`;
+- `potential`;
+- `unknown`;
+- `not_applicable`.
+
+When impact is `known` or `potential`, the finding should identify relevant dimensions where evidence allows, including engineering, agent behavior, governance, operations, onboarding, compliance, or product.
+
+**Rationale:** Keeping impact from the beginning preserves the connection between detection and product value while allowing uncertainty to remain explicit.
+
+**Consequences:**
+
+- `impact` becomes a required field in `finding.schema.json`;
+- unknown impact is valid when accompanied by a reason;
+- severity must not be justified by unsupported impact claims;
+- reports may use impact dimensions to support prioritization and stakeholder communication;
+- human reviewers can refine impact without changing the underlying factual evidence.
+
+**Evidence and confidence:** Approved jointly by the human Tech Lead and Virtual Product Manager after review of prioritization, agent-risk, governance and remediation use cases. Confidence: high.
+
+**Review trigger:** Reassess the impact taxonomy after the golden baseline and initial reviewer feedback.
