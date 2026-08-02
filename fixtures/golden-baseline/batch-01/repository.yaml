@@ -1,0 +1,57 @@
+snapshot:
+  id: kg-golden-baseline-batch-01-v1
+  purpose: Controlled deterministic fixtures for GB-001 through GB-004
+  source_commit: aafb24cade649753b6f525600808b3a06a440270
+
+cases:
+  GB-001:
+    files:
+      README.md: |
+        # Fixture repository
+
+        Read the [agent policy](docs/agent-policy.md) before making changes.
+    absent_resources:
+      - docs/agent-policy.md
+
+  GB-002:
+    files:
+      knowledge-guardian.profile.yaml: |
+        metadata_rules:
+          architecture_document:
+            required:
+              - owner
+              - status
+      docs/architecture.md: |
+        ---
+        status: active
+        ---
+        # Architecture
+    expectation:
+      document_type: architecture_document
+
+  GB-003:
+    files:
+      schemas/document.schema.json: |
+        {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "required": ["status"],
+          "properties": {
+            "status": {"enum": ["active", "archived"]}
+          }
+        }
+      documents/document.json: |
+        {
+          "status": "current"
+        }
+
+  GB-004:
+    files:
+      knowledge-guardian.profile.yaml: |
+        entry_points:
+          - README.md
+          - AGENTS.md
+      README.md: |
+        # Fixture repository
+    absent_resources:
+      - AGENTS.md
