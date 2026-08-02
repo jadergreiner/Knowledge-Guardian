@@ -19,18 +19,38 @@ Items are prioritized using:
 
 ### KG-001 — Define the trusted finding contract
 
-**Type:** Product foundation
+**Type:** Product foundation  
+**Status:** Draft complete — pending golden-baseline validation  
 **Outcome:** Reviewers can understand, reproduce and decide on every finding.
+
+**Completed outputs:**
+
+- `portfolio/FINDING_MODEL.md`;
+- `schemas/finding.schema.json`;
+- authority-source model for native rules, project profiles, schemas/contracts and canonical sources;
+- distinction between normative and interpretative findings;
+- mandatory impact model with explicit uncertainty states;
+- confidence model and six treatment groups;
+- explicit human decision states: `pending_review`, `accepted`, `revision_requested` and `cancelled`.
 
 **Acceptance criteria:**
 
-- finding contains stable ID and rule ID;
-- category, severity and confidence are explicit;
-- repository path and evidence are provided;
-- observation is separated from inference;
-- remediation is actionable;
-- suppression or exception can be represented;
-- JSON schema is versioned.
+- [x] finding contains stable ID and rule ID;
+- [x] category, type, confidence and treatment group are explicit;
+- [x] repository resource, location and reproducible evidence are provided;
+- [x] observation is separated from inference;
+- [x] authority source is mandatory and traceable;
+- [x] impact is mandatory and may explicitly be `known`, `potential`, `unknown` or `not_applicable`;
+- [x] recommendation is actionable without becoming an automatic decision;
+- [x] human review and final disposition are represented;
+- [x] JSON schema is versioned;
+- [ ] golden baseline validates representative findings and non-findings;
+- [ ] reviewer feedback confirms that the contract is understandable, reproducible and actionable;
+- [ ] false-positive, ambiguity and cancellation cases are exercised.
+
+**Validation dependency:** `KG-010 — Establish the v0.1 evaluation baseline`.
+
+**Exit condition:** KG-001 may be marked validated only after the golden baseline is reviewed by the human Tech Lead and any required contract revisions are incorporated.
 
 ### KG-002 — Define the repository document model
 
