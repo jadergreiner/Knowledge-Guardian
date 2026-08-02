@@ -1,0 +1,21 @@
+{
+  "contract": {"name": "knowledge-guardian-finding", "version": "0.1.0"},
+  "id": "KGF-GB-001",
+  "fingerprint": "sha256:00000000000000000000000000000001",
+  "rule_id": "KG-LINK-001",
+  "type": "normative",
+  "category": "broken_reference",
+  "title": "Internal Markdown reference points to a missing target",
+  "description": "README.md references docs/agent-policy.md, which is absent from the controlled repository snapshot.",
+  "authority": {"type": "native_rule", "reference": "KG-LINK-001", "version": "0.1.0"},
+  "subject": {"resource": "GB-001/README.md", "resource_type": "markdown", "location": {"scope": "exact", "line_start": 3, "line_end": 3}},
+  "evidence": [{"type": "unresolved_reference", "resource": "GB-001/README.md", "location": {"scope": "exact", "line_start": 3, "line_end": 3}, "observed": "docs/agent-policy.md", "expected": "existing repository resource", "snapshot_reference": "kg-golden-baseline-batch-01-v1"}],
+  "analysis": {"observation": "The relative target docs/agent-policy.md does not exist in the controlled snapshot."},
+  "impact": {"status": "potential", "level": "high", "dimensions": ["agent_behavior", "onboarding"], "statement": "Agents or contributors may fail to load required operating guidance.", "affected_scope": ["GB-001/README.md"]},
+  "confidence": {"level": "high", "rationale": "The target path is deterministically absent from the controlled snapshot."},
+  "treatment": {"group": "confirmed_actionable", "recommended_action": "prioritize_remediation", "rationale": "A high-confidence broken reference affects an intended knowledge entry path."},
+  "recommendation": {"summary": "Correct the reference or add the intended target after human confirmation."},
+  "review": {"required": true, "status": "pending_review"},
+  "generated_at": "2026-08-02T20:58:00-03:00",
+  "repository_snapshot": {"repository": "jadergreiner/Knowledge-Guardian", "ref": "golden-baseline-batch-01", "commit_sha": "aafb24cade649753b6f525600808b3a06a440270"}
+}
