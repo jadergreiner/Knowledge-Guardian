@@ -1,7 +1,7 @@
 # Knowledge Guardian — Discovery
 
 **Status:** Active  
-**Version:** 0.2  
+**Version:** 0.3  
 **Updated:** 2026-08-02
 
 ## Discovery objective
@@ -26,6 +26,7 @@ Validate that repository maintainers and AI-agent teams experience material know
 | A-004 | Maintainers will accept proposal-first, read-only analysis | Adoption barrier increases | Prototype workflow test | Partially supported by Tech Lead review |
 | A-005 | Deterministic checks deliver enough initial value | v0.1 value is insufficient | Scan real repositories and review findings | Open |
 | A-006 | Users will configure repository profiles | Generic-only product may be required | Profile creation usability test | Open |
+| A-007 | The hardened finding contract can represent realistic positive and negative cases | Baseline validation fails | Golden baseline and reviewer workflow | Open |
 
 ## Key discovery questions
 
@@ -44,8 +45,9 @@ Validate that repository maintainers and AI-agent teams experience material know
 
 Run the future v0.1 rules against this repository and record expected findings manually before implementation.
 
-**Status:** Planned  
-**Output:** golden baseline and acceptance examples.
+**Status:** Shaped — deterministic case curation ready  
+**Output:** golden baseline and acceptance examples.  
+**Shaping artifact:** `portfolio/GOLDEN_BASELINE.md`.
 
 ### D-002 — Meu PDI repository audit
 
@@ -65,7 +67,7 @@ Document one concrete episode where conflicting, stale, missing or orphaned know
 
 Present sample findings with evidence, confidence, impact, treatment and remediation to reviewers.
 
-**Status:** In progress  
+**Status:** In progress — contract hardened, fixture review pending  
 **Output:** minimum trusted finding contract.
 
 ### D-005 — Competitive and adjacent-tool analysis
@@ -153,7 +155,56 @@ The Tech Lead explicitly reinforced that Knowledge Guardian generates analysis a
 - interpretative findings always require human review;
 - no treatment group independently authorizes repository modification or policy enforcement.
 
-## Discovery conclusions from E-001
+### E-002 — Finding-contract hardening and baseline shaping
+
+**Date:** 2026-08-02  
+**Context:** Acceptance-criteria review of KG-001 by the Virtual Product Manager and human Tech Lead.  
+**Related activities:** D-001 and D-004.  
+**Source:** Direct comparison of `portfolio/FINDING_MODEL.md`, `schemas/finding.schema.json`, `portfolio/BACKLOG.md`, and the operating-model guardrails.
+
+#### Observation 1 — The conceptual model exceeded the executable schema
+
+The review found that the model required stable identity, observation/inference separation, explicit versioning, and reproducible location semantics, while the schema did not fully enforce those concepts.
+
+**Inference:** A conceptually sound contract can still produce ambiguous fixtures when required distinctions are not represented structurally.
+
+**Confidence:** High.  
+**Impact on product decisions:**
+
+- decision `KGD-010` required contract hardening before baseline curation;
+- `fingerprint` became mandatory;
+- finding contract name and semantic version became mandatory;
+- `analysis.observation` and interpretative inference became explicit;
+- exact or justified location semantics became mandatory.
+
+#### Observation 2 — Hardening was applied consistently to model and schema
+
+`portfolio/FINDING_MODEL.md` and `schemas/finding.schema.json` now represent the four approved hardening decisions under contract version `0.1.0`.
+
+**Inference:** KG-001 has sufficient structural maturity to enter baseline validation, but it is not yet validated for usability, precision, or representative cases.
+
+**Confidence:** High.  
+**Impact on product decisions:**
+
+- the contract-hardening dependency for KG-010 is satisfied;
+- KG-002 and delivery work remain gated;
+- product focus moves to evidence generation rather than additional abstract contract design.
+
+#### Observation 3 — The baseline needs a bounded challenge set and review rubric
+
+Proceeding directly to ad hoc examples would risk selecting cases that merely fit the contract. A 12-case catalogue was shaped with normative findings, interpretative findings, revision requests, cancellation, and expected non-findings.
+
+**Inference:** Positive fixtures alone cannot validate trust. Negative cases and human disagreement are required to test overreach and false confidence.
+
+**Confidence:** High.  
+**Impact on product decisions:**
+
+- `portfolio/GOLDEN_BASELINE.md` defines the baseline structure;
+- deterministic cases GB-001 through GB-004 form the first bounded batch;
+- schema conformance, reviewer acceptance, and negative-case protection are measured separately;
+- ambiguity records must be retained rather than forced into the current contract.
+
+## Discovery conclusions
 
 ### Supported conclusions
 
@@ -165,30 +216,35 @@ The current evidence supports the following draft product conclusions:
 4. Confidence represents evidence strength and must not be conflated with consequence.
 5. A six-group treatment matrix is understandable and useful to the human Tech Lead reviewer.
 6. Human disposition is a core product boundary, not merely an implementation preference.
-7. The finding model is sufficiently defined to be materialized as a draft schema and tested through a golden baseline.
+7. Stable identity, explicit contract version and location semantics are required for reproducible baseline evidence.
+8. The hardened finding model is sufficiently defined for golden-baseline testing.
+9. Negative cases, cancellations and revision requests are necessary to test product trust.
 
 ### Conclusions not yet validated
 
-The session does **not** yet prove that:
+The evidence does **not** yet prove that:
 
 - other maintainers will understand or accept the same model;
 - the six treatment groups remain usable at report scale;
 - the impact taxonomy covers all relevant repositories;
 - the schema produces acceptable precision or low review effort;
 - deterministic v0.1 rules deliver sufficient standalone value;
-- the reviewer workflow is usable outside a paired discovery session.
+- the reviewer workflow is usable outside a paired discovery session;
+- the 12 shaped cases can be represented without further contract changes;
+- the eventual scanner can generate the same evidence deterministically.
 
-These questions require the golden baseline, self-audit, Meu PDI audit and additional reviewer evidence.
+These questions require the golden baseline, self-audit, Meu PDI audit, executable validation and additional reviewer evidence.
 
 ## Shaping outputs produced
 
-The discovery conclusions were materialized as draft product artifacts:
+The discovery conclusions are materialized in:
 
 - `portfolio/FINDING_MODEL.md`;
 - `schemas/finding.schema.json`;
-- decisions `KGD-007`, `KGD-008` and `KGD-009` in `portfolio/DECISIONS.md`.
+- `portfolio/GOLDEN_BASELINE.md`;
+- decisions `KGD-007` through `KGD-010` in `portfolio/DECISIONS.md`.
 
-These artifacts are **draft outputs pending baseline validation**, not proof that the finding model is production-ready.
+These artifacts are **shaped outputs pending evidence**, not proof that the finding model or product is production-ready.
 
 ## Evidence standard
 
@@ -217,10 +273,11 @@ For the finding contract, the gate additionally requires:
 
 - a manually reviewed golden baseline;
 - positive and negative examples;
-- schema validation against all baseline fixtures;
+- schema validation against all positive fixtures;
 - explicit false-positive and false-negative review;
-- confirmation that treatment groups and review states remain understandable at report scale.
+- confirmation that treatment groups and review states remain understandable at report scale;
+- a recorded product decision that KG-001 is validated or requires revision.
 
 ## Current priority
 
-Construct the Knowledge Guardian golden baseline for deterministic v0.1 scans and use it to validate the draft finding contract before implementation expands.
+Select a stable Knowledge Guardian commit and curate GB-001 through GB-004 as the first deterministic baseline batch. Do not start KG-002 or scanner implementation before the batch is schema-valid and human-reviewed.
