@@ -1,12 +1,14 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://knowledge-guardian.dev/schemas/finding.schema.json",
+  "$id": "https://knowledge-guardian.dev/schemas/finding/0.1.0/finding.schema.json",
   "title": "Knowledge Guardian Finding",
   "description": "Structured evidence-backed analysis result subject to human review.",
   "type": "object",
   "additionalProperties": false,
   "required": [
+    "contract",
     "id",
+    "fingerprint",
     "rule_id",
     "type",
     "category",
@@ -15,6 +17,7 @@
     "authority",
     "subject",
     "evidence",
+    "analysis",
     "impact",
     "confidence",
     "treatment",
@@ -23,15 +26,18 @@
     "generated_at"
   ],
   "properties": {
+    "contract": {
+      "$ref": "#/$defs/contract"
+    },
     "id": {
       "type": "string",
       "minLength": 1,
-      "description": "Stable human-facing finding identifier."
+      "description": "Human-facing finding identifier."
     },
     "fingerprint": {
       "type": "string",
-      "minLength": 1,
-      "description": "Optional stable deduplication fingerprint derived from rule, subject, authority, and observation."
+      "pattern": "^sha256:[a-fA-F0-9]{16,64}$",
+      "description": "Deterministic logical identity derived from rule, subject, location, authority, and observed condition."
     },
     "rule_id": {
       "type": "string",
@@ -66,6 +72,9 @@
       "items": {
         "$ref": "#/$defs/evidenceItem"
       }
+    },
+    "analysis": {
+      "$ref": "#/$defs/analysis"
     },
     "impact": {
       "$ref": "#/$defs/impact"
@@ -115,6 +124,9 @@
       },
       "then": {
         "properties": {
+          "analysis": {
+            "required": ["observation", "inference"]
+          },
           "review": {
             "allOf": [
               {"$ref": "#/$defs/review"},
@@ -149,6 +161,19 @@
     }
   ],
   "$defs": {
+    "contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version"],
+      "properties": {
+        "name": {
+          "const": "knowledge-guardian-finding"
+        },
+        "version": {
+          "const": "0.1.0"
+        }
+      }
+    },
     "authority": {
       "type": "object",
       "additionalProperties": false,
@@ -179,19 +204,45 @@
     "location": {
       "type": "object",
       "additionalProperties": false,
+      "required": ["scope"],
       "properties": {
+        "scope": {
+          "type": "string",
+          "enum": ["exact", "resource_level", "relationship_level", "not_available"]
+        },
         "line_start": {"type": "integer", "minimum": 1},
         "line_end": {"type": "integer", "minimum": 1},
         "column_start": {"type": "integer", "minimum": 1},
         "column_end": {"type": "integer", "minimum": 1},
-        "json_pointer": {"type": "string"},
-        "section": {"type": "string"}
-      }
+        "json_pointer": {"type": "string", "minLength": 1},
+        "section": {"type": "string", "minLength": 1},
+        "reason": {"type": "string", "minLength": 1}
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "scope": {"const": "exact"}
+            },
+            "required": ["scope"]
+          },
+          "then": {
+            "anyOf": [
+              {"required": ["line_start"]},
+              {"required": ["json_pointer"]},
+              {"required": ["section"]}
+            ]
+          },
+          "else": {
+            "required": ["reason"]
+          }
+        }
+      ]
     },
     "subject": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["resource"],
+      "required": ["resource", "location"],
       "properties": {
         "resource": {
           "type": "string",
@@ -209,7 +260,7 @@
     "evidenceItem": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["type", "resource", "observed"],
+      "required": ["type", "resource", "location", "observed"],
       "properties": {
         "type": {
           "type": "string",
@@ -232,6 +283,35 @@
         },
         "checksum": {
           "type": "string"
+        }
+      }
+    },
+    "analysis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["observation"],
+      "properties": {
+        "observation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inference": {
+          "$ref": "#/$defs/inference"
+        }
+      }
+    },
+    "inference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["statement", "rationale"],
+      "properties": {
+        "statement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
         }
       }
     },
