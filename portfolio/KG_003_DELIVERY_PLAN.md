@@ -253,22 +253,22 @@ No repository source file is modified by the scanner, so rollback requires no co
 
 ## 11. Acceptance criteria
 
-- [ ] explicit root and caller context are required;
-- [ ] only regular `.md`/`.mdx` resources are emitted;
-- [ ] hidden directories follow the approved policy;
-- [ ] symlinks are neither followed nor inventoried;
-- [ ] `.git` is always ignored;
-- [ ] paths and IDs are normalized and deterministic;
-- [ ] output contains one valid snapshot and valid resources;
-- [ ] checksum is SHA-256, optional and enabled by default;
-- [ ] unreadable or failed files emit diagnostics without incomplete resources;
-- [ ] output ordering is deterministic;
-- [ ] unchanged input yields equivalent records across repeated runs;
-- [ ] deterministic tests cover configuration, scope, paths, failures and ordering;
-- [ ] KG-002 contract tests remain green;
-- [ ] observability evidence is recorded;
+- [x] explicit root and caller context are required;
+- [x] only regular `.md`/`.mdx` resources are emitted;
+- [x] hidden directories follow the approved policy;
+- [x] symlinks are neither followed nor inventoried;
+- [x] `.git` is always ignored;
+- [x] paths and IDs are normalized and deterministic;
+- [x] output contains one valid snapshot and valid resources;
+- [x] checksum is SHA-256, optional and enabled by default;
+- [x] unreadable or failed files emit diagnostics without incomplete resources;
+- [x] output ordering is deterministic;
+- [x] unchanged input yields equivalent records across repeated runs;
+- [x] deterministic tests cover configuration, scope, paths, failures and ordering;
+- [x] KG-002 contract tests remain green;
+- [x] observability evidence is recorded;
 - [ ] rollback is documented and tested at process level;
-- [ ] no parser, classifier, relationship, finding or reporting logic is introduced;
+- [x] no parser, classifier, relationship, finding or reporting logic is introduced;
 - [ ] Tech Lead records a separate quality disposition before merge.
 
 ## 12. Delivery evidence required
