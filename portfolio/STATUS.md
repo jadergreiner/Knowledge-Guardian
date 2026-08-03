@@ -1,87 +1,82 @@
 # Knowledge Guardian — Product Status
 
-**Date:** 2026-08-02
-**Overall status:** Product foundation active — golden baseline shaped
+**Date:** 2026-08-02  
+**Overall status:** Product foundation active — deterministic baseline batch curated  
 **Confidence:** Medium
 
 ## Current position
 
-Knowledge Guardian remains in pre-implementation discovery and shaping. No scanner or executable rule engine has been validated yet.
+Knowledge Guardian remains in discovery and quality shaping. The finding contract `0.1.0` is hardened but not yet validated.
 
-The trusted finding contract has completed its approved hardening at version `0.1.0`. The next gate is empirical validation through the Knowledge Guardian golden baseline.
-
-The baseline structure, 12-case catalogue, reviewer rubric, measurements, entry criteria and exit criteria are defined in `portfolio/GOLDEN_BASELINE.md`. Case curation has not started.
+The first deterministic golden-baseline batch, `GB-001` through `GB-004`, has been curated using a controlled repository fixture. No scanner or executable rule engine has been started.
 
 ## Operating-model position
 
 ```text
-SENSE → FRAME → DISCOVER → DECIDE → SHAPE → [current gate] → DELIVER
+SENSE → FRAME → DISCOVER → DECIDE → SHAPE → [VALIDATION GATE] → DELIVER
 ```
 
-The project is not authorized to enter delivery yet. The current work validates a shaped product contract before implementation commitment.
+Delivery remains blocked until the baseline evidence supports the contract.
 
 ## Product assessment
 
 | Dimension | Status | Evidence |
 |---|---|---|
-| Problem framing | Defined | `README.md` and `portfolio/PRD.md` |
-| Target users | Hypothesized | PRD and discovery plan |
-| Value proposition | Defined, not validated | PRD |
-| v0.1 scope | Defined | Roadmap and backlog |
-| Success metrics | Defined provisionally | PRD and roadmap |
-| Finding contract | Hardened draft, pending baseline validation | `portfolio/FINDING_MODEL.md`, `schemas/finding.schema.json`, KG-001 |
-| Finding trust discovery | In progress | `portfolio/DISCOVERY.md`, decisions KGD-007 through KGD-010 |
-| Golden baseline design | Shaped | `portfolio/GOLDEN_BASELINE.md`, KG-010 |
-| Golden baseline cases | Not started | GB-001 through GB-012 |
-| Repository document model | Not started; gated | KG-002 |
-| Executable vertical slice | Not started | KG-003 through KG-007 |
-| Real-repository validation | Planned | KG-008 and KG-009 |
+| Problem framing | Defined | `README.md`, `portfolio/PRD.md` |
+| Finding contract | Hardened draft, pending validation | `portfolio/FINDING_MODEL.md`, `schemas/finding.schema.json` |
+| Golden baseline plan | Shaped | `portfolio/GOLDEN_BASELINE.md` |
+| Deterministic batch 01 | Curated, pending validation and review | `portfolio/baseline/BATCH_01.md`, `fixtures/golden-baseline/batch-01/` |
+| Executable schema validation | Not executed | Internal dependency |
+| Human review decisions | Pending | Human Tech Lead |
+| Repository document model | Blocked | KG-002 |
+| Scanner vertical slice | Not started | KG-003 through KG-007 |
 
-## Completed in the current cycle
+## Completed in the current increment
 
-- hardened the finding contract with explicit observation and inference;
-- made deterministic fingerprint mandatory;
-- added explicit contract name and semantic version;
-- required exact or explicitly justified location semantics;
-- synchronized `FINDING_MODEL.md` and `finding.schema.json`;
-- defined the golden-baseline plan and reviewer rubric;
-- defined a bounded 12-case catalogue;
-- defined schema conformance, reviewer acceptance and negative-case measurements;
-- updated backlog sequencing and maintained the gate before KG-002.
+- selected repository anchor commit `aafb24cade649753b6f525600808b3a06a440270`;
+- determined that the live repository lacks sufficient explicit invalid states for four normative cases;
+- created controlled fixture snapshot `kg-golden-baseline-batch-01-v1`;
+- curated GB-001 broken reference;
+- curated GB-002 missing profile metadata;
+- curated GB-003 formal schema violation;
+- curated GB-004 missing configured entry point;
+- recorded limitations and preserved all review states as `pending_review`.
 
-## Current objective
+## Current gate
 
-Validate the finding contract against representative positive and negative cases before starting repository-model or scanner implementation.
+The batch may advance only when:
+
+1. all four finding JSON files are executed against `schemas/finding.schema.json`;
+2. validation output is recorded as reproducible evidence;
+3. the human Tech Lead accepts, requests revision, or cancels each case;
+4. ambiguities and contract gaps are logged;
+5. KG-001 and KG-010 are reassessed.
 
 ## Immediate sequence
 
-1. Select a stable Knowledge Guardian commit as the baseline snapshot.
-2. Curate `GB-001` through `GB-004`, the deterministic batch.
-3. Validate all four positive fixtures against `schemas/finding.schema.json`.
-4. Conduct human review and record disposition reasons.
-5. Record ambiguities, false-positive risks and contract gaps.
-6. Decide whether to continue with the interpretative batch or revise the contract.
-7. Complete the 12-case baseline before deciding on KG-002.
+1. define or select a minimal JSON Schema validation mechanism;
+2. validate `GB-001.finding.json` through `GB-004.finding.json`;
+3. correct fixture defects without weakening the contract;
+4. submit the four cases for human review;
+5. update discovery, backlog, RAID and status from the results.
 
 ## Blockers
 
 No external blocker prevents progress.
 
-The current internal gate is evidence generation. Delivery must not begin until the baseline demonstrates that the contract can represent realistic findings, expected non-findings, uncertainty and human review without semantic distortion.
+The active internal blockers are:
 
-## Decisions needed soon
+- executable schema-validation evidence is absent;
+- human review decisions are pending.
 
-- stable repository commit for the baseline snapshot;
-- exact fixture directory and naming convention;
-- validation mechanism for JSON Schema fixtures;
-- reviewer results for the first deterministic batch;
-- whether discovered ambiguities require contract revision;
-- waiver, suppression and expiration semantics after negative-case review.
+## Explicitly not authorized
 
-Implementation-language, parser and packaging decisions remain deferred until the finding-contract checkpoint is resolved.
+- KG-002 initiation;
+- scanner implementation;
+- interpretative baseline cases;
+- CI/CD enforcement;
+- automatic repository modification.
 
 ## Next product checkpoint
 
-The next checkpoint is reached when the first deterministic batch (`GB-001` through `GB-004`) is versioned, schema-valid and reviewed by the human Tech Lead.
-
-The broader KG-001 checkpoint requires all 12 cases, documented human dispositions, negative-case protection and a final decision of `validated` or `revision required`.
+The checkpoint is reached when Batch 01 is schema-valid and human-reviewed. The checkpoint produces a decision to continue the baseline, revise the finding contract, or stop and reshape the current approach.
