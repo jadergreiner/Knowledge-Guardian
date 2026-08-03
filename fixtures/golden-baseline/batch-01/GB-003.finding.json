@@ -1,0 +1,21 @@
+{
+  "contract": {"name": "knowledge-guardian-finding", "version": "0.1.0"},
+  "id": "KGF-GB-003",
+  "fingerprint": "sha256:00000000000000000000000000000003",
+  "rule_id": "KG-SCHEMA-001",
+  "type": "normative",
+  "category": "schema_violation",
+  "title": "Artifact violates a declared schema",
+  "description": "documents/document.json uses status=current, which is not allowed by the declared schema.",
+  "authority": {"type": "formal_contract", "reference": "GB-003/schemas/document.schema.json", "version": "batch-01-v1"},
+  "subject": {"resource": "GB-003/documents/document.json", "resource_type": "json", "location": {"scope": "exact", "json_pointer": "/status"}},
+  "evidence": [{"type": "enum_violation", "resource": "GB-003/documents/document.json", "location": {"scope": "exact", "json_pointer": "/status"}, "observed": "current", "expected": ["active", "archived"], "snapshot_reference": "kg-golden-baseline-batch-01-v1"}],
+  "analysis": {"observation": "The status value current is outside the schema enum active or archived."},
+  "impact": {"status": "known", "level": "medium", "dimensions": ["engineering", "governance"], "statement": "The artifact cannot conform to its declared machine-readable contract.", "affected_scope": ["GB-003/documents/document.json"]},
+  "confidence": {"level": "high", "rationale": "The enum violation is directly reproducible against the declared JSON Schema."},
+  "treatment": {"group": "routine_improvement", "recommended_action": "add_to_backlog", "rationale": "The contract violation is confirmed and should be corrected through normal remediation."},
+  "recommendation": {"summary": "Use an allowed status value or revise the schema through an approved contract change."},
+  "review": {"required": true, "status": "pending_review"},
+  "generated_at": "2026-08-02T20:58:00-03:00",
+  "repository_snapshot": {"repository": "jadergreiner/Knowledge-Guardian", "ref": "golden-baseline-batch-01", "commit_sha": "aafb24cade649753b6f525600808b3a06a440270"}
+}
