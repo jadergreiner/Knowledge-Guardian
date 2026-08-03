@@ -1,14 +1,12 @@
 # Golden Baseline — Batch 03
 
-**Status:** Curated — pending human review  
+**Status:** Human-reviewed — all expected non-findings confirmed  
 **Version:** 0.1  
 **Date:** 2026-08-02
 
 ## Purpose
 
 Exercise expected non-findings and false-positive protection after deterministic and interpretative baseline cases.
-
-This batch remains discovery and quality validation. It does not authorize KG-002 or scanner delivery.
 
 ## Snapshot
 
@@ -24,75 +22,43 @@ Snapshot ID:
 kg-golden-baseline-batch-03-v1
 ```
 
-## Cases
+## Review result
 
-| Case | Expected result | Suppression principle |
+| Case | Tech Lead decision | Suppression principle |
 |---|---|---|
-| `GB-009` | `no_finding` | Alternative wording without explicit terminology authority is not a violation |
-| `GB-010` | `no_finding` | Future-state documentation does not prove or deny current runtime behavior |
-| `GB-011` | `no_finding` | Explicit project-profile exemption prevents an orphan-document finding |
-| `GB-012` | `no_finding` | Matching stable fingerprint suppresses duplicate emission |
+| `GB-009` | `confirmed_non_finding` | Alternative wording without explicit terminology authority is not a violation |
+| `GB-010` | `confirmed_non_finding` | Future-state documentation does not prove or deny current runtime behavior |
+| `GB-011` | `confirmed_non_finding` | Explicit project-profile exemption prevents an orphan-document finding |
+| `GB-012` | `confirmed_non_finding` | Matching stable fingerprint suppresses duplicate emission |
 
-## Product assessment
-
-### GB-009 — Undocumented wording preference
-
-Two documents use `Professional` and `User`, but no rule or canonical source establishes one required term or proves semantic identity.
-
-**Suppression rationale:** Emitting a semantic inconsistency would convert an undocumented preference into a finding.
-
-### GB-010 — Aspirational documentation
-
-A vision document states that pull-request blocking will exist in the future.
-
-**Suppression rationale:** The statement does not claim that the capability is active. Absence of runtime evidence must not be treated as evidence of contradiction.
-
-### GB-011 — Intentional standalone document
-
-The resource is not reachable through navigation, but the project profile explicitly exempts it with a reason.
-
-**Suppression rationale:** The exemption is applicable authority and prevents a false orphan-document finding.
-
-### GB-012 — Duplicate candidate
-
-The candidate and an active finding share the same stable fingerprint.
-
-**Suppression rationale:** The existing finding represents the logical issue. A second emission would inflate report volume and corrupt lifecycle tracking.
+Reviewer: `Jader Raul Greiner`  
+Reviewed at: `2026-08-02T22:44:00-03:00`
 
 ## Measurement
 
-All four cases are expected non-findings.
-
 ```text
-negative_case_pass_rate = correctly_suppressed_cases / 4
+negative_case_pass_rate = 4 / 4 = 100%
 ```
 
-The target for this manually curated batch is `4/4 = 100%` after human review.
+No case required revision and no suppressed case was reclassified as a finding.
 
-## Human review questions
+## Product conclusions
 
-For each case, the Tech Lead should decide whether the suppression rationale is correct and sufficient.
-
-Allowed review outcomes for Batch 03:
-
-- `confirmed_non_finding`;
-- `revision_requested`;
-- `finding_expected`.
-
-A reason is required when the expected suppression is rejected or requires revision.
+- undocumented wording preferences must not become findings;
+- aspirational documentation must not be treated as runtime evidence;
+- explicit project-profile exceptions must be honored;
+- stable fingerprint identity must suppress duplicate emission.
 
 ## Known limitation
 
-These artifacts document expected behavior. They do not prove that an implemented scanner or rule engine will suppress the cases correctly.
+The batch records expected and reviewed behavior. It does not prove that an implemented scanner will suppress these cases correctly. Automated regression evidence remains a delivery requirement.
 
-## Gate
+## Gate result
 
-The batch advances when:
+Batch 03 is complete. The full baseline result is recorded in:
 
-1. the human Tech Lead reviews `GB-009` through `GB-012`;
-2. the negative-case pass rate is recorded;
-3. false-positive or ambiguity findings are catalogued;
-4. Product makes the final `KG-001` and `KG-010` decision;
-5. authorization to shape `KG-002` is explicitly recorded or denied.
+```text
+portfolio/baseline/BASELINE_RESULT.md
+```
 
-Delivery remains blocked until that final decision.
+The baseline authorizes a product decision on `KG-001`, completion of the initial `KG-010` baseline, and shaping of `KG-002`. It does not authorize scanner implementation.
