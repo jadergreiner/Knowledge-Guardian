@@ -1,6 +1,6 @@
 # KG-002 — Contract Delivery Report
 
-**Status:** Implemented on delivery branch — executable validation pending  
+**Status:** Ready for Tech Lead quality review
 **Version:** 0.1  
 **Date:** 2026-08-02
 
@@ -53,19 +53,39 @@ Expected success output must report:
 
 ## Execution evidence
 
-An attempt was made to clone the delivery branch into the execution environment and run the validator. The environment could not resolve `github.com`:
+Validation was executed locally on 2026-08-02 at `2026-08-02T23:21:44.7245755-03:00`.
 
-```text
-fatal: unable to access 'https://github.com/jadergreiner/Knowledge-Guardian.git/':
-Could not resolve host: github.com
+| Field | Result |
+|---|---|
+| Operating system | Microsoft Windows 11 Pro |
+| Python | 3.11.9 |
+| jsonschema | 4.26.0 |
+| referencing | 0.37.0 |
+| Command | `python tests/validate_document_model_contracts.py` |
+| Valid fixtures passed | 14 |
+| Invalid fixtures rejected | 14 |
+| Unexpected failures | 0 |
+| Local reference resolution | Passed; 16 local registry entries, no external `$ref` |
+
+The runner output was:
+
+```json
+{
+  "valid_passed": 14,
+  "invalid_rejected": 14,
+  "unexpected": 0
+}
 ```
 
-Therefore:
+Additional deterministic checks also passed:
 
-- executable contract validation is **not yet proven**;
-- no claim of `14/14` passing fixtures is made;
-- the failure is recorded as an environment/network limitation, not as a contract result;
-- the Tech Lead quality gate remains open.
+- Unix and Windows absolute paths rejected;
+- parent traversal rejected;
+- incorrect contract version rejected;
+- unknown enum rejected while formal `unknown` values remain supported;
+- unsupported additional properties rejected;
+- nested repository-relative identifiers accepted;
+- all schemas and fixtures parsed as valid JSON and use draft 2020-12.
 
 ## Static contract review
 
@@ -77,6 +97,16 @@ The delivered contracts preserve the approved boundaries:
 - unsupported additional properties are rejected in contract-owned structures;
 - schema references are local and version-scoped;
 - no scanner, parser, traversal, finding or report behavior was introduced.
+
+## Corrections applied
+
+The shared identifier definition now accepts `/` so resource and document IDs derived from normalized repository-relative paths (for example, `resource:docs/architecture.md`) validate consistently with the approved model and existing valid fixtures. This is a corrective compatibility fix within `0.1.0`; it does not change path normalization rules.
+
+## Ambiguities and limitations
+
+- The model describes `document_id` as snapshot identity plus resource ID, while the current fixtures use the stable form `document:<relative-path>`. The isolated schema cannot enforce the cross-object identity composition; this remains an application-level decision for a future aggregate validator.
+- Target document existence, collection uniqueness, document/resource path equality, rename continuity and repository path case policy remain application- or snapshot-level invariants.
+- JSON Schema validates structure and local formats; it does not implement scanning, parsing, traversal, rule execution or finding generation.
 
 ## Known application-level invariants
 
@@ -93,7 +123,7 @@ The following cannot be fully enforced by isolated JSON Schema files and remain 
 
 KG-002 is not complete until:
 
-1. the runner executes successfully in a network-capable checkout or CI environment;
+1. the runner executes successfully;
 2. all valid fixtures pass;
 3. all invalid fixtures fail for intended boundaries;
 4. local schema references resolve deterministically;
