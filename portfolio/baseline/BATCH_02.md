@@ -1,7 +1,7 @@
 # Golden Baseline — Batch 02
 
-**Status:** Structurally validated — pending human review  
-**Version:** 0.1  
+**Status:** Human-reviewed — gate closed  
+**Version:** 0.2  
 **Date:** 2026-08-02
 
 ## Purpose
@@ -24,84 +24,74 @@ Snapshot ID:
 kg-golden-baseline-batch-02-v1
 ```
 
-## Cases
+## Structural validation
 
-| Case | Artifact | Intended review outcome | Purpose |
-|---|---|---|---|
-| `GB-005` | `GB-005.finding.json` | `accepted` | Validate canonical terminology divergence with explicit inference |
-| `GB-006` | `GB-006.finding.json` | `accepted` | Validate future-versus-current behavior claim with bounded confidence |
-| `GB-007` | `GB-007.finding.json` | `revision_requested` | Confirm valid evidence while rejecting overstated impact and recommendation |
-| `GB-008` | `GB-008.candidate.json` | pre-finding rejection | Reject semantic-conflict analysis that lacks an authority source |
+Manual validation is recorded in `portfolio/baseline/BATCH_02_VALIDATION.md`.
 
-## Structural validation result
+- positive fixtures: `GB-005`, `GB-006`, `GB-007`;
+- structural conformance: `3/3 = 100%`;
+- `GB-008` is outside the finding schema because it lacks authority.
 
-Manual structural validation is recorded in:
+## Human decisions
+
+**Reviewer:** Jader Raul Greiner — Human Tech Lead  
+**Reviewed at:** 2026-08-02T22:33:00-03:00
+
+| Case | Decision | Result |
+|---|---|---|
+| `GB-005` | `accepted` | Canonical-term divergence, medium confidence and informational treatment accepted |
+| `GB-006` | `accepted` | Future-versus-current interpretation and bounded uncertainty accepted |
+| `GB-007` | `revision_requested` | Divergence accepted; critical impact, urgent treatment and global blocking rejected as disproportionate |
+| `GB-008` | `rejected_before_finding_emission` | Candidate has no explicit authority and must not become a finding |
+
+## Revision learning from GB-007
+
+The case confirms that schema conformance is necessary but insufficient.
+
+The valid observation is:
 
 ```text
-portfolio/baseline/BATCH_02_VALIDATION.md
+The required owner field is absent.
 ```
 
-Results:
+The rejected classification asserted repository-wide critical governance failure and recommended blocking all changes. The Tech Lead requested revision because those conclusions exceed the available evidence.
 
-- `GB-005`: structurally valid interpretative finding;
-- `GB-006`: structurally valid interpretative finding;
-- `GB-007`: structurally valid finding with intentionally unacceptable classification;
-- `GB-008`: correctly excluded from finding-schema validation because it lacks authority.
+The expected corrected direction is:
 
-**Positive-fixture conformance:** `3/3 = 100%`.
+- bounded potential governance impact;
+- normal remediation or backlog treatment;
+- no repository-wide blocking recommendation.
 
-## Product learning
+The intentionally overstated fixture remains versioned with `review.status: revision_requested` as baseline evidence. It must not be silently rewritten into an accepted finding.
 
-The cancellation workflow has two distinct moments:
+## Candidate-analysis decision
 
-1. **pre-finding rejection** — a candidate fails validity criteria and must never be emitted as a finding;
-2. **post-emission cancellation** — a structurally valid finding is later cancelled as duplicated, superseded, irrelevant or unsupported after review.
+Candidate analysis remains **internal-only in v0.1**.
 
-`GB-008` covers the first moment. Absence of authority is a pre-emission validity failure, not a schema-valid finding disposition.
+The product distinguishes:
 
-Current recommendation: do not introduce a separate public candidate-analysis schema in v0.1. Keep pre-finding rejection as internal pipeline behavior unless later workflow evidence requires durable candidate records.
+1. **pre-finding rejection** — validity criteria fail before emission;
+2. **post-emission cancellation** — a valid emitted finding is later cancelled by a human.
 
-## Human review questions
+`GB-008` covers pre-finding rejection. No public candidate schema will be added in v0.1 without further workflow evidence.
 
-### GB-005
+## Batch result
 
-- Do `Professional` and `User` plausibly represent the same role?
-- Is medium confidence appropriate?
-- Is informational treatment appropriate?
+```text
+Positive fixture conformance: 3/3 — 100%
+Accepted findings:           2
+Revision requested:          1
+Pre-finding rejections:      1
+Contract-breaking gaps:      0
+Product-learning decisions:  2
+```
 
-### GB-006
+## Gate outcome
 
-- Does the inference remain within the evidence?
-- Is high potential impact proportionate given unknown runtime state?
-- Is `probable_risk` the correct treatment?
+Batch 02 is complete.
 
-### GB-007
+Authorized next increment:
 
-- Is the underlying missing-owner finding valid?
-- Should impact be reduced from critical?
-- Should the blocking recommendation be replaced with normal remediation?
-
-### GB-008
-
-- Should the candidate be rejected before finding emission?
-- Should candidate records remain internal for v0.1?
-
-## Recommended dispositions
-
-| Case | PM recommendation |
-|---|---|
-| `GB-005` | `accepted` |
-| `GB-006` | `accepted` |
-| `GB-007` | `revision_requested` — impact and blocking recommendation are disproportionate |
-| `GB-008` | pre-finding rejection — no explicit authority exists |
-
-## Gate
-
-The batch advances only when the human Tech Lead records:
-
-- a disposition for `GB-005`, `GB-006`, and `GB-007`;
-- confirmation of pre-finding rejection for `GB-008`;
-- a reason for revision or rejection;
-- any ambiguity or contract change request.
-
-Delivery remains blocked.
+- curate `GB-009` through `GB-012` as expected non-findings;
+- document suppression rationale and false-positive protection;
+- do not start KG-002 or scanner implementation.
