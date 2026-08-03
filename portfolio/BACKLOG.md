@@ -76,7 +76,21 @@ Items are prioritized using user impact, evidence strength, uncertainty reductio
 ### KG-004 — Detect entry points and orphan documents
 
 **Type:** Delivery  
-**Status:** Blocked — depends on KG-003 delivery completion and separate authorization
+**Status:** `approved_for_merge`
+
+**Shaping artifact:** `portfolio/KG_004_SHAPING.md`.
+
+**Delivery plan:** `portfolio/KG_004_DELIVERY_PLAN.md`.
+
+**Delivery report:** `portfolio/KG_004_DELIVERY_REPORT.md`.
+
+**Relationship input proposal:** `portfolio/KG_004_RELATIONSHIP_INPUT_SHAPING.md`.
+
+**Boundary:** Entry points follow `project_profile` → enabled exact root `native_conventions` → explicit `no_entry_point` evidence. Reachability emits `reachable`, `candidate_orphan`, `excluded`, `not_evaluated`, `indeterminate` and `no_entry_point`; `candidate_orphan` is never a finding.
+
+**Decision recorded:** Entry-point precedence, candidate-orphan semantics, deterministic paths and v0.1 root conventions were approved with boundaries. The reachability implementation is ready for quality review.
+
+**Next action:** Open the PR against `main` and merge the bounded KG-004 delivery.
 
 ### KG-005 — Validate internal Markdown references
 

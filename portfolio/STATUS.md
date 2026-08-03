@@ -1,28 +1,28 @@
 # Knowledge Guardian — Product Status
 
-**Date:** 2026-08-02  
-**Overall status:** KG-002 accepted; KG-003 approved for merge
+**Date:** 2026-08-03
+**Overall status:** KG-003 merged; KG-004 reachability approved for merge
 **Confidence:** High
 
 ## Current position
 
-The finding contract is validated for v0.1 use and the initial manual baseline is complete. KG-002 contract delivery has executable evidence: 14 valid fixtures passed, 14 invalid fixtures were rejected and unexpected failures were zero.
+The finding contract is validated for v0.1 use and the initial manual baseline is complete. KG-002 contract delivery has executable evidence: 14 valid fixtures passed, 14 invalid fixtures were rejected and unexpected failures were zero. KG-003 read-only Markdown inventory is merged to `main`.
 
 `KG-003 — Markdown Repository Discovery` has completed shaping with six human-approved boundaries. A bounded delivery plan now defines configuration, diagnostics, deterministic tests, observability, rollback and acceptance evidence.
 
-No filesystem scanner, parser, traversal engine or finding engine has been started.
+No Markdown/MDX parser, relationship engine, finding engine or report renderer has been started.
 
 ## Operating-model position
 
 ```text
-SENSE → FRAME → DISCOVER → DECIDE → SHAPE → DELIVER
+SENSE → FRAME → DISCOVER → DECIDE → SHAPE
                                               ↑
-                              KG-003 delivery accepted; merge authorized
+                              KG-004 delivery; merge authorized
 ```
 
-## KG-003 planned scope
+## KG-003 delivered scope
 
-The authorized increment is limited to:
+The merged increment is limited to:
 
 - explicit repository root and caller-supplied repository context;
 - read-only enumeration of regular `.md` and `.mdx` files;
@@ -41,13 +41,17 @@ Delivery plan: `portfolio/KG_003_DELIVERY_PLAN.md`.
 
 Decision: `KGD-015` records the approved shaping boundaries.
 
+KG-004 shaping: `portfolio/KG_004_SHAPING.md`.
+
+KG-004 delivery plan: `portfolio/KG_004_DELIVERY_PLAN.md`. Delivery report: `portfolio/KG_004_DELIVERY_REPORT.md`. The implementation remains limited to reachability evidence from explicit caller-supplied relationships.
+
 ## Diagnostic boundary
 
 Diagnostics are operational evidence, not findings. They cover ignored paths, symlinks, invalid paths, unreadable files, stat failures and checksum failures. They must not contain file contents, stack traces or durable absolute paths.
 
 ## Explicitly not authorized
 
-- KG-004 or later implementation;
+- KG-005 or later implementation;
 - Git command execution or `.git` inspection;
 - Markdown, MDX, YAML, JSX or front-matter parsing;
 - classification or metadata extraction;
@@ -63,4 +67,4 @@ Diagnostics are operational evidence, not findings. They cover ignored paths, sy
 
 ## Next checkpoint
 
-Implementation returned with executable test evidence, schema-validation results, repeated-run determinism evidence, diagnostics exercised, scope verification and rollback confirmation. The Tech Lead approved the bounded delivery for merge. KG-004 remains separately gated.
+KG-003 is merged and its delivery evidence is complete. KG-004 reachability implementation is approved for merge; relationship extraction and KG-005 remain separately gated.

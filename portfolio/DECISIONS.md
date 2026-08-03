@@ -18,6 +18,40 @@ Each material decision should record:
 
 ## Decisions
 
+### KGD-019 — Approve KG-004 bounded reachability delivery for merge
+
+**Date:** 2026-08-03
+**Type:** Quality and release readiness
+**Status:** `approved_for_merge`
+
+**Context:** KG-004 delivery returned with 12 passing tests, KG-002 regression evidence, a bounded runtime sample, no absolute-path leakage and scope verification against the approved reachability boundary.
+
+**Decision:** Approve the bounded KG-004 reachability delivery for merge to `main`.
+
+**Authority:** Human Tech Lead decision in the project execution workflow.
+
+**Conditions:** Merge is limited to the feature branch commits for KG-004. Relationship extraction, parsing, findings, reports, CI/CD and KG-005 remain unauthorized.
+
+**Review trigger:** Verify the merged branch and update status after fast-forwarding the local `main` checkout.
+
+### KGD-018 — Authorize KG-004 bounded reachability implementation
+
+**Date:** 2026-08-03
+**Type:** Technical and delivery governance
+**Status:** `approved_for_implementation`
+
+**Context:** `portfolio/KG_004_DELIVERY_PLAN.md` and `portfolio/KG_004_RELATIONSHIP_INPUT_SHAPING.md` define a bounded reachability slice over KG-003 resources and caller-supplied relationships.
+
+**Decision:** Authorize implementation limited to entry-point resolution, validation of `relationship.schema.json@0.1.0`, deterministic reachability evidence and bounded states/diagnostics.
+
+**Authority:** Human Tech Lead decision in the project execution workflow.
+
+**Explicit exclusions:** Markdown/MDX parsing, relationship extraction, link validation, graph persistence, findings, reports, automatic changes, CI/CD and KG-005.
+
+**Consequences:** The implementation must return with deterministic tests, KG-002/KG-003 regression evidence, a bounded runtime sample and a separate quality disposition before merge.
+
+**Review trigger:** Review `portfolio/KG_004_DELIVERY_REPORT.md` before merge.
+
 ### KGD-017 — Approve KG-003 bounded delivery for merge
 
 **Date:** 2026-08-03
