@@ -18,6 +18,22 @@ Each material decision should record:
 
 ## Decisions
 
+### KGD-019 — Approve KG-004 bounded reachability delivery for merge
+
+**Date:** 2026-08-03
+**Type:** Quality and release readiness
+**Status:** `approved_for_merge`
+
+**Context:** KG-004 delivery returned with 12 passing tests, KG-002 regression evidence, a bounded runtime sample, no absolute-path leakage and scope verification against the approved reachability boundary.
+
+**Decision:** Approve the bounded KG-004 reachability delivery for merge to `main`.
+
+**Authority:** Human Tech Lead decision in the project execution workflow.
+
+**Conditions:** Merge is limited to the feature branch commits for KG-004. Relationship extraction, parsing, findings, reports, CI/CD and KG-005 remain unauthorized.
+
+**Review trigger:** Verify the merged branch and update status after fast-forwarding the local `main` checkout.
+
 ### KGD-018 — Authorize KG-004 bounded reachability implementation
 
 **Date:** 2026-08-03

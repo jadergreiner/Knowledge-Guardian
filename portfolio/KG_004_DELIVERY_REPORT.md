@@ -44,4 +44,4 @@ The conceptual model still describes fields not required by the executable relat
 
 Rollback is a branch/commit reversal; no persistent runtime state or repository file mutation was introduced.
 
-**Recommendation:** `approved_for_review`; merge remains subject to human Tech Lead quality acceptance.
+**Recommendation:** `approved_for_merge`; human Tech Lead decision recorded.

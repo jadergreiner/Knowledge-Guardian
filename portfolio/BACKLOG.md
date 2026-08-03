@@ -76,7 +76,7 @@ Items are prioritized using user impact, evidence strength, uncertainty reductio
 ### KG-004 — Detect entry points and orphan documents
 
 **Type:** Delivery  
-**Status:** Implemented — quality acceptance and merge pending
+**Status:** `approved_for_merge`
 
 **Shaping artifact:** `portfolio/KG_004_SHAPING.md`.
 
@@ -90,7 +90,7 @@ Items are prioritized using user impact, evidence strength, uncertainty reductio
 
 **Decision recorded:** Entry-point precedence, candidate-orphan semantics, deterministic paths and v0.1 root conventions were approved with boundaries. The reachability implementation is ready for quality review.
 
-**Next action:** Tech Lead review delivery evidence and decide `approved_for_merge`, `revision_requested` or `rejected`.
+**Next action:** Open the PR against `main` and merge the bounded KG-004 delivery.
 
 ### KG-005 — Validate internal Markdown references
 

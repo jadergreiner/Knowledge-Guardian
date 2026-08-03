@@ -1,7 +1,7 @@
 # Knowledge Guardian — Product Status
 
 **Date:** 2026-08-03
-**Overall status:** KG-003 merged; KG-004 reachability implementation ready for quality review
+**Overall status:** KG-003 merged; KG-004 reachability approved for merge
 **Confidence:** High
 
 ## Current position
@@ -17,7 +17,7 @@ No Markdown/MDX parser, relationship engine, finding engine or report renderer h
 ```text
 SENSE → FRAME → DISCOVER → DECIDE → SHAPE
                                               ↑
-                              KG-004 delivery; quality review pending
+                              KG-004 delivery; merge authorized
 ```
 
 ## KG-003 delivered scope
@@ -67,4 +67,4 @@ Diagnostics are operational evidence, not findings. They cover ignored paths, sy
 
 ## Next checkpoint
 
-KG-003 is merged and its delivery evidence is complete. KG-004 reachability implementation is complete on the feature branch; quality acceptance and merge remain pending. Relationship extraction and KG-005 remain separately gated.
+KG-003 is merged and its delivery evidence is complete. KG-004 reachability implementation is approved for merge; relationship extraction and KG-005 remain separately gated.
