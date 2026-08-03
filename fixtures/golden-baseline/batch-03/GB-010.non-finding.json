@@ -1,0 +1,11 @@
+{
+  "case_id": "GB-010",
+  "case_type": "expected_non_finding",
+  "snapshot_reference": "kg-golden-baseline-batch-03-v1",
+  "subject_resources": ["GB-010/docs/vision.md"],
+  "observation": "The document describes pull-request blocking as a future capability.",
+  "suppression_reason": "A future-state statement does not assert current runtime behavior, and absence of runtime evidence cannot be converted into a contradiction finding.",
+  "protected_guardrail": "Do not infer runtime state from aspirational documentation alone.",
+  "expected_result": "no_finding",
+  "review_status": "pending_review"
+}
