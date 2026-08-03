@@ -34,3 +34,5 @@ Patch releases may clarify descriptions or add non-breaking optional fields. New
 These contracts represent data only. They do not scan repositories, parse Markdown/YAML, infer relationships, execute rules, produce findings or render reports.
 
 Cross-document referential integrity, rename identity, path case policy and relationship target existence remain application-level or snapshot-level concerns.
+
+Resource and document identifiers may preserve repository-relative path casing and spaces so IDs derived from observed paths remain compatible with the model's path-identity rule.

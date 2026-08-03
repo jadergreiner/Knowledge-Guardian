@@ -17,7 +17,7 @@
       "minLength": 1,
       "pattern": "^(?!/)(?![A-Za-z]:[\\\\/])(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\).+$"
     },
-    "identifier": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._:/-]*$"},
+    "identifier": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/ -]*$"},
     "confidence": {"type": "string", "enum": ["high", "medium", "low", "unknown"]}
   }
 }
