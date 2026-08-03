@@ -1,89 +1,74 @@
 # Knowledge Guardian — Product Status
 
 **Date:** 2026-08-02  
-**Overall status:** KG-002 shaped — Tech Lead delivery decision pending  
+**Overall status:** KG-002 approved for bounded contract delivery  
 **Confidence:** Medium
 
 ## Current position
 
 The finding contract is validated for v0.1 use and the initial manual baseline is complete.
 
-`KG-002 — Repository Document Model` now satisfies the operating-model Definition of Ready. Its shaping artifact defines resource and document identity, path normalization, document types, knowledge layers, lifecycle, metadata, trust signals, relationships, entry points, exceptions, invariants, risks and a bounded delivery slice.
+`KG-002 — Repository Document Model` completed shaping, satisfies the operating-model Definition of Ready and has been approved by the human Tech Lead for a bounded contract-and-test delivery slice.
 
-No KG-002 implementation, scanner or executable rule engine has been started.
+No filesystem scanner, parser, traversal engine or finding engine has been started.
 
 ## Operating-model position
 
 ```text
-SENSE → FRAME → DISCOVER → DECIDE → SHAPE → [DELIVERY DECISION GATE]
-                                                    ↓
-                                                DELIVER
+SENSE → FRAME → DISCOVER → DECIDE → SHAPE → DELIVER
+                                                    ↑
+                                      KG-002 contract slice only
 ```
 
-## KG-002 shaping result
+## Authorized scope
 
-| Dimension | Result |
-|---|---|
-| Problem and consumers | Defined |
-| Scope and exclusions | Defined |
-| Resource/document identity | Defined |
-| Path semantics | Defined |
-| Document types | Defined |
-| Knowledge layers | Defined |
-| Metadata and lifecycle | Defined |
-| Classification provenance | Defined |
-| Trust signals | Defined |
-| Relationships | Defined |
-| Entry points and exceptions | Defined |
-| Invariants | Defined |
-| Acceptance criteria | Defined |
-| Delivery slice | Bounded to contracts and tests |
+The authorized increment creates:
 
-Evidence: `portfolio/REPOSITORY_DOCUMENT_MODEL.md`.
+- versioned contracts for `RepositorySnapshot`, `Resource`, `Document`, `Classification`, `Relationship`, `EntryPoint` and `Exception`;
+- representative valid and invalid fixtures;
+- deterministic contract tests;
+- local validation instructions;
+- compatibility, limitation and validation evidence.
 
-## Proposed delivery scope
+Decision: `portfolio/decisions/KGD-013.md`.
 
-Subject to Tech Lead approval, the first delivery increment creates versioned contracts and contract tests for:
+Plan: `portfolio/KG_002_DELIVERY_PLAN.md`.
 
-- `RepositorySnapshot`;
-- `Resource`;
-- `Document`;
-- `Classification`;
-- `Relationship`;
-- `EntryPoint`;
-- `Exception`.
+## Delivery acceptance evidence
 
-It excludes scanning, parsing, traversal, rules, findings and reports.
+The increment must return with:
 
-## Required decision
-
-The Tech Lead must record one disposition:
-
-- `approved_for_contract_delivery`;
-- `revision_requested`;
-- `rejected`.
-
-Approval authorizes only the bounded contract-and-test slice. It does not authorize KG-003 or scanner implementation.
-
-## Remaining risks
-
-- the vocabulary may be too broad before implementation feedback;
-- cross-rename document identity is deferred;
-- case-sensitive path comparison depends on repository policy;
-- relationship types may expand without downstream use;
-- metadata usability remains unvalidated with external maintainers;
-- executable contract and regression evidence do not yet exist.
+1. seven versioned schemas;
+2. positive and negative fixtures for every schema;
+3. executable validation output;
+4. validator, version and command used;
+5. deterministic schema-reference resolution;
+6. documented contract gaps and limitations;
+7. confirmation that no scanner behavior was introduced;
+8. Tech Lead quality disposition.
 
 ## Explicitly not authorized
 
-- filesystem scanner;
-- Markdown parser;
-- graph traversal;
-- finding generation;
-- report generation;
+- filesystem scanning;
+- Markdown or YAML parsing;
+- repository traversal;
+- relationship discovery from repository content;
+- rule execution;
+- finding or report generation;
+- `KG-003` implementation;
 - CI/CD enforcement;
 - automatic repository modification.
 
+## Active risks
+
+- JSON Schema may not express every cross-resource invariant;
+- contract decomposition may create reference complexity;
+- path case sensitivity remains profile dependent;
+- relationship target integrity may require snapshot-level validation;
+- implementation feedback may expose a material model ambiguity.
+
+Any material ambiguity returns to shaping rather than being silently decided during implementation.
+
 ## Next checkpoint
 
-After the Tech Lead decision, Product records approval or requested revisions. If approved, delivery planning must define exact schema files, fixtures, tests, observability and documentation impact before code begins.
+KG-002 reaches its delivery checkpoint when all contract schemas and tests are executable, evidence is recorded and the Tech Lead decides whether the increment is accepted, requires revision or is rejected. `KG-003` remains blocked until a separate authorization.
