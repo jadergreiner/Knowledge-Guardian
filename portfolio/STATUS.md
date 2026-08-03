@@ -1,7 +1,7 @@
 # Knowledge Guardian — Product Status
 
 **Date:** 2026-08-02  
-**Overall status:** KG-002 accepted; KG-003 rollback revision addressed — quality review pending
+**Overall status:** KG-002 accepted; KG-003 approved for merge
 **Confidence:** High
 
 ## Current position
@@ -17,7 +17,7 @@ No filesystem scanner, parser, traversal engine or finding engine has been start
 ```text
 SENSE → FRAME → DISCOVER → DECIDE → SHAPE → DELIVER
                                               ↑
-                              KG-003 bounded discovery delivery
+                              KG-003 delivery accepted; merge authorized
 ```
 
 ## KG-003 planned scope
@@ -54,14 +54,13 @@ Diagnostics are operational evidence, not findings. They cover ignored paths, sy
 - relationship, link, entry-point or orphan discovery;
 - rule execution;
 - finding or report generation;
-- KG-004 or later items;
 - CI/CD enforcement;
 - automatic repository modification.
 
 ## Delivery authorization
 
-`approved_for_discovery_delivery` was recorded in `KGD-016`. It authorizes only the bounded read-only inventory defined in `KG_003_DELIVERY_PLAN.md`.
+`approved_for_discovery_delivery` was recorded in `KGD-016`, and `approved_for_merge` was recorded in `KGD-017`. The merge approval applies only to the bounded read-only inventory defined in `KG_003_DELIVERY_PLAN.md`.
 
 ## Next checkpoint
 
-Implementation returned with executable test evidence, schema-validation results, repeated-run determinism evidence, diagnostics exercised, scope verification and rollback confirmation. The rollback revision is addressed; Tech Lead quality disposition is still required before merge. KG-004 remains separately gated.
+Implementation returned with executable test evidence, schema-validation results, repeated-run determinism evidence, diagnostics exercised, scope verification and rollback confirmation. The Tech Lead approved the bounded delivery for merge. KG-004 remains separately gated.

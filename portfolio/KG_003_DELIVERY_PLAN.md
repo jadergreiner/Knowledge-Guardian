@@ -269,7 +269,7 @@ No repository source file is modified by the scanner, so rollback requires no co
 - [x] observability evidence is recorded;
 - [x] rollback is documented and tested at process level;
 - [x] no parser, classifier, relationship, finding or reporting logic is introduced;
-- [ ] Tech Lead records a separate quality disposition before merge.
+- [x] Tech Lead records a separate quality disposition before merge: `approved_for_merge`.
 
 ## 12. Delivery evidence required
 
@@ -304,8 +304,8 @@ The execution report must record:
 
 The Tech Lead recorded the following disposition:
 
-`approved_for_discovery_delivery`
+`approved_for_merge`
 
-This approval authorizes only the bounded read-only inventory described here. It does not authorize KG-004, parsing, classification, findings, reports or CI/CD integration.
+This approval authorizes merge of the bounded read-only inventory described here. It does not authorize KG-004, parsing, classification, findings, reports or CI/CD integration.
 
-**Authority:** Human Tech Lead decision recorded in `KGD-016`.
+**Authority:** Human Tech Lead decision recorded in `KGD-017`.

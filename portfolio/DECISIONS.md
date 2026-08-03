@@ -18,6 +18,22 @@ Each material decision should record:
 
 ## Decisions
 
+### KGD-017 — Approve KG-003 bounded delivery for merge
+
+**Date:** 2026-08-03
+**Type:** Quality and release readiness
+**Status:** `approved_for_merge`
+
+**Context:** KG-003 delivery completed its bounded inventory implementation and addressed the requested rollback revision in a disposable worktree. KG-002 regression remained green, scope verification passed, and no force-push or history rewrite was used.
+
+**Decision:** Approve the KG-003 bounded discovery delivery for merge.
+
+**Authority:** Human Tech Lead decision in the project execution workflow.
+
+**Conditions:** Merge is limited to the delivery branch commits for KG-003. KG-004, parsing, classification, relationships, findings, reports, CI/CD and automatic repository modification remain unauthorized.
+
+**Review trigger:** Verify the merged branch and delivery evidence before any downstream authorization.
+
 ### KGD-016 — Authorize KG-003 bounded discovery delivery
 
 **Date:** 2026-08-02

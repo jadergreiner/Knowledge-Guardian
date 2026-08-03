@@ -1,10 +1,10 @@
 # KG-003 — Markdown Repository Discovery Delivery Report
 
-**Status:** Revision addressed — ready for Tech Lead quality review
+**Status:** Approved for merge
 **Version:** 0.1
 **Date:** 2026-08-02
 **Branch:** `feature/kg-003-discovery-delivery`
-**Authorization:** `approved_for_discovery_delivery` via `KGD-016`
+**Authorization:** `approved_for_discovery_delivery` via `KGD-016`; merge disposition `approved_for_merge` via `KGD-017`
 
 ## Scope delivered
 
@@ -100,4 +100,4 @@ No force-push, reset, rebase or source-file restoration was used.
 
 ## Remaining gate
 
-The requested rollback revision is complete and the implementation is ready for renewed Tech Lead quality review. Merge still requires a separate quality disposition. KG-004 and all parsing, classification, relationship, finding and reporting work remain blocked.
+The requested rollback revision is complete. The Tech Lead approved the bounded KG-003 delivery for merge. KG-004 and all parsing, classification, relationship, finding and reporting work remain blocked.
