@@ -1,78 +1,89 @@
 # Knowledge Guardian — Product Status
 
 **Date:** 2026-08-02  
-**Overall status:** Finding contract validated — KG-002 shaping authorized  
+**Overall status:** KG-002 shaped — Tech Lead delivery decision pending  
 **Confidence:** Medium
 
 ## Current position
 
-The manual v0.1 golden baseline is complete. All 12 cases are versioned and human-reviewed.
+The finding contract is validated for v0.1 use and the initial manual baseline is complete.
 
-The finding contract `knowledge-guardian-finding@0.1.0` is validated for v0.1 shaping and implementation use, subject to executable regression tests and real-repository validation during delivery.
+`KG-002 — Repository Document Model` now satisfies the operating-model Definition of Ready. Its shaping artifact defines resource and document identity, path normalization, document types, knowledge layers, lifecycle, metadata, trust signals, relationships, entry points, exceptions, invariants, risks and a bounded delivery slice.
 
-No scanner or executable rule engine has been started.
+No KG-002 implementation, scanner or executable rule engine has been started.
 
 ## Operating-model position
 
 ```text
-SENSE → FRAME → DISCOVER → DECIDE → SHAPE
-                                  ↑
-                         KG-002 authorized here
-
-DELIVER remains separately gated.
+SENSE → FRAME → DISCOVER → DECIDE → SHAPE → [DELIVERY DECISION GATE]
+                                                    ↓
+                                                DELIVER
 ```
 
-## Baseline result
+## KG-002 shaping result
 
-| Measure | Result |
-|---|---:|
-| Positive fixtures structurally valid | `7/7` |
-| Accepted findings | `6` |
-| Revision requested | `1` |
-| Pre-finding rejection | `1` |
-| Expected non-findings confirmed | `4/4` |
-| Immediate contract gaps | `0` |
+| Dimension | Result |
+|---|---|
+| Problem and consumers | Defined |
+| Scope and exclusions | Defined |
+| Resource/document identity | Defined |
+| Path semantics | Defined |
+| Document types | Defined |
+| Knowledge layers | Defined |
+| Metadata and lifecycle | Defined |
+| Classification provenance | Defined |
+| Trust signals | Defined |
+| Relationships | Defined |
+| Entry points and exceptions | Defined |
+| Invariants | Defined |
+| Acceptance criteria | Defined |
+| Delivery slice | Bounded to contracts and tests |
 
-Evidence: `portfolio/baseline/BASELINE_RESULT.md`.
+Evidence: `portfolio/REPOSITORY_DOCUMENT_MODEL.md`.
 
-## Product decisions
+## Proposed delivery scope
 
-- `KG-001`: validated for v0.1 use;
-- `KG-010`: complete as the initial manual evaluation baseline;
-- `KG-002`: authorized for shaping only;
-- scanner delivery: not authorized;
-- candidate analysis: internal-only in v0.1.
+Subject to Tech Lead approval, the first delivery increment creates versioned contracts and contract tests for:
 
-Decision record: `portfolio/decisions/KGD-012.md`.
+- `RepositorySnapshot`;
+- `Resource`;
+- `Document`;
+- `Classification`;
+- `Relationship`;
+- `EntryPoint`;
+- `Exception`.
 
-## Current objective
+It excludes scanning, parsing, traversal, rules, findings and reports.
 
-Shape the repository document model under KG-002 with:
+## Required decision
 
-- clear problem and consumer;
-- supported document types;
-- identity and path semantics;
-- metadata and relationship models;
-- knowledge-layer classifications;
-- acceptance criteria, risks and dependencies;
-- bounded scope suitable for a later delivery decision.
+The Tech Lead must record one disposition:
 
-## Remaining risks and limitations
+- `approved_for_contract_delivery`;
+- `revision_requested`;
+- `rejected`.
 
-- baseline evidence is manually curated;
-- one repository-aware reviewer does not establish broad usability;
-- precision and recall on real repositories are unknown;
-- executable schema validation and regression tests do not exist;
-- scanner performance and parser behavior are unknown.
+Approval authorizes only the bounded contract-and-test slice. It does not authorize KG-003 or scanner implementation.
+
+## Remaining risks
+
+- the vocabulary may be too broad before implementation feedback;
+- cross-rename document identity is deferred;
+- case-sensitive path comparison depends on repository policy;
+- relationship types may expand without downstream use;
+- metadata usability remains unvalidated with external maintainers;
+- executable contract and regression evidence do not yet exist.
 
 ## Explicitly not authorized
 
-- scanner implementation;
+- filesystem scanner;
+- Markdown parser;
+- graph traversal;
+- finding generation;
+- report generation;
 - CI/CD enforcement;
-- automatic repository modification;
-- semantic blocking gates;
-- treating the manual baseline as production-readiness evidence.
+- automatic repository modification.
 
 ## Next checkpoint
 
-KG-002 reaches its shaping checkpoint when it satisfies the operating model Definition of Ready. Product and Tech Lead must then explicitly decide whether any bounded delivery increment may begin.
+After the Tech Lead decision, Product records approval or requested revisions. If approved, delivery planning must define exact schema files, fixtures, tests, observability and documentation impact before code begins.
