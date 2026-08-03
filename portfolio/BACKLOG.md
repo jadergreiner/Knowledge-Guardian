@@ -76,7 +76,13 @@ Items are prioritized using user impact, evidence strength, uncertainty reductio
 ### KG-004 — Detect entry points and orphan documents
 
 **Type:** Delivery  
-**Status:** Blocked — depends on KG-003 delivery completion and separate authorization
+**Status:** Shaping proposal created — delivery remains blocked pending separate authorization
+
+**Shaping artifact:** `portfolio/KG_004_SHAPING.md`.
+
+**Boundary:** Entry points may be configured or derived from approved native conventions. Orphan status requires explicit relationship/reachability input; inventory absence alone produces only an `unreachable_candidate`.
+
+**Next action:** Tech Lead decide the orphan boundary and native-convention policy before a delivery plan is authorized.
 
 ### KG-005 — Validate internal Markdown references
 
