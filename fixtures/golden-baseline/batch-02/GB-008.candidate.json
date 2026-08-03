@@ -10,7 +10,10 @@
   "observation": "One document uses Professional and another uses User.",
   "proposed_inference": "The documents conflict semantically.",
   "authority": null,
-  "expected_disposition": "cancelled",
-  "cancellation_reason": "No native rule, project profile, formal contract, or declared canonical source establishes that one term is required or that both terms represent the same concept.",
+  "disposition": "rejected_before_finding_emission",
+  "reviewer": "Jader Raul Greiner",
+  "reviewed_at": "2026-08-02T22:33:00-03:00",
+  "reason": "No native rule, project profile, formal contract, or declared canonical source establishes that one term is required or that both terms represent the same concept.",
+  "candidate_analysis_policy": "internal_only_v0.1",
   "snapshot_reference": "kg-golden-baseline-batch-02-v1"
 }
