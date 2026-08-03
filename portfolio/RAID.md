@@ -45,7 +45,7 @@
 | I-003 | No evaluation baseline existed | Trust could not be assessed | Product + Tech Lead | Complete 12-case baseline | Resolved manually |
 | I-004 | License not selected | Public adoption ambiguous | Product Owner | Decide before first public release | Open |
 | I-005 | No executable fixture validator or regression suite | Manual evidence cannot prevent regressions | Tech Lead | Preserve validator output as regression evidence | Resolved in KG-002 delivery |
-| I-006 | Repository document model has no executable schema | KG-003 cannot depend on stable contracts | Tech Lead | Record quality disposition before any downstream authorization | Resolved by delivery; downstream gate pending |
+| I-006 | Repository document model has no executable schema | KG-003 cannot depend on stable contracts | Tech Lead | Preserve accepted contracts as the dependency baseline | Resolved by KG-002 acceptance |
 
 ## Dependencies
 

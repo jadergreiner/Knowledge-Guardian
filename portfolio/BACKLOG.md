@@ -31,7 +31,7 @@ Items are prioritized using user impact, evidence strength, uncertainty reductio
 ### KG-002 — Define the repository document model
 
 **Type:** Technical foundation  
-**Status:** Delivery evidence complete — pending Tech Lead quality disposition
+**Status:** Accepted for merge to `main`
 **Outcome:** Documents can be consistently discovered, classified and related without conflating paths, authority, metadata or knowledge layers.
 
 **Shaping artifact:** `portfolio/REPOSITORY_DOCUMENT_MODEL.md`.
@@ -58,11 +58,11 @@ Items are prioritized using user impact, evidence strength, uncertainty reductio
 - [x] intended invalid cases fail for the expected reason;
 - [x] no scanner, parser, graph traversal, finding or report logic is introduced;
 - [x] unresolved ambiguities are recorded;
-- [ ] Tech Lead records a quality disposition.
+- [x] Tech Lead records a quality disposition: accepted for merge to `main`.
 
 **Explicit exclusions:** filesystem scanning, Markdown/YAML parsing, repository traversal, relationship discovery, rule execution, finding generation, report generation and `KG-003`.
 
-**Next bounded increment:** Record the Tech Lead quality disposition for the completed contract-and-test slice. Any KG-003 shaping or delivery requires a separate decision and authorization.
+**Next bounded increment:** Shape KG-003 only after separate authorization. The KG-002 contract-and-test slice is accepted for merge to `main`.
 
 ### KG-003 — Build Markdown repository discovery
 

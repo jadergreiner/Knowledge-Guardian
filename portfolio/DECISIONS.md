@@ -18,6 +18,22 @@ Each material decision should record:
 
 ## Decisions
 
+### KGD-014 — Accept KG-002 contract delivery for merge
+
+**Date:** 2026-08-02
+**Type:** Delivery
+**Status:** Accepted
+
+**Context:** KG-002 contract delivery completed with executable validation evidence: 14 valid fixtures passed, 14 invalid fixtures were rejected, unexpected failures were zero, and local schema references resolved deterministically.
+
+**Decision:** Accept the bounded KG-002 contract-and-test increment for merge to `main`.
+
+**Authority:** Human Tech Lead acceptance in the execution workflow.
+
+**Consequences:** The repository-document contracts and related governance evidence may be merged. KG-003 remains blocked and requires a separate shaping and delivery authorization.
+
+**Review trigger:** Reassess after merge verification and before any KG-003 implementation.
+
 ### KGD-001 — Knowledge is part of system architecture
 
 **Date:** 2026-08-02  

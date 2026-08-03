@@ -1,6 +1,6 @@
 # KG-002 — Contract Delivery Report
 
-**Status:** Ready for Tech Lead quality review
+**Status:** Accepted for merge to `main`
 **Version:** 0.1  
 **Date:** 2026-08-02
 
@@ -128,6 +128,6 @@ KG-002 is not complete until:
 3. all invalid fixtures fail for intended boundaries;
 4. local schema references resolve deterministically;
 5. unexpected failures are zero;
-6. the Tech Lead records a quality disposition.
+6. the Tech Lead records a quality disposition: accepted for merge to `main`.
 
 KG-003 remains blocked.
