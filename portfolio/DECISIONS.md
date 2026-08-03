@@ -1,7 +1,7 @@
 # Knowledge Guardian — Decision Log
 
 **Status:** Active
-**Version:** 0.1
+**Version:** 0.2
 **Updated:** 2026-08-02
 
 ## Decision record format
@@ -162,38 +162,36 @@ When impact is `known` or `potential`, the finding should identify relevant dime
 
 **Decision:** Findings are classified into six treatment groups derived from impact and confidence:
 
-1. `confirmed_critical` — confirmed high-consequence finding requiring immediate human attention;
-2. `confirmed_actionable` — confirmed material finding recommended for prioritized correction;
-3. `probable_risk` — material risk with incomplete evidence requiring prioritized human review;
-4. `investigative` — potentially serious finding with low confidence requiring investigation;
-5. `routine_improvement` — confirmed medium- or low-impact improvement suitable for normal backlog flow;
-6. `informational` — low-urgency observation or weak signal retained for visibility.
+1. `confirmed_critical`;
+2. `confirmed_actionable`;
+3. `probable_risk`;
+4. `investigative`;
+5. `routine_improvement`;
+6. `informational`.
 
 The treatment group is a recommendation produced by the system. It does not authorize remediation, rejection, gate blocking, or any other final action by itself.
 
-Every finding must expose a human decision state. The initial v0.1 states are:
+Every finding must expose a human decision state:
 
 - `pending_review`;
 - `accepted`;
 - `revision_requested`;
 - `cancelled`.
 
-Only a human reviewer may move a finding from `pending_review` to one of the terminal or revision states. Automated systems may recommend a treatment, route a finding for review, or enforce an already approved policy, but they may not impersonate human acceptance or cancellation.
+Only a human reviewer may move a finding from `pending_review` to another state.
 
 **Rationale:** The matrix preserves prioritization and urgency while separating machine analysis from accountable human judgment.
 
 **Consequences:**
 
-- the finding contract must include `treatment.group`, `treatment.recommended_action`, and `review.status`;
-- `impact`, `confidence`, and `treatment` remain distinct concepts;
+- impact, confidence and treatment remain distinct;
 - interpretative findings always require human review;
-- normative findings may support automated gates only when a human-approved policy explicitly authorizes that behavior;
-- audit data must record who decided, when, and the decision rationale;
-- reports must clearly distinguish system recommendation from human decision.
+- audit data records who decided, when and why;
+- reports distinguish system recommendation from human decision.
 
 **Evidence and confidence:** Approved jointly by the human Tech Lead and Virtual Product Manager. Confidence: high.
 
-**Review trigger:** Reassess group boundaries, names, and review states after the golden baseline and first reviewer workflow test.
+**Review trigger:** Reassess after the golden baseline and first reviewer workflow test.
 
 ### KGD-010 — Harden the finding contract before baseline validation
 
@@ -201,27 +199,47 @@ Only a human reviewer may move a finding from `pending_review` to one of the ter
 **Type:** Product and technical  
 **Status:** Accepted
 
-**Context:** Review of the KG-001 acceptance criteria found that the conceptual model is complete enough for shaping, but the executable contract still leaves ambiguity around fact versus inference, identity across scans, contract compatibility, and evidence location.
+**Context:** Review of KG-001 found ambiguity around fact versus inference, identity across scans, contract compatibility and evidence location.
 
-**Decision:** Before constructing the golden baseline, the finding contract must receive four bounded hardening changes:
+**Decision:** Before constructing the golden baseline, the finding contract must:
 
-1. introduce an explicit separation between observation and inference;
-2. require a deterministic fingerprint for logical identity and deduplication across scans;
-3. declare the finding contract version within each finding;
-4. require either an exact location or an explicit resource-level/not-applicable location rationale.
+1. separate observation and inference;
+2. require a deterministic fingerprint;
+3. declare contract version within each finding;
+4. require exact or explicitly justified location semantics.
 
-Matrix coherence, recommendation quality, reviewer workflow sufficiency, exceptions, false positives, and non-findings will be validated through the golden baseline rather than exhaustively designed in advance.
+**Rationale:** These changes are prerequisites for reliable testing. Remaining questions require representative cases and human review.
 
-**Rationale:** These four changes are prerequisites for reliable testing. The remaining questions require representative cases and human review to avoid speculative over-design.
+**Consequences:** The model and schema were hardened before baseline execution, while matrix coherence and workflow usability remained baseline questions.
+
+**Evidence and confidence:** Approved jointly by the human Tech Lead and Virtual Product Manager. Confidence: high.
+
+### KGD-011 — Candidate analysis remains internal-only in v0.1
+
+**Date:** 2026-08-02  
+**Type:** Product and governance  
+**Status:** Accepted
+
+**Context:** Batch 02 showed that a suspected semantic conflict may fail validity before becoming a finding when no explicit authority exists. The product needed to distinguish pre-finding rejection from cancellation of a valid emitted finding.
+
+**Considered options:**
+
+1. force authority-less candidates into the finding contract and cancel them later;
+2. create a separate public candidate-analysis schema in v0.1;
+3. keep candidate analysis as internal pipeline state and emit only valid findings.
+
+**Decision:** Candidate analysis remains internal-only in v0.1. A candidate without an explicit authority is rejected before finding emission. The public finding contract continues to represent only valid, authority-backed findings.
+
+**Rationale:** Forcing invalid candidates into the finding schema would weaken the authority rule. Creating another public contract now would expand scope without demonstrated integration or user value.
 
 **Consequences:**
 
-- KG-001 remains draft complete but requires contract hardening before baseline execution;
-- `FINDING_MODEL.md` and `finding.schema.json` must be revised;
-- KG-010 cannot begin formal case validation until the hardened schema is available;
-- the golden baseline remains the validation mechanism for treatment coherence and reviewer usability;
-- the project must not mark KG-001 validated based only on document completeness.
+- `GB-008` is recorded as `rejected_before_finding_emission`;
+- pre-finding rejection is distinct from `review.status: cancelled`;
+- no public candidate schema is created in v0.1;
+- durable candidate records may be reconsidered if future debugging, observability or reviewer workflows require them;
+- `GB-007` confirms that schema-valid findings may still require human revision when classification exceeds evidence.
 
-**Evidence and confidence:** Gap review approved jointly by the human Tech Lead and Virtual Product Manager. Confidence: high.
+**Evidence and confidence:** Human Tech Lead decisions for Batch 02: `GB-005 accepted`, `GB-006 accepted`, `GB-007 revision_requested`, `GB-008 rejected before finding emission`, and candidate analysis internal-only. Confidence: high.
 
-**Review trigger:** Reassess after the hardened schema is reviewed and the first baseline cases are authored.
+**Review trigger:** Reassess after scanner implementation or when candidate-level observability becomes a demonstrated product requirement.
