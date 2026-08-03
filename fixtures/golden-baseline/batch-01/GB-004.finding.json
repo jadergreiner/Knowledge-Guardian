@@ -1,0 +1,21 @@
+{
+  "contract": {"name": "knowledge-guardian-finding", "version": "0.1.0"},
+  "id": "KGF-GB-004",
+  "fingerprint": "sha256:00000000000000000000000000000004",
+  "rule_id": "KG-ENTRY-001",
+  "type": "normative",
+  "category": "missing_entry_point",
+  "title": "Configured repository entry point does not exist",
+  "description": "The project profile declares AGENTS.md as an entry point, but the resource is absent.",
+  "authority": {"type": "project_profile", "reference": "GB-004/knowledge-guardian.profile.yaml", "version": "batch-01-v1"},
+  "subject": {"resource": "GB-004/AGENTS.md", "resource_type": "markdown", "location": {"scope": "not_available", "reason": "The configured resource does not exist in the controlled snapshot."}},
+  "evidence": [{"type": "missing_configured_resource", "resource": "GB-004/knowledge-guardian.profile.yaml", "location": {"scope": "exact", "section": "entry_points"}, "observed": "AGENTS.md is configured but absent", "expected": "AGENTS.md exists as a repository entry point", "snapshot_reference": "kg-golden-baseline-batch-01-v1"}],
+  "analysis": {"observation": "The profile contains AGENTS.md in entry_points and the controlled snapshot contains no AGENTS.md resource."},
+  "impact": {"status": "potential", "level": "high", "dimensions": ["agent_behavior", "onboarding", "governance"], "statement": "Agents and contributors may lack a configured operating entry point.", "affected_scope": ["GB-004"]},
+  "confidence": {"level": "high", "rationale": "The configuration and resource inventory can be compared deterministically."},
+  "treatment": {"group": "confirmed_actionable", "recommended_action": "prioritize_remediation", "rationale": "A configured entry point is missing with high confidence and material navigation impact."},
+  "recommendation": {"summary": "Add AGENTS.md or remove it from the approved entry-point configuration."},
+  "review": {"required": true, "status": "pending_review"},
+  "generated_at": "2026-08-02T20:58:00-03:00",
+  "repository_snapshot": {"repository": "jadergreiner/Knowledge-Guardian", "ref": "golden-baseline-batch-01", "commit_sha": "aafb24cade649753b6f525600808b3a06a440270"}
+}
