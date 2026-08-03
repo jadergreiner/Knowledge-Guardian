@@ -20,7 +20,7 @@ Items are prioritized using:
 ### KG-001 — Define the trusted finding contract
 
 **Type:** Product foundation  
-**Status:** Deterministic validation passed — broader baseline validation pending  
+**Status:** Deterministic validation passed — interpretative and negative validation active  
 **Outcome:** Reviewers can understand, reproduce and decide on every finding.
 
 **Completed outputs:**
@@ -35,7 +35,8 @@ Items are prioritized using:
 - mandatory deterministic `fingerprint`;
 - explicit contract name and semantic version;
 - exact or justified location semantics;
-- deterministic Batch 01 with four accepted findings.
+- deterministic Batch 01 with four accepted findings;
+- Batch 02 interpretative, revision and cancellation candidates curated.
 
 **Acceptance criteria:**
 
@@ -49,8 +50,8 @@ Items are prioritized using:
 - [x] human review and final disposition are represented;
 - [x] schema and contract are explicitly versioned;
 - [x] first deterministic batch is structurally valid and human-accepted;
-- [ ] interpretative findings are validated;
-- [ ] revision-requested and cancelled workflows are exercised;
+- [~] interpretative findings are curated and pending human validation;
+- [~] revision-requested and cancelled workflows are curated and pending human validation;
 - [ ] expected non-findings and false-positive protection are validated;
 - [ ] all 12 golden cases are completed;
 - [ ] regression tests protect rule behavior.
@@ -160,29 +161,30 @@ Items are prioritized using:
 ### KG-010 — Establish the v0.1 evaluation baseline
 
 **Type:** Quality and discovery validation  
-**Status:** In progress — deterministic Batch 01 accepted  
+**Status:** In progress — Batch 02 curated, pending human review  
 **Outcome:** Product quality can be measured before CI/CD integration.
 
 **Completed:**
 
 - [x] baseline purpose, scope, case structure and reviewer rubric defined;
 - [x] initial 12-case catalogue defined;
-- [x] controlled repository snapshot selected;
-- [x] `GB-001` through `GB-004` versioned;
+- [x] controlled repository snapshots selected;
+- [x] `GB-001` through `GB-004` versioned and accepted;
 - [x] deterministic fixtures structurally validated at `4/4`;
-- [x] deterministic fixtures human-accepted at `4/4`;
-- [x] Batch 01 ambiguity and contract-gap result recorded: none.
+- [x] `GB-005` and `GB-006` interpretative cases curated;
+- [x] `GB-007` revision-request case curated;
+- [x] `GB-008` authority-less candidate curated for cancellation review;
+- [x] pre-finding rejection versus post-emission cancellation ambiguity identified.
 
 **Remaining:**
 
-- [ ] `GB-005` and `GB-006` interpretative cases;
-- [ ] `GB-007` revision-requested case;
-- [ ] `GB-008` cancelled case;
+- [ ] human review of `GB-005` through `GB-008`;
+- [ ] decision on whether candidate analysis needs a formal v0.1 schema;
 - [ ] `GB-009` through `GB-012` expected non-findings;
 - [ ] false-positive and ambiguity results catalogued across the complete baseline;
 - [ ] regression-test strategy defined and implemented after delivery authorization.
 
-**Next bounded increment:** Curate `GB-005` through `GB-008`. Do not start KG-002 or scanner implementation.
+**Next bounded increment:** Human review of Batch 02. Do not start KG-002 or scanner implementation.
 
 ## Discovery queue
 
