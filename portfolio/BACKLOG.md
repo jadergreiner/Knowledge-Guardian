@@ -1,7 +1,7 @@
 # Knowledge Guardian — Product Backlog
 
 **Status:** Active
-**Version:** 0.4
+**Version:** 0.5
 **Updated:** 2026-08-02
 
 ## Prioritization model
@@ -34,61 +34,59 @@ Items are prioritized using user impact, evidence strength, uncertainty reductio
 **Status:** Accepted for merge to `main`
 **Outcome:** Documents can be consistently discovered, classified and related without conflating paths, authority, metadata or knowledge layers.
 
-**Shaping artifact:** `portfolio/REPOSITORY_DOCUMENT_MODEL.md`.
-
-**Decision:** `portfolio/decisions/KGD-013.md`.
-
-**Delivery plan:** `portfolio/KG_002_DELIVERY_PLAN.md`.
-
-**Authorized deliverables:**
-
-- versioned JSON Schemas for `RepositorySnapshot`, `Resource`, `Document`, `Classification`, `Relationship`, `EntryPoint` and `Exception`;
-- positive and negative fixtures;
-- deterministic contract tests;
-- validation instructions and evidence;
-- compatibility and limitation documentation.
-
-**Acceptance criteria:**
-
-- [x] seven versioned schemas exist;
-- [x] each schema maps to the approved conceptual model;
-- [x] schemas use consistent IDs and semantic versions;
-- [x] valid and invalid fixtures cover every schema;
-- [x] executable tests validate all fixtures deterministically;
-- [x] intended invalid cases fail for the expected reason;
-- [x] no scanner, parser, graph traversal, finding or report logic is introduced;
-- [x] unresolved ambiguities are recorded;
-- [x] Tech Lead records a quality disposition: accepted for merge to `main`.
-
-**Explicit exclusions:** filesystem scanning, Markdown/YAML parsing, repository traversal, relationship discovery, rule execution, finding generation, report generation and `KG-003`.
-
-**Next bounded increment:** Shape KG-003 only after separate authorization. The KG-002 contract-and-test slice is accepted for merge to `main`.
+**Evidence:** seven versioned contracts, positive and negative fixtures, deterministic contract tests and human acceptance.
 
 ### KG-003 — Build Markdown repository discovery
 
 **Type:** Delivery  
-**Status:** Shaping approved with boundaries — delivery remains blocked pending separate authorization
+**Status:** Delivery plan complete — Tech Lead authorization pending
+
+**Outcome:** An explicitly selected repository root produces a deterministic, read-only inventory of Markdown resources represented by valid `RepositorySnapshot` and `Resource` records.
 
 **Shaping artifact:** `portfolio/KG_003_SHAPING.md`.
 
-**Bounded proposal:** inventory explicit `.md`/`.mdx` resources read-only and emit `RepositorySnapshot`/`Resource` contract records. Parsing, classification, relationships, findings and reports remain excluded.
+**Delivery plan:** `portfolio/KG_003_DELIVERY_PLAN.md`.
 
-**Next action:** Create a bounded KG-003 delivery plan and request `approved_for_discovery_delivery`. No scanner implementation is authorized yet.
+**Approved boundaries:**
+
+- caller supplies Git/repository context;
+- unreadable files create diagnostics and no incomplete resource;
+- SHA-256 is optional and enabled by default;
+- symlinks are neither followed nor inventoried;
+- hidden directories are included except `.git` and configured ignores;
+- `.mdx` is inventoried as Markdown without parsing.
+
+**Planned deliverables:**
+
+- configuration interface;
+- deterministic inventory operation;
+- diagnostic representation and stable codes;
+- normalized paths and deterministic identities;
+- KG-002 contract-compliant snapshot/resources;
+- deterministic unit and integration tests;
+- repeated-run determinism evidence;
+- observability and rollback documentation.
+
+**Explicit exclusions:** Git discovery, Markdown/YAML/MDX parsing, classification, relationships, entry-point or orphan analysis, rule execution, findings, reports, CI/CD and KG-004 onward.
+
+**Required decision:** `approved_for_discovery_delivery`, `revision_requested` or `rejected`.
+
+**PM recommendation:** `approved_for_discovery_delivery`.
 
 ### KG-004 — Detect entry points and orphan documents
 
 **Type:** Delivery  
-**Status:** Blocked — depends on KG-002 and KG-003
+**Status:** Blocked — depends on KG-003 delivery completion and separate authorization
 
 ### KG-005 — Validate internal Markdown references
 
 **Type:** Delivery  
-**Status:** Blocked — depends on KG-002 and KG-003
+**Status:** Blocked — depends on KG-003 and separate shaping
 
 ### KG-006 — Parse and validate document metadata
 
 **Type:** Delivery  
-**Status:** Blocked — depends on KG-002 and KG-003
+**Status:** Blocked — depends on KG-003 and separate shaping
 
 ### KG-007 — Produce Markdown and JSON reports
 
@@ -98,25 +96,19 @@ Items are prioritized using user impact, evidence strength, uncertainty reductio
 ### KG-008 — Create the Knowledge Guardian project profile
 
 **Type:** Product validation  
-**Status:** Planned — depends on KG-002 contract boundaries
+**Status:** Planned — depends on KG-002 contract boundaries and discovery behavior
 
 ### KG-009 — Create the Meu PDI project profile
 
 **Type:** Product validation  
-**Status:** Planned — depends on KG-002 and KG-008 learning
+**Status:** Planned — depends on KG-002, KG-003 and KG-008 learning
 
 ### KG-010 — Establish the v0.1 evaluation baseline
 
 **Type:** Quality and discovery validation  
 **Status:** Complete — initial manual baseline
 
-**Result:**
-
-- 12 cases versioned and reviewed;
-- positive-fixture conformance: `7/7`;
-- negative-case protection: `4/4`;
-- baseline decision recorded in `portfolio/baseline/BASELINE_RESULT.md`;
-- product decision recorded in `portfolio/decisions/KGD-012.md`.
+**Result:** 12 cases versioned and reviewed; positive-fixture conformance `7/7`; negative-case protection `4/4`.
 
 ## Discovery queue
 
@@ -128,7 +120,8 @@ Items are prioritized using user impact, evidence strength, uncertainty reductio
 
 ## Explicitly deferred
 
-- KG-003 before KG-002 completion and separate authorization;
+- KG-003 implementation before `approved_for_discovery_delivery`;
+- KG-004 or later items before separate shaping and authorization;
 - automatic file rewriting;
 - autonomous canonical-source selection;
 - broad source-code analysis;
