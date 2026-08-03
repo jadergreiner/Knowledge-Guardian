@@ -1,23 +1,23 @@
 # Knowledge Guardian — Product Status
 
 **Date:** 2026-08-02  
-**Overall status:** KG-002 approved for bounded contract delivery  
-**Confidence:** Medium
+**Overall status:** KG-002 accepted for merge to `main`
+**Confidence:** High
 
 ## Current position
 
-The finding contract is validated for v0.1 use and the initial manual baseline is complete.
+The finding contract is validated for v0.1 use and the initial manual baseline is complete. KG-002 contract delivery has executable evidence on the delivery branch: 14 valid fixtures passed, 14 invalid fixtures were rejected and unexpected failures were zero.
 
-`KG-002 — Repository Document Model` completed shaping, satisfies the operating-model Definition of Ready and has been approved by the human Tech Lead for a bounded contract-and-test delivery slice.
+`KG-002 — Repository Document Model` completed shaping, satisfies the operating-model Definition of Ready, and has completed the bounded contract-and-test delivery slice. The human Tech Lead accepted the increment for merge to `main` on 2026-08-02.
 
 No filesystem scanner, parser, traversal engine or finding engine has been started.
 
 ## Operating-model position
 
 ```text
-SENSE → FRAME → DISCOVER → DECIDE → SHAPE → DELIVER
-                                                    ↑
-                                      KG-002 contract slice only
+SENSE → FRAME → DISCOVER → DECIDE → SHAPE → DELIVER → MEASURE → LEARN
+                                                        ↑
+                                      KG-002 accepted; merge authorized
 ```
 
 ## Authorized scope
@@ -36,16 +36,16 @@ Plan: `portfolio/KG_002_DELIVERY_PLAN.md`.
 
 ## Delivery acceptance evidence
 
-The increment must return with:
+The increment returned with:
 
-1. seven versioned schemas;
-2. positive and negative fixtures for every schema;
-3. executable validation output;
-4. validator, version and command used;
-5. deterministic schema-reference resolution;
-6. documented contract gaps and limitations;
-7. confirmation that no scanner behavior was introduced;
-8. Tech Lead quality disposition.
+1. [x] seven versioned schemas;
+2. [x] positive and negative fixtures for every schema;
+3. [x] executable validation output;
+4. [x] validator, version and command used;
+5. [x] deterministic schema-reference resolution;
+6. [x] documented contract gaps and limitations;
+7. [x] confirmation that no scanner behavior was introduced;
+8. [x] Tech Lead quality disposition: accepted for merge to `main`.
 
 ## Explicitly not authorized
 
@@ -71,4 +71,4 @@ Any material ambiguity returns to shaping rather than being silently decided dur
 
 ## Next checkpoint
 
-KG-002 reaches its delivery checkpoint when all contract schemas and tests are executable, evidence is recorded and the Tech Lead decides whether the increment is accepted, requires revision or is rejected. `KG-003` remains blocked until a separate authorization.
+KG-002 has reached its delivery checkpoint with executable schemas, tests and evidence. The Tech Lead accepted the increment for merge to `main`. `KG-003` remains blocked until a separate authorization.

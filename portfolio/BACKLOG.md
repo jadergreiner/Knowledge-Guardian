@@ -31,7 +31,7 @@ Items are prioritized using user impact, evidence strength, uncertainty reductio
 ### KG-002 — Define the repository document model
 
 **Type:** Technical foundation  
-**Status:** Approved for bounded contract delivery  
+**Status:** Accepted for merge to `main`
 **Outcome:** Documents can be consistently discovered, classified and related without conflating paths, authority, metadata or knowledge layers.
 
 **Shaping artifact:** `portfolio/REPOSITORY_DOCUMENT_MODEL.md`.
@@ -50,19 +50,19 @@ Items are prioritized using user impact, evidence strength, uncertainty reductio
 
 **Acceptance criteria:**
 
-- [ ] seven versioned schemas exist;
-- [ ] each schema maps to the approved conceptual model;
-- [ ] schemas use consistent IDs and semantic versions;
-- [ ] valid and invalid fixtures cover every schema;
-- [ ] executable tests validate all fixtures deterministically;
-- [ ] intended invalid cases fail for the expected reason;
-- [ ] no scanner, parser, graph traversal, finding or report logic is introduced;
-- [ ] unresolved ambiguities are recorded;
-- [ ] Tech Lead records a quality disposition.
+- [x] seven versioned schemas exist;
+- [x] each schema maps to the approved conceptual model;
+- [x] schemas use consistent IDs and semantic versions;
+- [x] valid and invalid fixtures cover every schema;
+- [x] executable tests validate all fixtures deterministically;
+- [x] intended invalid cases fail for the expected reason;
+- [x] no scanner, parser, graph traversal, finding or report logic is introduced;
+- [x] unresolved ambiguities are recorded;
+- [x] Tech Lead records a quality disposition: accepted for merge to `main`.
 
 **Explicit exclusions:** filesystem scanning, Markdown/YAML parsing, repository traversal, relationship discovery, rule execution, finding generation, report generation and `KG-003`.
 
-**Next bounded increment:** Implement the contract-and-test slice defined in `KG_002_DELIVERY_PLAN.md` and return with executable evidence.
+**Next bounded increment:** Shape KG-003 only after separate authorization. The KG-002 contract-and-test slice is accepted for merge to `main`.
 
 ### KG-003 — Build Markdown repository discovery
 
