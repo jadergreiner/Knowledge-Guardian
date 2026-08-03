@@ -1,0 +1,48 @@
+snapshot:
+  id: kg-golden-baseline-batch-03-v1
+  purpose: Controlled expected non-findings for GB-009 through GB-012
+  source_commit: d55dd05bf0dc18d512dc80760308804913096739
+
+cases:
+  GB-009:
+    files:
+      docs/product.md: |
+        # Product
+        A Professional creates a development plan.
+      docs/help.md: |
+        # Help
+        A User creates a development plan.
+    policy:
+      terminology_rule: absent
+      canonical_source: absent
+
+  GB-010:
+    files:
+      docs/vision.md: |
+        # Vision
+        Knowledge Guardian will block pull requests with invalid governance findings.
+    runtime_evidence:
+      status: absent
+
+  GB-011:
+    files:
+      knowledge-guardian.profile.yaml: |
+        navigation_exemptions:
+          - path: docs/reference/legal-notes.md
+            reason: External legal reference maintained as an intentional standalone document.
+      docs/reference/legal-notes.md: |
+        # Legal notes
+        Standalone external reference.
+
+  GB-012:
+    active_finding:
+      id: KGF-EXISTING-001
+      fingerprint: sha256:abcdefabcdefabcdefabcdefabcdef12
+      rule_id: KG-LINK-001
+      subject: docs/index.md
+      observed_condition: missing docs/policy.md
+    duplicate_candidate:
+      fingerprint: sha256:abcdefabcdefabcdefabcdefabcdef12
+      rule_id: KG-LINK-001
+      subject: docs/index.md
+      observed_condition: missing docs/policy.md
