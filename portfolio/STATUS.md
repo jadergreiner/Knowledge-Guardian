@@ -1,74 +1,78 @@
 # Knowledge Guardian — Product Status
 
 **Date:** 2026-08-02  
-**Overall status:** Product foundation active — complete baseline curated, final review pending  
+**Overall status:** Finding contract validated — KG-002 shaping authorized  
 **Confidence:** Medium
 
 ## Current position
 
-Knowledge Guardian remains in discovery and quality validation. The finding contract `0.1.0` has passed deterministic Batch 01 and interpretative/disagreement Batch 02.
+The manual v0.1 golden baseline is complete. All 12 cases are versioned and human-reviewed.
 
-The final expected non-finding batch, `GB-009` through `GB-012`, is now curated with explicit suppression rationales. No scanner, repository document model or executable rule engine has been started.
+The finding contract `knowledge-guardian-finding@0.1.0` is validated for v0.1 shaping and implementation use, subject to executable regression tests and real-repository validation during delivery.
+
+No scanner or executable rule engine has been started.
 
 ## Operating-model position
 
 ```text
-SENSE → FRAME → DISCOVER → DECIDE → SHAPE → [FINAL BASELINE REVIEW GATE] → DELIVER
+SENSE → FRAME → DISCOVER → DECIDE → SHAPE
+                                  ↑
+                         KG-002 authorized here
+
+DELIVER remains separately gated.
 ```
 
-Delivery remains blocked until the negative cases are human-reviewed and Product records the final `KG-001` and `KG-010` decisions.
+## Baseline result
 
-## Product assessment
+| Measure | Result |
+|---|---:|
+| Positive fixtures structurally valid | `7/7` |
+| Accepted findings | `6` |
+| Revision requested | `1` |
+| Pre-finding rejection | `1` |
+| Expected non-findings confirmed | `4/4` |
+| Immediate contract gaps | `0` |
 
-| Dimension | Status | Evidence |
-|---|---|---|
-| Finding contract | Positive and disagreement cases reviewed | `portfolio/FINDING_MODEL.md`, Batches 01–02 |
-| Deterministic Batch 01 | Accepted, `4/4` | `portfolio/baseline/BATCH_01.md` |
-| Interpretative Batch 02 | Human-reviewed | `portfolio/baseline/BATCH_02.md` |
-| Expected non-findings | Curated, pending review | `portfolio/baseline/BATCH_03.md` |
-| Negative-case target | `4/4` correctly suppressed | `GB-009` through `GB-012` |
-| Candidate analysis | Internal-only in v0.1 | `KGD-011` |
-| Repository document model | Blocked | `KG-002` |
-| Scanner vertical slice | Not started | `KG-003` through `KG-007` |
+Evidence: `portfolio/baseline/BASELINE_RESULT.md`.
 
-## Completed in the current increment
+## Product decisions
 
-- created controlled snapshot `kg-golden-baseline-batch-03-v1`;
-- curated `GB-009`, undocumented wording preference;
-- curated `GB-010`, aspirational documentation without runtime claim;
-- curated `GB-011`, explicit standalone-document exemption;
-- curated `GB-012`, duplicate suppression through stable fingerprint;
-- recorded one reproducible suppression rationale for every case;
-- preserved the distinction between expected behavior and implemented scanner evidence.
+- `KG-001`: validated for v0.1 use;
+- `KG-010`: complete as the initial manual evaluation baseline;
+- `KG-002`: authorized for shaping only;
+- scanner delivery: not authorized;
+- candidate analysis: internal-only in v0.1.
 
-## Current gate
+Decision record: `portfolio/decisions/KGD-012.md`.
 
-The human Tech Lead must review whether each case should remain suppressed:
+## Current objective
 
-1. `GB-009` — no terminology authority;
-2. `GB-010` — no unsupported runtime inference;
-3. `GB-011` — applicable explicit exemption;
-4. `GB-012` — duplicate logical identity.
+Shape the repository document model under KG-002 with:
 
-Allowed decisions are `confirmed_non_finding`, `revision_requested`, or `finding_expected`.
+- clear problem and consumer;
+- supported document types;
+- identity and path semantics;
+- metadata and relationship models;
+- knowledge-layer classifications;
+- acceptance criteria, risks and dependencies;
+- bounded scope suitable for a later delivery decision.
 
-## Blockers
+## Remaining risks and limitations
 
-No external blocker prevents progress.
-
-The internal blockers to delivery are:
-
-- human review of Batch 03;
-- final product decision for `KG-001` and `KG-010`;
-- explicit authorization or denial to shape `KG-002`.
+- baseline evidence is manually curated;
+- one repository-aware reviewer does not establish broad usability;
+- precision and recall on real repositories are unknown;
+- executable schema validation and regression tests do not exist;
+- scanner performance and parser behavior are unknown.
 
 ## Explicitly not authorized
 
-- KG-002 initiation;
 - scanner implementation;
 - CI/CD enforcement;
-- automatic repository modification.
+- automatic repository modification;
+- semantic blocking gates;
+- treating the manual baseline as production-readiness evidence.
 
-## Next product checkpoint
+## Next checkpoint
 
-The checkpoint is reached when `GB-009` through `GB-012` are reviewed and the negative-case pass rate is recorded. Product will then decide whether the finding contract is validated and whether `KG-002` may enter shaping.
+KG-002 reaches its shaping checkpoint when it satisfies the operating model Definition of Ready. Product and Tech Lead must then explicitly decide whether any bounded delivery increment may begin.
