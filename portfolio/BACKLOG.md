@@ -82,11 +82,13 @@ Items are prioritized using user impact, evidence strength, uncertainty reductio
 
 **Delivery plan:** `portfolio/KG_004_DELIVERY_PLAN.md`.
 
+**Relationship input proposal:** `portfolio/KG_004_RELATIONSHIP_INPUT_SHAPING.md`.
+
 **Boundary:** Entry points follow `project_profile` → enabled exact root `native_conventions` → explicit `no_entry_point` evidence. Reachability emits `reachable`, `candidate_orphan`, `excluded`, `not_evaluated`, `indeterminate` and `no_entry_point`; `candidate_orphan` is never a finding.
 
 **Decision recorded:** Entry-point precedence, candidate-orphan semantics, deterministic paths and v0.1 root conventions were approved with boundaries. The reachability delivery plan is approved; relationship input schema and remaining implementation details require the next gate.
 
-**Next action:** Close the relationship-input schema, missing-target behavior, duplicate handling and convention ownership before implementation authorization.
+**Next action:** Decide the existing relationship schema and caller-supplied producer boundary, then close missing-target behavior, duplicate handling and convention ownership before implementation authorization.
 
 ### KG-005 — Validate internal Markdown references
 

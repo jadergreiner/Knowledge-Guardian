@@ -4,6 +4,7 @@
 **Version:** 0.1
 **Date:** 2026-08-03
 **Shaping:** `portfolio/KG_004_SHAPING.md`
+**Relationship input shaping:** `portfolio/KG_004_RELATIONSHIP_INPUT_SHAPING.md`
 **Depends on:** merged KG-003 inventory and KG-002 EntryPoint/Resource contracts
 
 ## 1. Delivery objective
@@ -48,7 +49,7 @@ Versioned native-convention configuration
 Typed relationship set
 ```
 
-The relationship set must be defined and versioned before implementation. A missing or invalid relationship input makes affected results `indeterminate`; it must not be treated as proof of orphanhood.
+The relationship set must follow the existing `relationship.schema.json` `0.1.0` contract and be supplied by an explicit caller-owned `RelationshipProvider`. A missing or invalid relationship input makes affected results `indeterminate`; it must not be treated as proof of orphanhood. KG-004 does not extract relationships.
 
 ## 4. Deterministic rules
 
@@ -99,7 +100,7 @@ The delivery must remain read-only with no persistent runtime state. Rollback is
 
 Delivery may proceed only after a separate decision confirms:
 
-1. the relationship input schema and producer;
+1. reuse of `relationship.schema.json` `0.1.0` and the caller-supplied `RelationshipProvider`;
 2. missing-target handling as diagnostic-only or another explicitly bounded behavior;
 3. duplicate declaration handling;
 4. the final native-convention version owner.

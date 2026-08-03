@@ -40,7 +40,7 @@
 
 | ID | Issue | Impact | Owner | Next action | Status |
 |---|---|---|---|---|---|
-| I-001 | No parser or relationship-discovery engine exists | KG-004 cannot prove content reachability or validate links | Tech Lead | Shape KG-004 and KG-005 separately | Open, intentionally deferred |
+| I-001 | No parser or relationship-discovery engine exists | KG-004 cannot discover links; reachability requires explicit external relationship input | Tech Lead | Decide `KG_004_RELATIONSHIP_INPUT_SHAPING.md`; keep KG-005 separate | Open, intentionally deferred |
 | I-002 | Finding contract lacked hardening semantics | Ambiguous evidence | Product + Tech Lead | KGD-010 hardening | Resolved |
 | I-003 | No evaluation baseline existed | Trust could not be assessed | Product + Tech Lead | Complete 12-case baseline | Resolved manually |
 | I-004 | License not selected | Public adoption ambiguous | Product Owner | Decide before first public release | Open |

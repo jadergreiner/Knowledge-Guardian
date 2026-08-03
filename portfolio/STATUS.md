@@ -43,7 +43,7 @@ Decision: `KGD-015` records the approved shaping boundaries.
 
 KG-004 shaping: `portfolio/KG_004_SHAPING.md`.
 
-KG-004 delivery plan: `portfolio/KG_004_DELIVERY_PLAN.md`. The plan is approved and remains limited to reachability evidence from explicit relationship input; implementation is not authorized.
+KG-004 delivery plan: `portfolio/KG_004_DELIVERY_PLAN.md`. Relationship input proposal: `portfolio/KG_004_RELATIONSHIP_INPUT_SHAPING.md`. The plan remains limited to reachability evidence from explicit caller-supplied relationships; implementation is not authorized.
 
 ## Diagnostic boundary
 
