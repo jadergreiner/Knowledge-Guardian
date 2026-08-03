@@ -1,6 +1,6 @@
 # KG-004 — Reachability Delivery Plan
 
-**Status:** Proposed — gate `approved_for_reachability_delivery_plan` pending
+**Status:** Approved for planning — implementation authorization pending
 **Version:** 0.1
 **Date:** 2026-08-03
 **Shaping:** `portfolio/KG_004_SHAPING.md`
@@ -106,4 +106,4 @@ Delivery may proceed only after a separate decision confirms:
 
 Approval must remain limited to reachability evidence. Parsing, relationship extraction, findings, reports and KG-005 remain blocked.
 
-**Recommended disposition:** `approved_for_reachability_delivery_plan`.
+**Recorded disposition:** `approved_for_reachability_delivery_plan`.

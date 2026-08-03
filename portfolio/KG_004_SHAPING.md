@@ -1,6 +1,6 @@
 # KG-004 — Entry Points and Orphan Documents Shaping
 
-**Status:** Approved with boundaries — reachability delivery plan pending gate
+**Status:** Approved with boundaries — reachability delivery plan approved; implementation pending
 **Version:** 0.1
 **Date:** 2026-08-03
 **Backlog item:** `KG-004`
@@ -148,6 +148,6 @@ These decisions change public behavior and require a separate Tech Lead delivery
 
 ## 11. Decision gate
 
-This artifact authorizes the creation and review of a bounded reachability delivery plan only. It does not authorize KG-004 implementation, orphan findings, link parsing or relationship discovery.
+This artifact authorizes the bounded reachability delivery plan. It does not authorize KG-004 implementation, orphan findings, link parsing or relationship discovery.
 
-**Next gate:** `approved_for_reachability_delivery_plan`, `revision_requested` or `rejected`.
+**Next gate:** implementation authorization after the remaining input-contract decisions are closed.

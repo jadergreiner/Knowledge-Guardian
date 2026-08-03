@@ -1,7 +1,7 @@
 # Knowledge Guardian — Product Status
 
 **Date:** 2026-08-03
-**Overall status:** KG-003 merged; KG-004 reachability delivery plan pending gate
+**Overall status:** KG-003 merged; KG-004 reachability delivery plan approved, implementation gate pending
 **Confidence:** High
 
 ## Current position
@@ -17,7 +17,7 @@ No Markdown/MDX parser, relationship engine, finding engine or report renderer h
 ```text
 SENSE → FRAME → DISCOVER → DECIDE → SHAPE
                                               ↑
-                              KG-004 shaping; delivery not authorized
+                              KG-004 delivery plan approved; implementation not authorized
 ```
 
 ## KG-003 delivered scope
@@ -43,7 +43,7 @@ Decision: `KGD-015` records the approved shaping boundaries.
 
 KG-004 shaping: `portfolio/KG_004_SHAPING.md`.
 
-KG-004 delivery plan: `portfolio/KG_004_DELIVERY_PLAN.md`. The plan remains limited to reachability evidence from explicit relationship input; implementation is not authorized.
+KG-004 delivery plan: `portfolio/KG_004_DELIVERY_PLAN.md`. The plan is approved and remains limited to reachability evidence from explicit relationship input; implementation is not authorized.
 
 ## Diagnostic boundary
 
@@ -67,4 +67,4 @@ Diagnostics are operational evidence, not findings. They cover ignored paths, sy
 
 ## Next checkpoint
 
-KG-003 is merged and its delivery evidence is complete. KG-004 boundaries are shaped; the reachability delivery plan awaits the next human gate and relationship-input decision.
+KG-003 is merged and its delivery evidence is complete. KG-004 reachability delivery planning is approved; implementation awaits the relationship-input contract and the remaining bounded decisions.
