@@ -1,0 +1,11 @@
+{
+  "case_id": "GB-012",
+  "case_type": "expected_non_finding",
+  "snapshot_reference": "kg-golden-baseline-batch-03-v1",
+  "subject_resources": ["GB-012/docs/index.md"],
+  "observation": "A candidate repeats the same rule, subject, authority context, location, and observed condition as an active finding.",
+  "suppression_reason": "The candidate fingerprint matches the active finding fingerprint and must be deduplicated rather than emitted again.",
+  "protected_guardrail": "Stable fingerprint identity prevents duplicate findings across scans.",
+  "expected_result": "no_finding",
+  "review_status": "pending_review"
+}
