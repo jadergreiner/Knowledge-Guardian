@@ -1,0 +1,11 @@
+{
+  "case_id": "GB-011",
+  "case_type": "expected_non_finding",
+  "snapshot_reference": "kg-golden-baseline-batch-03-v1",
+  "subject_resources": ["GB-011/docs/reference/legal-notes.md", "GB-011/knowledge-guardian.profile.yaml"],
+  "observation": "The document is not reachable from repository navigation.",
+  "suppression_reason": "The project profile explicitly exempts the resource as an intentional standalone document with a recorded reason.",
+  "protected_guardrail": "Configured exceptions must prevent false orphan-document findings.",
+  "expected_result": "no_finding",
+  "review_status": "pending_review"
+}
