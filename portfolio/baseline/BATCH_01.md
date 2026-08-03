@@ -1,7 +1,7 @@
 # Golden Baseline — Batch 01
 
-**Status:** Curated — pending schema execution and human review  
-**Version:** 0.1  
+**Status:** Structurally validated — pending human review  
+**Version:** 0.2  
 **Date:** 2026-08-02
 
 ## Purpose
@@ -43,22 +43,45 @@ All four findings:
 - retain human disposition as `pending_review`;
 - make recommendations without authorizing automatic modification.
 
-## Preliminary product assessment
+## Structural validation result
+
+The four fixtures were manually reviewed against `schemas/finding.schema.json`.
+
+| Case | Result |
+|---|---|
+| GB-001 | Structurally valid |
+| GB-002 | Structurally valid |
+| GB-003 | Structurally valid |
+| GB-004 | Structurally valid |
+
+**Structural conformance rate:** `100%`.
+
+Detailed evidence is recorded in:
+
+```text
+portfolio/baseline/BATCH_01_VALIDATION.md
+```
+
+This result is manual structural evidence. Automated schema execution and regression protection remain pending.
+
+## Product assessment
 
 ### Supported
 
-- the contract can represent all four intended deterministic authority types used in this batch;
+- the contract can structurally represent all four intended deterministic authority patterns in this batch;
 - missing-resource findings can use `location.scope: not_available` with a reason;
 - evidence, impact, confidence, treatment and recommendation remain structurally distinct;
-- controlled fixtures are necessary while the live repository lacks deliberate invalid states.
+- controlled fixtures are necessary while the live repository lacks deliberate invalid states;
+- all four fixtures are ready for human product review.
 
 ### Not yet demonstrated
 
-- executable conformance against `schemas/finding.schema.json`;
+- automated JSON Schema execution;
 - policy-level coherence between impact, confidence and treatment;
-- human acceptance of the impact and recommendations;
+- human acceptance of impact and recommendations;
 - stable fingerprint generation by implementation;
-- scanner ability to discover the same evidence.
+- scanner ability to discover the same evidence;
+- interpretative and negative-case behavior.
 
 ## Review rubric
 
@@ -82,10 +105,9 @@ A reason is required for revision or cancellation.
 
 Batch 01 does not authorize KG-002 or scanner implementation.
 
-The next gate requires:
+The remaining gate requires:
 
-1. execute JSON Schema validation for all four finding fixtures;
-2. record validation evidence;
-3. obtain human review decisions;
-4. log ambiguity or contract gaps;
-5. update KG-001 and KG-010 status.
+1. obtain human review decisions for GB-001 through GB-004;
+2. log ambiguity or contract gaps;
+3. update KG-001 and KG-010 status;
+4. decide whether to continue with interpretative and negative cases, revise the contract, or reshape the baseline.
