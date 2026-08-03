@@ -1,0 +1,57 @@
+snapshot:
+  id: kg-golden-baseline-batch-02-v1
+  purpose: Controlled interpretative and human-disposition fixtures for GB-005 through GB-008
+  source_commit: 677b34e4ebc2c6467b2e197d14eb263046f57efb
+
+cases:
+  GB-005:
+    files:
+      glossary.md: |
+        # Canonical terminology
+
+        The canonical term for the person developing a career plan is `Professional`.
+      docs/journey.md: |
+        # User journey
+
+        The User creates and reviews a development plan.
+    authority:
+      type: canonical_source
+      resource: glossary.md
+      declaration: canonical terminology
+
+  GB-006:
+    files:
+      portfolio/ROADMAP.md: |
+        # Roadmap
+
+        Future capability: pull request blocking based on approved deterministic policies.
+      docs/operations.md: |
+        # Operations
+
+        Knowledge Guardian blocks pull requests when governance violations are detected.
+    context:
+      runtime_evidence: absent
+      current_product_mode: proposal-first and read-only
+
+  GB-007:
+    files:
+      knowledge-guardian.profile.yaml: |
+        metadata_rules:
+          architecture_document:
+            required:
+              - owner
+      docs/architecture.md: |
+        ---
+        status: active
+        ---
+        # Architecture
+    expected_review_note: The missing owner is valid, but critical impact would be overstated.
+
+  GB-008:
+    files:
+      docs/product.md: |
+        The platform serves professionals.
+      docs/onboarding.md: |
+        The application supports users.
+    authority_declaration: absent
+    expected_outcome: Candidate analysis is cancelled before becoming a valid finding because no authority defines one term as required.
