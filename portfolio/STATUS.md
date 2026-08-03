@@ -1,63 +1,66 @@
 # Knowledge Guardian — Product Status
 
 **Date:** 2026-08-02  
-**Overall status:** Product foundation active — Batch 02 human-reviewed  
+**Overall status:** Product foundation active — complete baseline curated, final review pending  
 **Confidence:** Medium
 
 ## Current position
 
-Knowledge Guardian remains in discovery and quality validation. The finding contract `0.1.0` has passed deterministic Batch 01 and the interpretative/disagreement Batch 02.
+Knowledge Guardian remains in discovery and quality validation. The finding contract `0.1.0` has passed deterministic Batch 01 and interpretative/disagreement Batch 02.
 
-Batch 02 produced two accepted interpretative findings, one revision request for disproportionate classification, and one authority-less candidate rejected before finding emission. No scanner, repository document model or executable rule engine has been started.
+The final expected non-finding batch, `GB-009` through `GB-012`, is now curated with explicit suppression rationales. No scanner, repository document model or executable rule engine has been started.
 
 ## Operating-model position
 
 ```text
-SENSE → FRAME → DISCOVER → DECIDE → SHAPE → [NEGATIVE-CASE GATE] → DELIVER
+SENSE → FRAME → DISCOVER → DECIDE → SHAPE → [FINAL BASELINE REVIEW GATE] → DELIVER
 ```
 
-Delivery remains blocked until expected non-findings and false-positive protection are validated.
+Delivery remains blocked until the negative cases are human-reviewed and Product records the final `KG-001` and `KG-010` decisions.
 
 ## Product assessment
 
 | Dimension | Status | Evidence |
 |---|---|---|
-| Finding contract | Batch 01 and Batch 02 reviewed successfully | `portfolio/FINDING_MODEL.md`, baseline records |
+| Finding contract | Positive and disagreement cases reviewed | `portfolio/FINDING_MODEL.md`, Batches 01–02 |
 | Deterministic Batch 01 | Accepted, `4/4` | `portfolio/baseline/BATCH_01.md` |
-| Batch 02 structural conformance | `3/3`, 100% | `portfolio/baseline/BATCH_02_VALIDATION.md` |
-| Interpretative findings | `GB-005` and `GB-006` accepted | Reviewed fixtures |
-| Revision workflow | `GB-007` revision requested | Classification exceeded evidence |
-| Pre-finding rejection | `GB-008` confirmed | No explicit authority |
-| Candidate analysis | Internal-only in v0.1 | Tech Lead decision |
-| Expected non-findings | Authorized next | `GB-009` through `GB-012` |
-| Repository document model | Blocked | KG-002 |
-| Scanner vertical slice | Not started | KG-003 through KG-007 |
+| Interpretative Batch 02 | Human-reviewed | `portfolio/baseline/BATCH_02.md` |
+| Expected non-findings | Curated, pending review | `portfolio/baseline/BATCH_03.md` |
+| Negative-case target | `4/4` correctly suppressed | `GB-009` through `GB-012` |
+| Candidate analysis | Internal-only in v0.1 | `KGD-011` |
+| Repository document model | Blocked | `KG-002` |
+| Scanner vertical slice | Not started | `KG-003` through `KG-007` |
 
 ## Completed in the current increment
 
-- recorded Tech Lead acceptance of `GB-005` and `GB-006`;
-- recorded `revision_requested` for `GB-007` with explicit rationale;
-- confirmed pre-finding rejection for `GB-008`;
-- decided that candidate analysis remains internal-only in v0.1;
-- closed the Batch 02 human-review gate;
-- preserved the overstated `GB-007` fixture as revision evidence rather than silently correcting it.
+- created controlled snapshot `kg-golden-baseline-batch-03-v1`;
+- curated `GB-009`, undocumented wording preference;
+- curated `GB-010`, aspirational documentation without runtime claim;
+- curated `GB-011`, explicit standalone-document exemption;
+- curated `GB-012`, duplicate suppression through stable fingerprint;
+- recorded one reproducible suppression rationale for every case;
+- preserved the distinction between expected behavior and implemented scanner evidence.
 
 ## Current gate
 
-The next bounded increment is the expected non-finding batch:
+The human Tech Lead must review whether each case should remain suppressed:
 
-1. `GB-009` — alternative wording without a configured terminology rule;
-2. `GB-010` — aspirational documentation without runtime confirmation;
-3. `GB-011` — intentional standalone document with explicit exemption;
-4. `GB-012` — duplicate evidence suppressed through stable fingerprint.
+1. `GB-009` — no terminology authority;
+2. `GB-010` — no unsupported runtime inference;
+3. `GB-011` — applicable explicit exemption;
+4. `GB-012` — duplicate logical identity.
 
-Each case must include a reproducible suppression rationale.
+Allowed decisions are `confirmed_non_finding`, `revision_requested`, or `finding_expected`.
 
 ## Blockers
 
 No external blocker prevents progress.
 
-The active internal blocker to delivery is incomplete negative-case validation and absence of a final KG-001 product decision.
+The internal blockers to delivery are:
+
+- human review of Batch 03;
+- final product decision for `KG-001` and `KG-010`;
+- explicit authorization or denial to shape `KG-002`.
 
 ## Explicitly not authorized
 
@@ -68,4 +71,4 @@ The active internal blocker to delivery is incomplete negative-case validation a
 
 ## Next product checkpoint
 
-The checkpoint is reached when `GB-009` through `GB-012` are versioned, reviewed and correctly suppressed. Product will then reassess KG-001, KG-010 and authorization to shape KG-002.
+The checkpoint is reached when `GB-009` through `GB-012` are reviewed and the negative-case pass rate is recorded. Product will then decide whether the finding contract is validated and whether `KG-002` may enter shaping.
