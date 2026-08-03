@@ -1,0 +1,21 @@
+{
+  "contract": {"name": "knowledge-guardian-finding", "version": "0.1.0"},
+  "id": "KGF-GB-002",
+  "fingerprint": "sha256:00000000000000000000000000000002",
+  "rule_id": "KG-META-001",
+  "type": "normative",
+  "category": "missing_metadata",
+  "title": "Required profile metadata is absent",
+  "description": "The architecture document omits the owner field required by the project profile.",
+  "authority": {"type": "project_profile", "reference": "GB-002/knowledge-guardian.profile.yaml", "version": "batch-01-v1"},
+  "subject": {"resource": "GB-002/docs/architecture.md", "resource_type": "markdown", "location": {"scope": "exact", "section": "front_matter"}},
+  "evidence": [{"type": "missing_required_field", "resource": "GB-002/docs/architecture.md", "location": {"scope": "exact", "section": "front_matter"}, "observed": {"status": "active"}, "expected": {"required": ["owner", "status"]}, "snapshot_reference": "kg-golden-baseline-batch-01-v1"}],
+  "analysis": {"observation": "The document front matter contains status but does not contain owner."},
+  "impact": {"status": "potential", "level": "medium", "dimensions": ["governance", "onboarding"], "statement": "Reviewers may be unable to identify the accountable owner for the architecture document.", "affected_scope": ["GB-002/docs/architecture.md"]},
+  "confidence": {"level": "high", "rationale": "The project profile explicitly requires owner and the field is absent."},
+  "treatment": {"group": "routine_improvement", "recommended_action": "add_to_backlog", "rationale": "The divergence is deterministic and material to governance, but not urgent."},
+  "recommendation": {"summary": "Add an owner value or revise the profile rule after human review."},
+  "review": {"required": true, "status": "pending_review"},
+  "generated_at": "2026-08-02T20:58:00-03:00",
+  "repository_snapshot": {"repository": "jadergreiner/Knowledge-Guardian", "ref": "golden-baseline-batch-01", "commit_sha": "aafb24cade649753b6f525600808b3a06a440270"}
+}
