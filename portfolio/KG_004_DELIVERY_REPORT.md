@@ -3,6 +3,7 @@
 **Status:** Ready for review
 **Date:** 2026-08-03
 **Branch:** `feature/kg-004-shaping`
+**Implementation commit:** `2c91529`
 **Authorized disposition:** `approved_for_implementation`
 
 ## Scope delivered
