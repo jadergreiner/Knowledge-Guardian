@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://knowledge-guardian.dev/schemas/document-model/0.1.0/common.schema.json",
+  "title": "Knowledge Guardian Document Model Common Definitions",
+  "$defs": {
+    "contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "version": {"const": "0.1.0"}
+      }
+    },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?![A-Za-z]:[\\\\/])(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\).+$"
+    },
+    "identifier": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._:/-]*$"},
+    "confidence": {"type": "string", "enum": ["high", "medium", "low", "unknown"]}
+  }
+}

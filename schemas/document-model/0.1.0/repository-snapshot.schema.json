@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://knowledge-guardian.dev/schemas/document-model/0.1.0/repository-snapshot.schema.json",
+  "title": "RepositorySnapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract", "snapshot_id", "repository", "ref", "captured_at"],
+  "properties": {
+    "contract": {"allOf": [{"$ref": "common.schema.json#/$defs/contract"}, {"properties": {"name": {"const": "knowledge-guardian-repository-snapshot"}}}]},
+    "snapshot_id": {"$ref": "common.schema.json#/$defs/identifier"},
+    "repository": {"type": "string", "pattern": "^[^/]+/[^/]+$"},
+    "ref": {"type": "string", "minLength": 1},
+    "commit_sha": {"type": "string", "pattern": "^[a-fA-F0-9]{7,64}$"},
+    "captured_at": {"type": "string", "format": "date-time"}
+  }
+}

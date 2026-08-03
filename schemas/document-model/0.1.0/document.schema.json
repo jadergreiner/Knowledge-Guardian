@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://knowledge-guardian.dev/schemas/document-model/0.1.0/document.schema.json",
+  "title": "Document",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract", "document_id", "resource_id", "path", "classification", "lifecycle", "observed_metadata"],
+  "properties": {
+    "contract": {"allOf": [{"$ref": "common.schema.json#/$defs/contract"}, {"properties": {"name": {"const": "knowledge-guardian-document"}}}]},
+    "document_id": {"$ref": "common.schema.json#/$defs/identifier"},
+    "resource_id": {"$ref": "common.schema.json#/$defs/identifier"},
+    "path": {"$ref": "common.schema.json#/$defs/relativePath"},
+    "classification": {"$ref": "classification.schema.json"},
+    "lifecycle": {"type": "string", "enum": ["draft", "active", "deprecated", "archived", "unknown"]},
+    "observed_metadata": {"type": "object", "additionalProperties": true},
+    "normalized_metadata": {"type": "object", "additionalProperties": true},
+    "trust_signals": {"type": "array", "uniqueItems": true, "items": {"type": "string", "enum": ["owner_present", "status_present", "version_present", "sources_present", "generated_provenance_present", "human_verification_present"]}}
+  }
+}

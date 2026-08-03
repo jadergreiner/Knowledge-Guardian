@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://knowledge-guardian.dev/schemas/document-model/0.1.0/classification.schema.json",
+  "title": "Classification",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract", "document_type", "knowledge_layer", "provenance", "confidence"],
+  "properties": {
+    "contract": {"allOf": [{"$ref": "common.schema.json#/$defs/contract"}, {"properties": {"name": {"const": "knowledge-guardian-classification"}}}]},
+    "document_type": {"type": "string", "enum": ["product_vision", "governance", "architecture", "adr", "specification", "ontology", "glossary", "runbook", "agent_context", "operational_documentation", "general_documentation", "unknown"]},
+    "knowledge_layer": {"type": "string", "enum": ["conceptual", "specification", "executable_knowledge", "operational", "agent_context", "unknown"]},
+    "provenance": {"type": "string", "enum": ["explicit_metadata", "project_profile", "path_convention", "content_heuristic", "unknown"]},
+    "confidence": {"$ref": "common.schema.json#/$defs/confidence"},
+    "rationale": {"type": "string", "minLength": 1}
+  },
+  "allOf": [{"if": {"properties": {"provenance": {"const": "content_heuristic"}}}, "then": {"required": ["rationale"]}}]
+}
