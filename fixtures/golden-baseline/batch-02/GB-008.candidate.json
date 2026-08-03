@@ -1,0 +1,16 @@
+{
+  "candidate_id": "KGC-GB-008",
+  "case_id": "GB-008",
+  "type": "interpretative_candidate",
+  "category": "suspected_semantic_conflict",
+  "subject_resources": [
+    "GB-008/docs/product.md",
+    "GB-008/docs/onboarding.md"
+  ],
+  "observation": "One document uses Professional and another uses User.",
+  "proposed_inference": "The documents conflict semantically.",
+  "authority": null,
+  "expected_disposition": "cancelled",
+  "cancellation_reason": "No native rule, project profile, formal contract, or declared canonical source establishes that one term is required or that both terms represent the same concept.",
+  "snapshot_reference": "kg-golden-baseline-batch-02-v1"
+}
