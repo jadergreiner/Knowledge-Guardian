@@ -20,29 +20,22 @@ Items are prioritized using:
 ### KG-001 — Define the trusted finding contract
 
 **Type:** Product foundation  
-**Status:** Hardened draft complete — pending golden-baseline validation  
+**Status:** Deterministic validation passed — broader baseline validation pending  
 **Outcome:** Reviewers can understand, reproduce and decide on every finding.
 
 **Completed outputs:**
 
 - `portfolio/FINDING_MODEL.md`;
 - `schemas/finding.schema.json`;
-- authority-source model for native rules, project profiles, schemas/contracts and canonical sources;
-- distinction between normative and interpretative findings;
-- mandatory impact model with explicit uncertainty states;
-- confidence model and six treatment groups;
-- explicit human decision states: `pending_review`, `accepted`, `revision_requested` and `cancelled`;
+- authority-source model;
+- normative and interpretative finding distinction;
+- mandatory impact and confidence models;
+- six treatment groups and human decision states;
 - explicit observation and inference structures;
 - mandatory deterministic `fingerprint`;
-- explicit finding-contract name and semantic version;
-- exact or explicitly justified location semantics.
-
-**Contract hardening:**
-
-- [x] add explicit observation and inference structures;
-- [x] make deterministic `fingerprint` mandatory for logical identity and deduplication;
-- [x] add explicit finding contract name and semantic version;
-- [x] require exact location or an explicit resource-level/not-available rationale.
+- explicit contract name and semantic version;
+- exact or justified location semantics;
+- deterministic Batch 01 with four accepted findings.
 
 **Acceptance criteria:**
 
@@ -51,17 +44,20 @@ Items are prioritized using:
 - [x] repository resource, location semantics and reproducible evidence are provided;
 - [x] observation is separated from inference;
 - [x] authority source is mandatory and traceable;
-- [x] impact is mandatory and may explicitly be `known`, `potential`, `unknown` or `not_applicable`;
-- [x] recommendation is actionable without becoming an automatic decision at the conceptual level;
+- [x] impact is mandatory with explicit uncertainty;
+- [x] recommendation remains proposal-first;
 - [x] human review and final disposition are represented;
-- [x] JSON schema and finding contract are explicitly versioned;
-- [ ] golden baseline validates representative findings and non-findings;
-- [ ] reviewer feedback confirms that the contract is understandable, reproducible and actionable;
-- [ ] false-positive, ambiguity and cancellation cases are exercised.
+- [x] schema and contract are explicitly versioned;
+- [x] first deterministic batch is structurally valid and human-accepted;
+- [ ] interpretative findings are validated;
+- [ ] revision-requested and cancelled workflows are exercised;
+- [ ] expected non-findings and false-positive protection are validated;
+- [ ] all 12 golden cases are completed;
+- [ ] regression tests protect rule behavior.
 
 **Validation dependency:** `KG-010 — Establish the v0.1 evaluation baseline`.
 
-**Exit condition:** KG-001 may be marked validated only after the golden baseline is reviewed by the human Tech Lead and any required contract revisions are incorporated.
+**Exit condition:** KG-001 may be marked validated only after all baseline categories are reviewed and any required contract revisions are incorporated.
 
 ### KG-002 — Define the repository document model
 
@@ -164,28 +160,29 @@ Items are prioritized using:
 ### KG-010 — Establish the v0.1 evaluation baseline
 
 **Type:** Quality and discovery validation  
-**Status:** Shaped — ready for deterministic case curation  
+**Status:** In progress — deterministic Batch 01 accepted  
 **Outcome:** Product quality can be measured before CI/CD integration.
 
-**Entry dependency:** KG-001 contract hardening completed. **Satisfied.**
+**Completed:**
 
-**Shaping output:** `portfolio/GOLDEN_BASELINE.md`.
+- [x] baseline purpose, scope, case structure and reviewer rubric defined;
+- [x] initial 12-case catalogue defined;
+- [x] controlled repository snapshot selected;
+- [x] `GB-001` through `GB-004` versioned;
+- [x] deterministic fixtures structurally validated at `4/4`;
+- [x] deterministic fixtures human-accepted at `4/4`;
+- [x] Batch 01 ambiguity and contract-gap result recorded: none.
 
-**Acceptance criteria:**
+**Remaining:**
 
-- [x] baseline purpose, bounded scope and case structure are defined;
-- [x] reviewer rubric and human disposition rules are defined;
-- [x] initial 12-case catalogue is defined;
-- [x] measurement formulas and ambiguity logging are defined;
-- [ ] a stable Knowledge Guardian repository snapshot is selected;
-- [ ] 12 golden cases or fixtures are versioned;
-- [ ] expected findings and non-findings are represented;
-- [ ] all positive fixtures pass schema validation;
-- [ ] reviewer acceptance is measured;
-- [ ] false positives, false negatives and ambiguities are catalogued;
-- [ ] regression tests protect rule behavior.
+- [ ] `GB-005` and `GB-006` interpretative cases;
+- [ ] `GB-007` revision-requested case;
+- [ ] `GB-008` cancelled case;
+- [ ] `GB-009` through `GB-012` expected non-findings;
+- [ ] false-positive and ambiguity results catalogued across the complete baseline;
+- [ ] regression-test strategy defined and implemented after delivery authorization.
 
-**Next bounded increment:** Select the repository snapshot and curate `GB-001` through `GB-004`, the deterministic batch.
+**Next bounded increment:** Curate `GB-005` through `GB-008`. Do not start KG-002 or scanner implementation.
 
 ## Discovery queue
 
