@@ -1,0 +1,11 @@
+{
+  "case_id": "GB-009",
+  "case_type": "expected_non_finding",
+  "snapshot_reference": "kg-golden-baseline-batch-03-v1",
+  "subject_resources": ["GB-009/docs/product.md", "GB-009/docs/help.md"],
+  "observation": "The resources use Professional and User for a person creating a development plan.",
+  "suppression_reason": "No native rule, project profile, formal contract, or declared canonical source requires one term or establishes semantic equivalence.",
+  "protected_guardrail": "Do not convert undocumented wording preferences into findings.",
+  "expected_result": "no_finding",
+  "review_status": "pending_review"
+}
