@@ -1,6 +1,6 @@
 # KG-003 — Markdown Repository Discovery Delivery Plan
 
-**Status:** Ready for Tech Lead delivery decision  
+**Status:** `approved_for_discovery_delivery`
 **Version:** 0.1  
 **Date:** 2026-08-02  
 **Backlog item:** `KG-003`  
@@ -302,12 +302,10 @@ The execution report must record:
 
 ## 14. Quality gate
 
-This plan does not authorize implementation by itself. The Tech Lead must record one disposition:
+The Tech Lead recorded the following disposition:
 
-- `approved_for_discovery_delivery`;
-- `revision_requested`;
-- `rejected`.
+`approved_for_discovery_delivery`
 
-Approval authorizes only the bounded read-only inventory described here. It does not authorize KG-004, parsing, classification, findings, reports or CI/CD integration.
+This approval authorizes only the bounded read-only inventory described here. It does not authorize KG-004, parsing, classification, findings, reports or CI/CD integration.
 
-**PM recommendation:** `approved_for_discovery_delivery`.
+**Authority:** Human Tech Lead decision recorded in `KGD-016`.

@@ -1,7 +1,7 @@
 # Knowledge Guardian — Product Status
 
 **Date:** 2026-08-02  
-**Overall status:** KG-002 accepted; KG-003 delivery plan ready for decision
+**Overall status:** KG-002 accepted; KG-003 discovery delivery authorized
 **Confidence:** High
 
 ## Current position
@@ -15,14 +15,14 @@ No filesystem scanner, parser, traversal engine or finding engine has been start
 ## Operating-model position
 
 ```text
-SENSE → FRAME → DISCOVER → DECIDE → SHAPE → [DELIVERY DECISION] → DELIVER
-                                                    ↑
-                                  KG-003 plan ready; implementation blocked
+SENSE → FRAME → DISCOVER → DECIDE → SHAPE → DELIVER
+                                              ↑
+                              KG-003 bounded discovery delivery
 ```
 
 ## KG-003 planned scope
 
-The proposed increment is limited to:
+The authorized increment is limited to:
 
 - explicit repository root and caller-supplied repository context;
 - read-only enumeration of regular `.md` and `.mdx` files;
@@ -47,7 +47,7 @@ Diagnostics are operational evidence, not findings. They cover ignored paths, sy
 
 ## Explicitly not authorized
 
-- KG-003 implementation before a Tech Lead delivery decision;
+- KG-004 or later implementation;
 - Git command execution or `.git` inspection;
 - Markdown, MDX, YAML, JSX or front-matter parsing;
 - classification or metadata extraction;
@@ -58,16 +58,10 @@ Diagnostics are operational evidence, not findings. They cover ignored paths, sy
 - CI/CD enforcement;
 - automatic repository modification.
 
-## Required decision
+## Delivery authorization
 
-The Tech Lead must record one disposition:
-
-- `approved_for_discovery_delivery`;
-- `revision_requested`;
-- `rejected`.
-
-Approval authorizes only the bounded read-only inventory defined in `KG_003_DELIVERY_PLAN.md`.
+`approved_for_discovery_delivery` was recorded in `KGD-016`. It authorizes only the bounded read-only inventory defined in `KG_003_DELIVERY_PLAN.md`.
 
 ## Next checkpoint
 
-If approved, implementation must occur in a bounded delivery branch and return with executable test evidence, schema-validation results, repeated-run determinism evidence, diagnostics exercised, scope verification and rollback confirmation. Merge and KG-004 remain separately gated.
+Implementation must occur in a bounded delivery branch and return with executable test evidence, schema-validation results, repeated-run determinism evidence, diagnostics exercised, scope verification and rollback confirmation. Merge and KG-004 remain separately gated.

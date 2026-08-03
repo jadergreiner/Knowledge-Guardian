@@ -18,6 +18,24 @@ Each material decision should record:
 
 ## Decisions
 
+### KGD-016 — Authorize KG-003 bounded discovery delivery
+
+**Date:** 2026-08-02
+**Type:** Technical and delivery governance
+**Status:** `approved_for_discovery_delivery`
+
+**Context:** `portfolio/KG_003_DELIVERY_PLAN.md` defines the bounded read-only inventory increment and its configuration, diagnostics, deterministic tests, observability, rollback and acceptance evidence.
+
+**Decision:** Authorize implementation of the KG-003 inventory slice limited to regular `.md` and `.mdx` resources beneath an explicitly supplied repository root, emitting `RepositorySnapshot`, `Resource` and bounded diagnostics.
+
+**Authority:** Human Tech Lead decision in the project execution workflow.
+
+**Explicit exclusions:** Git discovery or `.git` inspection, Markdown/YAML/MDX/JSX/front-matter parsing, classification, metadata extraction, relationships, link or entry-point discovery, findings, reports, CI/CD and KG-004 onward.
+
+**Consequences:** Implementation may begin on a dedicated delivery branch. The result must return with executable evidence and a separate quality disposition before merge.
+
+**Review trigger:** Review KG-003 delivery evidence before merge or any downstream authorization.
+
 ### KGD-015 — Approve KG-003 shaping with bounded discovery boundaries
 
 **Date:** 2026-08-02

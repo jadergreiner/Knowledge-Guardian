@@ -39,7 +39,7 @@ Items are prioritized using user impact, evidence strength, uncertainty reductio
 ### KG-003 — Build Markdown repository discovery
 
 **Type:** Delivery  
-**Status:** Delivery plan complete — Tech Lead authorization pending
+**Status:** `approved_for_discovery_delivery` — implementation authorized within bounded scope
 
 **Outcome:** An explicitly selected repository root produces a deterministic, read-only inventory of Markdown resources represented by valid `RepositorySnapshot` and `Resource` records.
 
@@ -69,9 +69,9 @@ Items are prioritized using user impact, evidence strength, uncertainty reductio
 
 **Explicit exclusions:** Git discovery, Markdown/YAML/MDX parsing, classification, relationships, entry-point or orphan analysis, rule execution, findings, reports, CI/CD and KG-004 onward.
 
-**Required decision:** `approved_for_discovery_delivery`, `revision_requested` or `rejected`.
+**Decision:** `KGD-016` — `approved_for_discovery_delivery`.
 
-**PM recommendation:** `approved_for_discovery_delivery`.
+**Next action:** Implement the bounded read-only inventory in a dedicated delivery branch and return with the required evidence. KG-004 onward remains blocked.
 
 ### KG-004 — Detect entry points and orphan documents
 
