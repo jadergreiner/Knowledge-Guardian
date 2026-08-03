@@ -1,7 +1,7 @@
 # Knowledge Guardian — Product Status
 
 **Date:** 2026-08-02  
-**Overall status:** KG-002 accepted; KG-003 discovery delivery authorized
+**Overall status:** KG-002 accepted; KG-003 rollback revision addressed — quality review pending
 **Confidence:** High
 
 ## Current position
@@ -64,4 +64,4 @@ Diagnostics are operational evidence, not findings. They cover ignored paths, sy
 
 ## Next checkpoint
 
-Implementation must occur in a bounded delivery branch and return with executable test evidence, schema-validation results, repeated-run determinism evidence, diagnostics exercised, scope verification and rollback confirmation. Merge and KG-004 remain separately gated.
+Implementation returned with executable test evidence, schema-validation results, repeated-run determinism evidence, diagnostics exercised, scope verification and rollback confirmation. The rollback revision is addressed; Tech Lead quality disposition is still required before merge. KG-004 remains separately gated.

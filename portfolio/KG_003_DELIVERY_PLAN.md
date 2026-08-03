@@ -267,7 +267,7 @@ No repository source file is modified by the scanner, so rollback requires no co
 - [x] deterministic tests cover configuration, scope, paths, failures and ordering;
 - [x] KG-002 contract tests remain green;
 - [x] observability evidence is recorded;
-- [ ] rollback is documented and tested at process level;
+- [x] rollback is documented and tested at process level;
 - [x] no parser, classifier, relationship, finding or reporting logic is introduced;
 - [ ] Tech Lead records a separate quality disposition before merge.
 

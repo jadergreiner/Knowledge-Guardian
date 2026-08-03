@@ -1,6 +1,6 @@
 # KG-003 — Markdown Repository Discovery Delivery Report
 
-**Status:** Ready for Tech Lead quality review
+**Status:** Revision addressed — ready for Tech Lead quality review
 **Version:** 0.1
 **Date:** 2026-08-02
 **Branch:** `feature/kg-003-discovery-delivery`
@@ -84,8 +84,20 @@ Tests cover ignored paths, unsupported extensions, symlink exclusion, unreadable
 
 ## Rollback
 
-Rollback is isolated to the KG-003 delivery commits and removal of the inventory operation. KG-002 schemas and tests remain independently usable. The implementation performs no repository writes. The process-level rollback was documented but not executed in this session.
+Rollback is isolated to the KG-003 delivery commits and removal of the inventory operation. KG-002 schemas and tests remain independently usable. The implementation performs no repository writes.
+
+The bounded process-level rollback test used a disposable worktree:
+
+1. materialized the delivery commit `957e9484d55d53fdac314aa766aa875d2e7566bd`;
+2. detached to the pre-delivery baseline `906ff84`;
+3. verified KG-002 schemas and tests remained present;
+4. verified KG-003 source, tests and report were absent;
+5. ran KG-002 regression with `14` valid fixtures, `14` invalid fixtures rejected and `0` unexpected failures;
+6. restored the worktree to `957e9484d55d53fdac314aa766aa875d2e7566bd`;
+7. verified the restored worktree was clean and removed the disposable worktree.
+
+No force-push, reset, rebase or source-file restoration was used.
 
 ## Remaining gate
 
-The implementation is ready for Tech Lead quality review. Merge requires a separate quality disposition. KG-004 and all parsing, classification, relationship, finding and reporting work remain blocked.
+The requested rollback revision is complete and the implementation is ready for renewed Tech Lead quality review. Merge still requires a separate quality disposition. KG-004 and all parsing, classification, relationship, finding and reporting work remain blocked.
