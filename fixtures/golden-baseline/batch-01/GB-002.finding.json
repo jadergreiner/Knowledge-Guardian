@@ -15,7 +15,7 @@
   "confidence": {"level": "high", "rationale": "The project profile explicitly requires owner and the field is absent."},
   "treatment": {"group": "routine_improvement", "recommended_action": "add_to_backlog", "rationale": "The divergence is deterministic and material to governance, but not urgent."},
   "recommendation": {"summary": "Add an owner value or revise the profile rule after human review."},
-  "review": {"required": true, "status": "pending_review"},
+  "review": {"required": true, "status": "accepted", "reviewer": "Jader Raul Greiner", "reviewed_at": "2026-08-02T21:04:00-03:00", "notes": "Approved by the human Tech Lead during Batch 01 review."},
   "generated_at": "2026-08-02T20:58:00-03:00",
   "repository_snapshot": {"repository": "jadergreiner/Knowledge-Guardian", "ref": "golden-baseline-batch-01", "commit_sha": "aafb24cade649753b6f525600808b3a06a440270"}
 }
