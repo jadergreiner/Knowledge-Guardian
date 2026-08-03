@@ -18,6 +18,24 @@ Each material decision should record:
 
 ## Decisions
 
+### KGD-018 — Authorize KG-004 bounded reachability implementation
+
+**Date:** 2026-08-03
+**Type:** Technical and delivery governance
+**Status:** `approved_for_implementation`
+
+**Context:** `portfolio/KG_004_DELIVERY_PLAN.md` and `portfolio/KG_004_RELATIONSHIP_INPUT_SHAPING.md` define a bounded reachability slice over KG-003 resources and caller-supplied relationships.
+
+**Decision:** Authorize implementation limited to entry-point resolution, validation of `relationship.schema.json@0.1.0`, deterministic reachability evidence and bounded states/diagnostics.
+
+**Authority:** Human Tech Lead decision in the project execution workflow.
+
+**Explicit exclusions:** Markdown/MDX parsing, relationship extraction, link validation, graph persistence, findings, reports, automatic changes, CI/CD and KG-005.
+
+**Consequences:** The implementation must return with deterministic tests, KG-002/KG-003 regression evidence, a bounded runtime sample and a separate quality disposition before merge.
+
+**Review trigger:** Review `portfolio/KG_004_DELIVERY_REPORT.md` before merge.
+
 ### KGD-017 — Approve KG-003 bounded delivery for merge
 
 **Date:** 2026-08-03

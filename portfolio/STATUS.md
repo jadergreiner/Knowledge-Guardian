@@ -1,7 +1,7 @@
 # Knowledge Guardian — Product Status
 
 **Date:** 2026-08-03
-**Overall status:** KG-003 merged; KG-004 reachability delivery plan approved, implementation gate pending
+**Overall status:** KG-003 merged; KG-004 reachability implementation ready for quality review
 **Confidence:** High
 
 ## Current position
@@ -17,7 +17,7 @@ No Markdown/MDX parser, relationship engine, finding engine or report renderer h
 ```text
 SENSE → FRAME → DISCOVER → DECIDE → SHAPE
                                               ↑
-                              KG-004 delivery plan approved; implementation not authorized
+                              KG-004 delivery; quality review pending
 ```
 
 ## KG-003 delivered scope
@@ -43,7 +43,7 @@ Decision: `KGD-015` records the approved shaping boundaries.
 
 KG-004 shaping: `portfolio/KG_004_SHAPING.md`.
 
-KG-004 delivery plan: `portfolio/KG_004_DELIVERY_PLAN.md`. Relationship input proposal: `portfolio/KG_004_RELATIONSHIP_INPUT_SHAPING.md`. The plan remains limited to reachability evidence from explicit caller-supplied relationships; implementation is not authorized.
+KG-004 delivery plan: `portfolio/KG_004_DELIVERY_PLAN.md`. Delivery report: `portfolio/KG_004_DELIVERY_REPORT.md`. The implementation remains limited to reachability evidence from explicit caller-supplied relationships.
 
 ## Diagnostic boundary
 
@@ -51,7 +51,7 @@ Diagnostics are operational evidence, not findings. They cover ignored paths, sy
 
 ## Explicitly not authorized
 
-- KG-004 or later implementation;
+- KG-005 or later implementation;
 - Git command execution or `.git` inspection;
 - Markdown, MDX, YAML, JSX or front-matter parsing;
 - classification or metadata extraction;
@@ -67,4 +67,4 @@ Diagnostics are operational evidence, not findings. They cover ignored paths, sy
 
 ## Next checkpoint
 
-KG-003 is merged and its delivery evidence is complete. KG-004 reachability delivery planning is approved; implementation awaits the relationship-input contract and the remaining bounded decisions.
+KG-003 is merged and its delivery evidence is complete. KG-004 reachability implementation is complete on the feature branch; quality acceptance and merge remain pending. Relationship extraction and KG-005 remain separately gated.

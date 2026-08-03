@@ -1,6 +1,6 @@
 # KG-004 — Reachability Delivery Plan
 
-**Status:** Approved for planning — implementation authorization pending
+**Status:** Implemented — quality acceptance pending
 **Version:** 0.1
 **Date:** 2026-08-03
 **Shaping:** `portfolio/KG_004_SHAPING.md`
@@ -17,15 +17,15 @@ The output may contain `reachable`, `candidate_orphan`, `excluded`, `not_evaluat
 
 ### Included
 
-- accept a KG-003 `RepositorySnapshot` and its resources;
-- resolve entry points using `project_profile` first, exact root native conventions second and explicit `no_entry_point` evidence otherwise;
-- preserve multiple entry points and record profile/convention conflicts without automatic selection;
-- accept externally supplied typed relationships without discovering or validating them;
-- calculate reachability only over resources and supplied relationships;
-- emit deterministic per-resource state and bounded evidence paths;
-- emit diagnostics for missing targets, invalid relationship references and incomplete evaluation;
-- validate emitted `EntryPoint` records against the KG-002 schema;
-- provide deterministic unit and integration tests.
+- [x] accept a KG-003 `RepositorySnapshot` and its resources;
+- [x] resolve entry points using `project_profile` first, exact root native conventions second and explicit `no_entry_point` evidence otherwise;
+- [x] preserve multiple entry points and record profile/convention conflicts without automatic selection;
+- [x] accept externally supplied typed relationships without discovering or validating them;
+- [x] calculate reachability only over resources and supplied relationships;
+- [x] emit deterministic per-resource state and bounded evidence paths;
+- [x] emit diagnostics for missing targets, invalid relationship references and incomplete evaluation;
+- [x] validate emitted `EntryPoint` records against the KG-002 schema;
+- [x] provide deterministic unit and integration tests.
 
 ### Excluded
 
@@ -107,4 +107,4 @@ Delivery may proceed only after a separate decision confirms:
 
 Approval must remain limited to reachability evidence. Parsing, relationship extraction, findings, reports and KG-005 remain blocked.
 
-**Recorded disposition:** `approved_for_reachability_delivery_plan`.
+**Recorded disposition:** `approved_for_implementation`; quality acceptance remains pending.
