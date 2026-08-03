@@ -1,74 +1,66 @@
 # Knowledge Guardian — Product Status
 
 **Date:** 2026-08-02  
-**Overall status:** KG-002 accepted for merge to `main`
+**Overall status:** KG-002 accepted; KG-003 approved for merge
 **Confidence:** High
 
 ## Current position
 
-The finding contract is validated for v0.1 use and the initial manual baseline is complete. KG-002 contract delivery has executable evidence on the delivery branch: 14 valid fixtures passed, 14 invalid fixtures were rejected and unexpected failures were zero.
+The finding contract is validated for v0.1 use and the initial manual baseline is complete. KG-002 contract delivery has executable evidence: 14 valid fixtures passed, 14 invalid fixtures were rejected and unexpected failures were zero.
 
-`KG-002 — Repository Document Model` completed shaping, satisfies the operating-model Definition of Ready, and has completed the bounded contract-and-test delivery slice. The human Tech Lead accepted the increment for merge to `main` on 2026-08-02.
+`KG-003 — Markdown Repository Discovery` has completed shaping with six human-approved boundaries. A bounded delivery plan now defines configuration, diagnostics, deterministic tests, observability, rollback and acceptance evidence.
 
 No filesystem scanner, parser, traversal engine or finding engine has been started.
 
 ## Operating-model position
 
 ```text
-SENSE → FRAME → DISCOVER → DECIDE → SHAPE → DELIVER → MEASURE → LEARN
-                                                        ↑
-                                      KG-002 accepted; merge authorized
+SENSE → FRAME → DISCOVER → DECIDE → SHAPE → DELIVER
+                                              ↑
+                              KG-003 delivery accepted; merge authorized
 ```
 
-## Authorized scope
+## KG-003 planned scope
 
-The authorized increment creates:
+The authorized increment is limited to:
 
-- versioned contracts for `RepositorySnapshot`, `Resource`, `Document`, `Classification`, `Relationship`, `EntryPoint` and `Exception`;
-- representative valid and invalid fixtures;
-- deterministic contract tests;
-- local validation instructions;
-- compatibility, limitation and validation evidence.
+- explicit repository root and caller-supplied repository context;
+- read-only enumeration of regular `.md` and `.mdx` files;
+- hidden-directory inclusion except `.git` and configured ignores;
+- no-follow/no-inventory symlink behavior;
+- normalized repository-relative paths;
+- deterministic ordering;
+- optional SHA-256 enabled by default;
+- valid `RepositorySnapshot` and `Resource` records;
+- bounded operational diagnostics;
+- deterministic tests, observability and rollback evidence.
 
-Decision: `portfolio/decisions/KGD-013.md`.
+Shaping: `portfolio/KG_003_SHAPING.md`.
 
-Plan: `portfolio/KG_002_DELIVERY_PLAN.md`.
+Delivery plan: `portfolio/KG_003_DELIVERY_PLAN.md`.
 
-## Delivery acceptance evidence
+Decision: `KGD-015` records the approved shaping boundaries.
 
-The increment returned with:
+## Diagnostic boundary
 
-1. [x] seven versioned schemas;
-2. [x] positive and negative fixtures for every schema;
-3. [x] executable validation output;
-4. [x] validator, version and command used;
-5. [x] deterministic schema-reference resolution;
-6. [x] documented contract gaps and limitations;
-7. [x] confirmation that no scanner behavior was introduced;
-8. [x] Tech Lead quality disposition: accepted for merge to `main`.
+Diagnostics are operational evidence, not findings. They cover ignored paths, symlinks, invalid paths, unreadable files, stat failures and checksum failures. They must not contain file contents, stack traces or durable absolute paths.
 
 ## Explicitly not authorized
 
-- filesystem scanning;
-- Markdown or YAML parsing;
-- repository traversal;
-- relationship discovery from repository content;
+- KG-004 or later implementation;
+- Git command execution or `.git` inspection;
+- Markdown, MDX, YAML, JSX or front-matter parsing;
+- classification or metadata extraction;
+- relationship, link, entry-point or orphan discovery;
 - rule execution;
 - finding or report generation;
-- `KG-003` implementation;
 - CI/CD enforcement;
 - automatic repository modification.
 
-## Active risks
+## Delivery authorization
 
-- JSON Schema may not express every cross-resource invariant;
-- contract decomposition may create reference complexity;
-- path case sensitivity remains profile dependent;
-- relationship target integrity may require snapshot-level validation;
-- implementation feedback may expose a material model ambiguity.
-
-Any material ambiguity returns to shaping rather than being silently decided during implementation.
+`approved_for_discovery_delivery` was recorded in `KGD-016`, and `approved_for_merge` was recorded in `KGD-017`. The merge approval applies only to the bounded read-only inventory defined in `KG_003_DELIVERY_PLAN.md`.
 
 ## Next checkpoint
 
-KG-002 has reached its delivery checkpoint with executable schemas, tests and evidence. The Tech Lead accepted the increment for merge to `main`. `KG-003` remains blocked until a separate authorization.
+Implementation returned with executable test evidence, schema-validation results, repeated-run determinism evidence, diagnostics exercised, scope verification and rollback confirmation. The Tech Lead approved the bounded delivery for merge. KG-004 remains separately gated.

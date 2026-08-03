@@ -18,6 +18,63 @@ Each material decision should record:
 
 ## Decisions
 
+### KGD-017 — Approve KG-003 bounded delivery for merge
+
+**Date:** 2026-08-03
+**Type:** Quality and release readiness
+**Status:** `approved_for_merge`
+
+**Context:** KG-003 delivery completed its bounded inventory implementation and addressed the requested rollback revision in a disposable worktree. KG-002 regression remained green, scope verification passed, and no force-push or history rewrite was used.
+
+**Decision:** Approve the KG-003 bounded discovery delivery for merge.
+
+**Authority:** Human Tech Lead decision in the project execution workflow.
+
+**Conditions:** Merge is limited to the delivery branch commits for KG-003. KG-004, parsing, classification, relationships, findings, reports, CI/CD and automatic repository modification remain unauthorized.
+
+**Review trigger:** Verify the merged branch and delivery evidence before any downstream authorization.
+
+### KGD-016 — Authorize KG-003 bounded discovery delivery
+
+**Date:** 2026-08-02
+**Type:** Technical and delivery governance
+**Status:** `approved_for_discovery_delivery`
+
+**Context:** `portfolio/KG_003_DELIVERY_PLAN.md` defines the bounded read-only inventory increment and its configuration, diagnostics, deterministic tests, observability, rollback and acceptance evidence.
+
+**Decision:** Authorize implementation of the KG-003 inventory slice limited to regular `.md` and `.mdx` resources beneath an explicitly supplied repository root, emitting `RepositorySnapshot`, `Resource` and bounded diagnostics.
+
+**Authority:** Human Tech Lead decision in the project execution workflow.
+
+**Explicit exclusions:** Git discovery or `.git` inspection, Markdown/YAML/MDX/JSX/front-matter parsing, classification, metadata extraction, relationships, link or entry-point discovery, findings, reports, CI/CD and KG-004 onward.
+
+**Consequences:** Implementation may begin on a dedicated delivery branch. The result must return with executable evidence and a separate quality disposition before merge.
+
+**Review trigger:** Review KG-003 delivery evidence before merge or any downstream authorization.
+
+### KGD-015 — Approve KG-003 shaping with bounded discovery boundaries
+
+**Date:** 2026-08-02
+**Type:** Technical and delivery governance
+**Status:** `approved_with_boundaries`
+
+**Context:** KG-003 requires a deterministic, read-only inventory of Markdown resources. Six unresolved boundaries affected observable scanner behavior: Git context, unreadable files, checksums, symlinks, hidden directories and `.mdx` handling.
+
+**Decision:** Approve the KG-003 shaping proposal with the six boundaries recorded in `portfolio/KG_003_SHAPING.md`:
+
+- caller supplies repository context explicitly;
+- unreadable files produce bounded diagnostics and no incomplete resource;
+- SHA-256 is optional and enabled by default for readable files;
+- symlinks are not followed or inventoried;
+- hidden directories are included except `.git` and configured ignore paths;
+- `.mdx` is inventoried as Markdown without parsing.
+
+**Authority:** Human Tech Lead/Product assessment provided in the project execution workflow.
+
+**Consequences:** A delivery plan may be prepared for the bounded inventory slice. Scanner implementation remains unauthorized until a separate `approved_for_discovery_delivery` decision. KG-004, parsing, classification, relationships, findings and reports remain blocked.
+
+**Review trigger:** Review the delivery plan before implementation.
+
 ### KGD-014 — Accept KG-002 contract delivery for merge
 
 **Date:** 2026-08-02
