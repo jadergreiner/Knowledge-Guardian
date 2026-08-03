@@ -39,7 +39,7 @@ Items are prioritized using user impact, evidence strength, uncertainty reductio
 ### KG-003 — Build Markdown repository discovery
 
 **Type:** Delivery  
-**Status:** `approved_for_merge`
+**Status:** Merged to `main`
 
 **Outcome:** An explicitly selected repository root produces a deterministic, read-only inventory of Markdown resources represented by valid `RepositorySnapshot` and `Resource` records.
 
@@ -90,7 +90,7 @@ Items are prioritized using user impact, evidence strength, uncertainty reductio
 
 **Decision recorded:** Entry-point precedence, candidate-orphan semantics, deterministic paths and v0.1 root conventions were approved with boundaries. The reachability implementation is ready for quality review.
 
-**Next action:** Open the PR against `main` and merge the bounded KG-004 delivery.
+**Next action:** Measure the bounded reachability behavior on representative repositories before shaping KG-005.
 
 ### KG-005 — Validate internal Markdown references
 

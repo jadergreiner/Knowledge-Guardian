@@ -1,7 +1,7 @@
 # Knowledge Guardian — Product Status
 
 **Date:** 2026-08-03
-**Overall status:** KG-003 merged; KG-004 reachability approved for merge
+**Overall status:** KG-004 reachability merged; KG-005 separately gated
 **Confidence:** High
 
 ## Current position
@@ -17,7 +17,7 @@ No Markdown/MDX parser, relationship engine, finding engine or report renderer h
 ```text
 SENSE → FRAME → DISCOVER → DECIDE → SHAPE
                                               ↑
-                              KG-004 delivery; merge authorized
+                              KG-004 merged; MEASURE/LEARN pending
 ```
 
 ## KG-003 delivered scope
@@ -43,7 +43,7 @@ Decision: `KGD-015` records the approved shaping boundaries.
 
 KG-004 shaping: `portfolio/KG_004_SHAPING.md`.
 
-KG-004 delivery plan: `portfolio/KG_004_DELIVERY_PLAN.md`. Delivery report: `portfolio/KG_004_DELIVERY_REPORT.md`. The implementation remains limited to reachability evidence from explicit caller-supplied relationships.
+KG-004 delivery plan: `portfolio/KG_004_DELIVERY_PLAN.md`. Delivery report: `portfolio/KG_004_DELIVERY_REPORT.md`. The merged implementation remains limited to reachability evidence from explicit caller-supplied relationships.
 
 ## Diagnostic boundary
 
@@ -67,4 +67,4 @@ Diagnostics are operational evidence, not findings. They cover ignored paths, sy
 
 ## Next checkpoint
 
-KG-003 is merged and its delivery evidence is complete. KG-004 reachability implementation is approved for merge; relationship extraction and KG-005 remain separately gated.
+KG-003 and KG-004 delivery evidence are merged and available on `main`. Relationship extraction and KG-005 remain separately gated; the next step is bounded measurement and learning.

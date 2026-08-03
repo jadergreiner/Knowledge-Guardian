@@ -34,6 +34,8 @@ Each material decision should record:
 
 **Review trigger:** Verify the merged branch and update status after fast-forwarding the local `main` checkout.
 
+**Outcome:** PR #4 was merged to `main` as `1683090e5e6e825ae7296e76c7d52b2aa3736551`.
+
 ### KGD-018 — Authorize KG-004 bounded reachability implementation
 
 **Date:** 2026-08-03

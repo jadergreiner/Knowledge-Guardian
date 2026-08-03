@@ -1,9 +1,10 @@
 # KG-004 — Reachability Delivery Report
 
-**Status:** Ready for review
+**Status:** Merged to `main`
 **Date:** 2026-08-03
 **Branch:** `feature/kg-004-shaping`
 **Implementation commit:** `2c91529`
+**Merge commit:** `1683090e5e6e825ae7296e76c7d52b2aa3736551`
 **Authorized disposition:** `approved_for_implementation`
 
 ## Scope delivered
