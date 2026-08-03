@@ -80,9 +80,11 @@ Items are prioritized using user impact, evidence strength, uncertainty reductio
 
 **Shaping artifact:** `portfolio/KG_004_SHAPING.md`.
 
-**Boundary:** Entry points may be configured or derived from approved native conventions. Orphan status requires explicit relationship/reachability input; inventory absence alone produces only an `unreachable_candidate`.
+**Boundary:** Entry points follow `project_profile` → enabled `native_conventions` → explicit `no_entry_point` evidence. Conflicting candidates are preserved without automatic selection. Orphan status requires explicit relationship/reachability input; inventory absence alone produces only an `unreachable_candidate`.
 
-**Next action:** Tech Lead decide the orphan boundary and native-convention policy before a delivery plan is authorized.
+**Decision recorded:** Tech Lead approved the entry-point source precedence; orphan mode, convention set and relationship input remain pending before a delivery plan is authorized.
+
+**Next action:** Tech Lead decide the orphan boundary and remaining native-convention policy before a delivery plan is authorized.
 
 ### KG-005 — Validate internal Markdown references
 

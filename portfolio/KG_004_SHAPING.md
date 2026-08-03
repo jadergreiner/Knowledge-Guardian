@@ -58,9 +58,31 @@ Supported sources in this slice:
 | `native_convention` | enabled, versioned convention table | deterministic rule |
 | `explicit_metadata` | deferred until a parser/metadata slice exists | not available in KG-004 |
 
+The approved precedence is:
+
+```text
+project_profile
+      ↓
+native_conventions
+      ↓
+no_entry_point
+```
+
+`project_profile` declarations have authority. Native conventions may complement the profile, but they must not silently override it. When candidates conflict, the system must preserve the conflict as deterministic evidence and must not select one automatically. If no source supplies an entry point, the absence is emitted as evidence and is not silently corrected.
+
 The implementation must not infer an entry point from arbitrary document content or silently promote `README.md` to canonical authority. A native convention identifies a starting location only; it does not establish subject authority.
 
-## 6. Orphan boundary
+## 6.1 Recorded decision — entry-point sources
+
+**Disposition:** approved for shaping and future bounded delivery.
+
+**Decision:** use `project_profile`, then enabled `native_conventions`, then explicit `no_entry_point` evidence, with the precedence and conflict rules above.
+
+**Authority:** Tech Lead decision recorded in the project evolution workflow.
+
+**Still blocked:** implementation, relationship discovery, orphan findings and automatic conflict resolution.
+
+## 7. Orphan boundary
 
 An inventory alone cannot prove reachability. KG-004 must use one of these explicit modes:
 
@@ -69,7 +91,7 @@ An inventory alone cannot prove reachability. KG-004 must use one of these expli
 
 The delivery plan must select one mode or implement both with separate outputs. A missing relationship input is not evidence that a document is orphaned.
 
-## 7. Acceptance criteria
+## 8. Acceptance criteria
 
 - [ ] Entry-point declarations require an explicit snapshot and repository-relative path.
 - [ ] Every emitted `EntryPoint` validates against the KG-002 schema.
@@ -84,7 +106,7 @@ The delivery plan must select one mode or implement both with separate outputs. 
 - [ ] Deterministic tests cover empty inventory, configured entries, missing targets, duplicate entries, native conventions and unreachable candidates.
 - [ ] KG-003 regression remains green.
 
-## 8. Open decisions before delivery
+## 9. Open decisions before delivery
 
 1. Should the first delivery use entry-point-only mode, relationship-input mode, or both?
 2. Which native conventions are approved for v0.1, and who owns their versioning?
@@ -94,7 +116,7 @@ The delivery plan must select one mode or implement both with separate outputs. 
 
 These decisions change public behavior and require a separate Tech Lead delivery decision.
 
-## 9. Decision gate
+## 10. Decision gate
 
 This artifact authorizes shaping only. It does not authorize KG-004 implementation, orphan findings, link parsing or relationship discovery.
 
