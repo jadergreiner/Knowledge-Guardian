@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://knowledge-guardian.dev/schemas/document-model/0.1.0/entry-point.schema.json",
+  "title": "EntryPoint",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract", "entry_point_id", "snapshot_id", "path", "audience", "source"],
+  "properties": {
+    "contract": {"allOf": [{"$ref": "common.schema.json#/$defs/contract"}, {"properties": {"name": {"const": "knowledge-guardian-entry-point"}}}]},
+    "entry_point_id": {"$ref": "common.schema.json#/$defs/identifier"},
+    "snapshot_id": {"$ref": "common.schema.json#/$defs/identifier"},
+    "path": {"$ref": "common.schema.json#/$defs/relativePath"},
+    "audience": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "enum": ["human", "agent", "contributor", "operator"]}},
+    "source": {"type": "string", "enum": ["native_convention", "project_profile", "explicit_metadata"]},
+    "priority": {"type": "integer", "minimum": 0}
+  }
+}

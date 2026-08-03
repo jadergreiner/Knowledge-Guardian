@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://knowledge-guardian.dev/schemas/document-model/0.1.0/exception.schema.json",
+  "title": "Exception",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract", "exception_id", "snapshot_id", "scope", "rule_id", "reason", "source"],
+  "properties": {
+    "contract": {"allOf": [{"$ref": "common.schema.json#/$defs/contract"}, {"properties": {"name": {"const": "knowledge-guardian-exception"}}}]},
+    "exception_id": {"$ref": "common.schema.json#/$defs/identifier"},
+    "snapshot_id": {"$ref": "common.schema.json#/$defs/identifier"},
+    "scope": {"type": "object", "additionalProperties": false, "required": ["kind", "value"], "properties": {"kind": {"type": "string", "enum": ["path", "document_id", "relationship_id"]}, "value": {"type": "string", "minLength": 1}}},
+    "rule_id": {"type": "string", "minLength": 1},
+    "reason": {"type": "string", "minLength": 1},
+    "source": {"type": "string", "enum": ["project_profile", "approved_policy"]},
+    "expires_at": {"type": "string", "format": "date-time"}
+  }
+}

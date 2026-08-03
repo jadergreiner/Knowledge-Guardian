@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://knowledge-guardian.dev/schemas/document-model/0.1.0/resource.schema.json",
+  "title": "Resource",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract", "resource_id", "snapshot_id", "path", "format"],
+  "properties": {
+    "contract": {"allOf": [{"$ref": "common.schema.json#/$defs/contract"}, {"properties": {"name": {"const": "knowledge-guardian-resource"}}}]},
+    "resource_id": {"$ref": "common.schema.json#/$defs/identifier"},
+    "snapshot_id": {"$ref": "common.schema.json#/$defs/identifier"},
+    "path": {"$ref": "common.schema.json#/$defs/relativePath"},
+    "format": {"type": "string", "enum": ["markdown", "mdx", "yaml", "json", "unknown"]},
+    "size_bytes": {"type": "integer", "minimum": 0},
+    "checksum": {"type": "string", "pattern": "^sha256:[a-fA-F0-9]{16,64}$"}
+  }
+}

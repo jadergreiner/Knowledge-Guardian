@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://knowledge-guardian.dev/schemas/document-model/0.1.0/relationship.schema.json",
+  "title": "Relationship",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract", "relationship_id", "snapshot_id", "source_document_id", "target", "type", "provenance"],
+  "properties": {
+    "contract": {"allOf": [{"$ref": "common.schema.json#/$defs/contract"}, {"properties": {"name": {"const": "knowledge-guardian-relationship"}}}]},
+    "relationship_id": {"$ref": "common.schema.json#/$defs/identifier"},
+    "snapshot_id": {"$ref": "common.schema.json#/$defs/identifier"},
+    "source_document_id": {"$ref": "common.schema.json#/$defs/identifier"},
+    "target": {"type": "object", "additionalProperties": false, "required": ["kind", "value"], "properties": {"kind": {"type": "string", "enum": ["document_id", "relative_path", "external_uri", "unresolved"]}, "value": {"type": "string", "minLength": 1}}},
+    "type": {"type": "string", "enum": ["links_to", "references", "supersedes", "implements", "governs", "defines", "depends_on", "unknown"]},
+    "provenance": {"type": "string", "enum": ["explicit_link", "explicit_metadata", "project_profile", "declared_contract", "unknown"]},
+    "location": {"type": "object", "additionalProperties": false, "properties": {"line": {"type": "integer", "minimum": 1}, "section": {"type": "string", "minLength": 1}}}
+  }
+}
