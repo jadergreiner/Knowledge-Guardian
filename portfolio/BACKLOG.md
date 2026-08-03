@@ -1,7 +1,7 @@
 # Knowledge Guardian — Product Backlog
 
 **Status:** Active
-**Version:** 0.2
+**Version:** 0.3
 **Updated:** 2026-08-02
 
 ## Prioritization model
@@ -31,28 +31,42 @@ Items are prioritized using user impact, evidence strength, uncertainty reductio
 ### KG-002 — Define the repository document model
 
 **Type:** Technical foundation  
-**Status:** Authorized for shaping — delivery not authorized  
-**Outcome:** Documents can be consistently discovered and classified.
+**Status:** Shaped — Definition of Ready complete, delivery decision pending  
+**Outcome:** Documents can be consistently discovered, classified and related without conflating paths, authority, metadata or knowledge layers.
 
-**Definition-of-Ready requirements:**
+**Shaping artifact:** `portfolio/REPOSITORY_DOCUMENT_MODEL.md`.
 
-- clear problem statement and consumers;
-- expected outcome;
-- supported document types;
-- identity and path rules;
-- metadata model;
-- relationship model;
-- conceptual, specification, executable, operational and agent-context layers;
-- explicit dependencies and risks;
-- testable acceptance criteria;
-- bounded implementation scope.
+**Definition of Ready:**
 
-**Next bounded increment:** Shape KG-002 and present it for a separate Tech Lead delivery decision.
+- [x] clear problem statement and consumers;
+- [x] expected outcome;
+- [x] bounded scope and exclusions;
+- [x] supported resource formats;
+- [x] resource and document identity rules;
+- [x] repository-relative path normalization;
+- [x] document-type vocabulary;
+- [x] knowledge-layer vocabulary;
+- [x] lifecycle model;
+- [x] metadata model and precedence;
+- [x] classification provenance and confidence;
+- [x] trust-signal observations;
+- [x] relationship model;
+- [x] entry-point representation;
+- [x] exception representation;
+- [x] explicit dependencies and risks;
+- [x] testable acceptance criteria;
+- [x] bounded implementation scope.
+
+**Proposed delivery slice:** versioned data contracts and contract tests for `RepositorySnapshot`, `Resource`, `Document`, `Classification`, `Relationship`, `EntryPoint` and `Exception`.
+
+**Explicitly excluded from the proposed slice:** filesystem scanning, Markdown parsing, graph traversal, rule execution, finding generation and report rendering.
+
+**Next bounded increment:** Tech Lead reviews the model and decides `approved_for_contract_delivery`, `revision_requested` or `rejected`.
 
 ### KG-003 — Build Markdown repository discovery
 
 **Type:** Delivery  
-**Status:** Blocked — depends on KG-002 and delivery authorization
+**Status:** Blocked — depends on KG-002 delivery completion and separate authorization
 
 ### KG-004 — Detect entry points and orphan documents
 
@@ -77,7 +91,7 @@ Items are prioritized using user impact, evidence strength, uncertainty reductio
 ### KG-008 — Create the Knowledge Guardian project profile
 
 **Type:** Product validation  
-**Status:** Planned — depends on KG-002 profile boundaries
+**Status:** Planned — depends on KG-002 contract boundaries
 
 ### KG-009 — Create the Meu PDI project profile
 
@@ -107,7 +121,8 @@ Items are prioritized using user impact, evidence strength, uncertainty reductio
 
 ## Explicitly deferred
 
-- scanner implementation before KG-002 readiness;
+- KG-002 implementation before Tech Lead approval;
+- scanner implementation before KG-002 delivery completion;
 - automatic file rewriting;
 - autonomous canonical-source selection;
 - broad source-code analysis;
