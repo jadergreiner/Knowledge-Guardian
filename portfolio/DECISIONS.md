@@ -18,6 +18,29 @@ Each material decision should record:
 
 ## Decisions
 
+### KGD-015 — Approve KG-003 shaping with bounded discovery boundaries
+
+**Date:** 2026-08-02
+**Type:** Technical and delivery governance
+**Status:** `approved_with_boundaries`
+
+**Context:** KG-003 requires a deterministic, read-only inventory of Markdown resources. Six unresolved boundaries affected observable scanner behavior: Git context, unreadable files, checksums, symlinks, hidden directories and `.mdx` handling.
+
+**Decision:** Approve the KG-003 shaping proposal with the six boundaries recorded in `portfolio/KG_003_SHAPING.md`:
+
+- caller supplies repository context explicitly;
+- unreadable files produce bounded diagnostics and no incomplete resource;
+- SHA-256 is optional and enabled by default for readable files;
+- symlinks are not followed or inventoried;
+- hidden directories are included except `.git` and configured ignore paths;
+- `.mdx` is inventoried as Markdown without parsing.
+
+**Authority:** Human Tech Lead/Product assessment provided in the project execution workflow.
+
+**Consequences:** A delivery plan may be prepared for the bounded inventory slice. Scanner implementation remains unauthorized until a separate `approved_for_discovery_delivery` decision. KG-004, parsing, classification, relationships, findings and reports remain blocked.
+
+**Review trigger:** Review the delivery plan before implementation.
+
 ### KGD-014 — Accept KG-002 contract delivery for merge
 
 **Date:** 2026-08-02

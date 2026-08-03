@@ -1,6 +1,6 @@
 # KG-003 — Markdown Repository Discovery Shaping
 
-**Status:** Shaped proposal — delivery authorization pending
+**Status:** Approved with boundaries — delivery authorization pending
 **Version:** 0.1
 **Date:** 2026-08-02
 **Backlog item:** `KG-003`
@@ -55,28 +55,32 @@ Knowledge Guardian has stable `RepositorySnapshot` and `Resource` contracts, but
 
 ## 5. Acceptance criteria
 
-- [ ] Explicit repository root is required; no implicit current-directory authority.
+- [x] Explicit repository root is required; no implicit current-directory authority.
 - [ ] Only regular `.md` and `.mdx` files are included in this slice.
 - [ ] Output contains one valid `RepositorySnapshot` and one valid `Resource` per included file.
 - [ ] Every resource path is normalized, repository-relative and stable across equivalent separator forms.
 - [ ] Absolute paths, parent traversal and paths outside the selected root are rejected or recorded as deterministic exclusions.
 - [ ] Output ordering is deterministic and independent of filesystem enumeration order.
-- [ ] Missing Git context is represented as unavailable evidence, not invented values.
+- [x] Missing Git context is represented as unavailable evidence, not invented values.
 - [ ] Repeated execution over an unchanged input produces equivalent contract records.
 - [ ] Tests cover empty repositories, nested paths, mixed extensions, excluded files, traversal attempts and deterministic ordering.
-- [ ] No parser, classifier, relationship detector, finding generator or report renderer is introduced.
+- [x] No parser, classifier, relationship detector, finding generator or report renderer is introduced.
 - [ ] Delivery documentation records commands, versions, evidence, limitations and rollback.
 
-## 6. Open decisions before delivery
+## 6. Approved boundaries
 
-1. Should the caller provide `repository`, `ref`, `commit_sha` and `captured_at`, or should a thin Git-context adapter be included?
-2. Should unreadable files be excluded with an evidence record, or fail the snapshot atomically?
-3. Should checksum calculation be mandatory, optional, or caller-configurable?
-4. Is symlink traversal prohibited in v0.1, and how should symlinked Markdown be represented?
-5. Should hidden directories be included by default, excluded by policy, or controlled by an explicit scope configuration?
-6. Is `.mdx` treated as a supported resource only, with parsing deferred as stated above?
+The following decisions were approved by the human Tech Lead/Product assessment and are part of the KG-003 shaping baseline:
 
-These decisions affect observable behavior or scope and require explicit Tech Lead direction before implementation.
+| Boundary | Approved behavior |
+|---|---|
+| Git context | `repository`, `ref`, `commit_sha` (optional) and `captured_at` are supplied explicitly by the caller. Automatic Git discovery and `.git` inspection are outside this slice. |
+| Unreadable files | Continue processing other files; record a bounded diagnostic; do not emit an incomplete `Resource`; do not generate a finding. |
+| Checksum | Calculate optional SHA-256 for readable files by default, with configuration to disable it. The checksum is observed content metadata, not primary identity. |
+| Symlinks | `follow_symlinks = false`; do not follow or inventory symlinked Markdown; record it as ignored. |
+| Hidden directories | Include by default, always exclude `.git`, and support an explicit configurable ignore-path list. |
+| `.mdx` | Include in the inventory as `format: markdown`; preserve the `.mdx` path; do not parse JSX, imports, front matter or metadata. |
+
+These boundaries resolve the six shaping questions. Delivery must still define the deterministic diagnostic representation and configuration interface without expanding into findings or parsing.
 
 ## 7. Risks and mitigations
 
@@ -91,6 +95,6 @@ These decisions affect observable behavior or scope and require explicit Tech Le
 
 ## 8. Decision gate
 
-This artifact authorizes shaping discussion only. It does not authorize scanner implementation. Delivery may begin after the open decisions are resolved, acceptance criteria are approved, and a bounded delivery plan is recorded.
+This artifact authorizes the bounded discovery-delivery proposal only. It does not authorize scanner implementation. Delivery may begin after a bounded delivery plan is recorded and the Tech Lead records `approved_for_discovery_delivery`.
 
-**Next authorized action:** Tech Lead review of this shaping proposal and explicit decision on the open implementation boundaries.
+**Next authorized action:** Create the KG-003 delivery plan, including the diagnostic representation and configuration interface, for a separate Tech Lead delivery decision.
