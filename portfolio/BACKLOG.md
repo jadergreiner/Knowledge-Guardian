@@ -20,7 +20,7 @@ Items are prioritized using:
 ### KG-001 — Define the trusted finding contract
 
 **Type:** Product foundation  
-**Status:** Deterministic validation passed — interpretative and negative validation active  
+**Status:** Deterministic validation passed — Batch 02 human review pending  
 **Outcome:** Reviewers can understand, reproduce and decide on every finding.
 
 **Completed outputs:**
@@ -36,7 +36,8 @@ Items are prioritized using:
 - explicit contract name and semantic version;
 - exact or justified location semantics;
 - deterministic Batch 01 with four accepted findings;
-- Batch 02 interpretative, revision and cancellation candidates curated.
+- Batch 02 interpretative and disagreement fixtures;
+- Batch 02 structural validation at `3/3` positive fixtures.
 
 **Acceptance criteria:**
 
@@ -50,10 +51,12 @@ Items are prioritized using:
 - [x] human review and final disposition are represented;
 - [x] schema and contract are explicitly versioned;
 - [x] first deterministic batch is structurally valid and human-accepted;
-- [~] interpretative findings are curated and pending human validation;
-- [~] revision-requested and cancelled workflows are curated and pending human validation;
-- [ ] expected non-findings and false-positive protection are validated;
-- [ ] all 12 golden cases are completed;
+- [x] interpretative fixtures conform structurally;
+- [x] revision-request fixture demonstrates separation between schema validity and product quality;
+- [x] authority-less candidate is suppressed before finding emission;
+- [ ] human validation of Batch 02;
+- [ ] expected non-findings and false-positive protection;
+- [ ] all 12 golden cases completed;
 - [ ] regression tests protect rule behavior.
 
 **Validation dependency:** `KG-010 — Establish the v0.1 evaluation baseline`.
@@ -161,7 +164,7 @@ Items are prioritized using:
 ### KG-010 — Establish the v0.1 evaluation baseline
 
 **Type:** Quality and discovery validation  
-**Status:** In progress — Batch 02 curated, pending human review  
+**Status:** In progress — Batch 02 structurally validated, pending human review  
 **Outcome:** Product quality can be measured before CI/CD integration.
 
 **Completed:**
@@ -171,20 +174,21 @@ Items are prioritized using:
 - [x] controlled repository snapshots selected;
 - [x] `GB-001` through `GB-004` versioned and accepted;
 - [x] deterministic fixtures structurally validated at `4/4`;
-- [x] `GB-005` and `GB-006` interpretative cases curated;
-- [x] `GB-007` revision-request case curated;
-- [x] `GB-008` authority-less candidate curated for cancellation review;
-- [x] pre-finding rejection versus post-emission cancellation ambiguity identified.
+- [x] `GB-005` and `GB-006` interpretative cases curated and structurally valid;
+- [x] `GB-007` revision-request case curated and structurally valid;
+- [x] `GB-008` authority-less candidate correctly classified as pre-finding rejection;
+- [x] Batch 02 validation evidence recorded;
+- [x] pre-finding rejection versus post-emission cancellation distinction identified.
 
 **Remaining:**
 
 - [ ] human review of `GB-005` through `GB-008`;
-- [ ] decision on whether candidate analysis needs a formal v0.1 schema;
+- [ ] decision that candidate records remain internal or require a future contract;
 - [ ] `GB-009` through `GB-012` expected non-findings;
 - [ ] false-positive and ambiguity results catalogued across the complete baseline;
 - [ ] regression-test strategy defined and implemented after delivery authorization.
 
-**Next bounded increment:** Human review of Batch 02. Do not start KG-002 or scanner implementation.
+**Next bounded increment:** Human review of Batch 02. Do not start KG-002, Batch 03, or scanner implementation.
 
 ## Discovery queue
 
