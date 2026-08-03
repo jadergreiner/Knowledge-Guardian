@@ -1,7 +1,7 @@
 # Knowledge Guardian — Product Backlog
 
 **Status:** Active
-**Version:** 0.3
+**Version:** 0.4
 **Updated:** 2026-08-02
 
 ## Prioritization model
@@ -31,37 +31,38 @@ Items are prioritized using user impact, evidence strength, uncertainty reductio
 ### KG-002 — Define the repository document model
 
 **Type:** Technical foundation  
-**Status:** Shaped — Definition of Ready complete, delivery decision pending  
+**Status:** Approved for bounded contract delivery  
 **Outcome:** Documents can be consistently discovered, classified and related without conflating paths, authority, metadata or knowledge layers.
 
 **Shaping artifact:** `portfolio/REPOSITORY_DOCUMENT_MODEL.md`.
 
-**Definition of Ready:**
+**Decision:** `portfolio/decisions/KGD-013.md`.
 
-- [x] clear problem statement and consumers;
-- [x] expected outcome;
-- [x] bounded scope and exclusions;
-- [x] supported resource formats;
-- [x] resource and document identity rules;
-- [x] repository-relative path normalization;
-- [x] document-type vocabulary;
-- [x] knowledge-layer vocabulary;
-- [x] lifecycle model;
-- [x] metadata model and precedence;
-- [x] classification provenance and confidence;
-- [x] trust-signal observations;
-- [x] relationship model;
-- [x] entry-point representation;
-- [x] exception representation;
-- [x] explicit dependencies and risks;
-- [x] testable acceptance criteria;
-- [x] bounded implementation scope.
+**Delivery plan:** `portfolio/KG_002_DELIVERY_PLAN.md`.
 
-**Proposed delivery slice:** versioned data contracts and contract tests for `RepositorySnapshot`, `Resource`, `Document`, `Classification`, `Relationship`, `EntryPoint` and `Exception`.
+**Authorized deliverables:**
 
-**Explicitly excluded from the proposed slice:** filesystem scanning, Markdown parsing, graph traversal, rule execution, finding generation and report rendering.
+- versioned JSON Schemas for `RepositorySnapshot`, `Resource`, `Document`, `Classification`, `Relationship`, `EntryPoint` and `Exception`;
+- positive and negative fixtures;
+- deterministic contract tests;
+- validation instructions and evidence;
+- compatibility and limitation documentation.
 
-**Next bounded increment:** Tech Lead reviews the model and decides `approved_for_contract_delivery`, `revision_requested` or `rejected`.
+**Acceptance criteria:**
+
+- [ ] seven versioned schemas exist;
+- [ ] each schema maps to the approved conceptual model;
+- [ ] schemas use consistent IDs and semantic versions;
+- [ ] valid and invalid fixtures cover every schema;
+- [ ] executable tests validate all fixtures deterministically;
+- [ ] intended invalid cases fail for the expected reason;
+- [ ] no scanner, parser, graph traversal, finding or report logic is introduced;
+- [ ] unresolved ambiguities are recorded;
+- [ ] Tech Lead records a quality disposition.
+
+**Explicit exclusions:** filesystem scanning, Markdown/YAML parsing, repository traversal, relationship discovery, rule execution, finding generation, report generation and `KG-003`.
+
+**Next bounded increment:** Implement the contract-and-test slice defined in `KG_002_DELIVERY_PLAN.md` and return with executable evidence.
 
 ### KG-003 — Build Markdown repository discovery
 
@@ -121,8 +122,7 @@ Items are prioritized using user impact, evidence strength, uncertainty reductio
 
 ## Explicitly deferred
 
-- KG-002 implementation before Tech Lead approval;
-- scanner implementation before KG-002 delivery completion;
+- KG-003 before KG-002 completion and separate authorization;
 - automatic file rewriting;
 - autonomous canonical-source selection;
 - broad source-code analysis;
