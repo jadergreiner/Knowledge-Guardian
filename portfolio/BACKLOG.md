@@ -67,7 +67,13 @@ Items are prioritized using user impact, evidence strength, uncertainty reductio
 ### KG-003 — Build Markdown repository discovery
 
 **Type:** Delivery  
-**Status:** Blocked — depends on KG-002 delivery completion and separate authorization
+**Status:** Shaping proposal created — delivery remains blocked pending separate authorization
+
+**Shaping artifact:** `portfolio/KG_003_SHAPING.md`.
+
+**Bounded proposal:** inventory explicit `.md`/`.mdx` resources read-only and emit `RepositorySnapshot`/`Resource` contract records. Parsing, classification, relationships, findings and reports remain excluded.
+
+**Next action:** Tech Lead decide the open implementation boundaries before a delivery plan is authorized.
 
 ### KG-004 — Detect entry points and orphan documents
 

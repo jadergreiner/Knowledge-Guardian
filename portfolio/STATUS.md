@@ -1,7 +1,7 @@
 # Knowledge Guardian — Product Status
 
 **Date:** 2026-08-02  
-**Overall status:** KG-002 accepted for merge to `main`
+**Overall status:** KG-002 accepted; KG-003 shaping proposal pending review
 **Confidence:** High
 
 ## Current position
@@ -17,7 +17,7 @@ No filesystem scanner, parser, traversal engine or finding engine has been start
 ```text
 SENSE → FRAME → DISCOVER → DECIDE → SHAPE → DELIVER → MEASURE → LEARN
                                                         ↑
-                                      KG-002 accepted; merge authorized
+                                      KG-003 shaping; delivery not authorized
 ```
 
 ## Authorized scope
@@ -71,4 +71,4 @@ Any material ambiguity returns to shaping rather than being silently decided dur
 
 ## Next checkpoint
 
-KG-002 has reached its delivery checkpoint with executable schemas, tests and evidence. The Tech Lead accepted the increment for merge to `main`. `KG-003` remains blocked until a separate authorization.
+KG-002 has reached its delivery checkpoint with executable schemas, tests and evidence. The Tech Lead accepted the increment for merge to `main`. KG-003 shaping is recorded in `portfolio/KG_003_SHAPING.md`; delivery remains blocked until its open boundaries are decided and separately authorized.
