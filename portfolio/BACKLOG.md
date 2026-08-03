@@ -76,15 +76,17 @@ Items are prioritized using user impact, evidence strength, uncertainty reductio
 ### KG-004 — Detect entry points and orphan documents
 
 **Type:** Delivery  
-**Status:** Shaping proposal created — delivery remains blocked pending separate authorization
+**Status:** `approved_with_boundaries` — reachability delivery plan proposed; implementation remains blocked
 
 **Shaping artifact:** `portfolio/KG_004_SHAPING.md`.
 
-**Boundary:** Entry points follow `project_profile` → enabled `native_conventions` → explicit `no_entry_point` evidence. Conflicting candidates are preserved without automatic selection. Orphan status requires explicit relationship/reachability input; inventory absence alone produces only an `unreachable_candidate`.
+**Delivery plan:** `portfolio/KG_004_DELIVERY_PLAN.md`.
 
-**Decision recorded:** Tech Lead approved the entry-point source precedence; orphan mode, convention set and relationship input remain pending before a delivery plan is authorized.
+**Boundary:** Entry points follow `project_profile` → enabled exact root `native_conventions` → explicit `no_entry_point` evidence. Reachability emits `reachable`, `candidate_orphan`, `excluded`, `not_evaluated`, `indeterminate` and `no_entry_point`; `candidate_orphan` is never a finding.
 
-**Next action:** Tech Lead decide the orphan boundary and remaining native-convention policy before a delivery plan is authorized.
+**Decision recorded:** Entry-point precedence, candidate-orphan semantics, deterministic paths and v0.1 root conventions were approved with boundaries. Relationship input schema and remaining implementation details require the next gate.
+
+**Next action:** Tech Lead decide `approved_for_reachability_delivery_plan`, `revision_requested` or `rejected`; implementation remains blocked.
 
 ### KG-005 — Validate internal Markdown references
 

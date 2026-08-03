@@ -1,6 +1,6 @@
 # KG-004 — Entry Points and Orphan Documents Shaping
 
-**Status:** Shaped proposal — delivery authorization pending
+**Status:** Approved with boundaries — reachability delivery plan pending gate
 **Version:** 0.1
 **Date:** 2026-08-03
 **Backlog item:** `KG-004`
@@ -74,7 +74,7 @@ The implementation must not infer an entry point from arbitrary document content
 
 ## 6.1 Recorded decision — entry-point sources
 
-**Disposition:** approved for shaping and future bounded delivery.
+**Disposition:** `approved_with_boundaries`.
 
 **Decision:** use `project_profile`, then enabled `native_conventions`, then explicit `no_entry_point` evidence, with the precedence and conflict rules above.
 
@@ -82,16 +82,48 @@ The implementation must not infer an entry point from arbitrary document content
 
 **Still blocked:** implementation, relationship discovery, orphan findings and automatic conflict resolution.
 
-## 7. Orphan boundary
+## 7. Recorded decision — orphan states and native conventions
+
+**Disposition:** `approved_with_boundaries` for delivery-plan shaping.
+
+The v0.1 output states are:
+
+| State | Meaning |
+|---|---|
+| `reachable` | An explicit path exists from a resolved entry point. |
+| `candidate_orphan` | No path exists after complete evaluation; this is review evidence, not a finding. |
+| `excluded` | The project profile or policy excludes the resource. |
+| `not_evaluated` | The resource did not participate in analysis. |
+| `indeterminate` | Errors or incomplete evidence prevent a conclusion. |
+
+`unreachable` must never be promoted to confirmed `orphan`. A resource may be `candidate_orphan` only when it is inventoried, is not an entry point, is not excluded, all required resources were evaluated, and no structural error makes the graph incomplete. If no entry point is resolved, resources are `no_entry_point` evidence and are not classified as `candidate_orphan`.
+
+The v0.1 native-convention table is limited to exact, case-sensitive files at the repository root:
+
+| Path | Audience |
+|---|---|
+| `README.md` | `human`, `contributor` |
+| `AGENTS.md` | `agent` |
+| `CONTRIBUTING.md` | `contributor` |
+| `SECURITY.md` | `contributor`, `security` |
+| `CODE_OF_CONDUCT.md` | `contributor` |
+| `CLAUDE.md` | `agent` |
+| `GEMINI.md` | `agent` |
+
+Subdirectory `README.md`, `index.md`, `docs/`, `SUMMARY.md`, tool configuration files, content inference, approximate names, case-insensitive matching and link-count heuristics are excluded. The profile may add, remove or replace conventions. Multiple entry points remain valid; conventions do not establish canonicality.
+
+For each evaluated resource, reachability evidence must include the resource, state, resolved entry point when applicable, deterministic path or reason. Paths are selected by shortest distance, then `entry_point_id`, then lexicographic path sequence.
+
+## 8. Orphan boundary
 
 An inventory alone cannot prove reachability. KG-004 must use one of these explicit modes:
 
-1. **Entry-point-only mode:** report resources with no configured/convention entry-point association as `unreachable_candidate`, never as confirmed orphan.
-2. **Relationship-input mode:** accept externally supplied typed relationships and calculate reachability from declared entry points without discovering or validating those relationships.
+1. **Relationship-input mode:** accept externally supplied typed relationships and calculate reachability from declared entry points without discovering or validating those relationships. This is the recommended delivery mode.
+2. **Entry-point-only mode:** may emit `no_entry_point` or `not_evaluated` evidence, but must not classify resources as `candidate_orphan` without explicit relationship input.
 
 The delivery plan must select one mode or implement both with separate outputs. A missing relationship input is not evidence that a document is orphaned.
 
-## 8. Acceptance criteria
+## 9. Acceptance criteria
 
 - [ ] Entry-point declarations require an explicit snapshot and repository-relative path.
 - [ ] Every emitted `EntryPoint` validates against the KG-002 schema.
@@ -106,18 +138,16 @@ The delivery plan must select one mode or implement both with separate outputs. 
 - [ ] Deterministic tests cover empty inventory, configured entries, missing targets, duplicate entries, native conventions and unreachable candidates.
 - [ ] KG-003 regression remains green.
 
-## 9. Open decisions before delivery
+## 10. Open decisions before delivery
 
-1. Should the first delivery use entry-point-only mode, relationship-input mode, or both?
-2. Which native conventions are approved for v0.1, and who owns their versioning?
-3. Should a missing configured entry point be a diagnostic only or a future normative finding candidate?
-4. Should duplicate declarations merge deterministically or remain separate evidence records?
-5. What relationship input shape is accepted before KG-005 exists?
+1. Confirm the exact relationship input schema and producer before delivery implementation.
+2. Confirm whether missing configured targets are diagnostics only in v0.1.
+3. Confirm duplicate declaration handling: deterministic merge or separate evidence records.
 
 These decisions change public behavior and require a separate Tech Lead delivery decision.
 
-## 10. Decision gate
+## 11. Decision gate
 
-This artifact authorizes shaping only. It does not authorize KG-004 implementation, orphan findings, link parsing or relationship discovery.
+This artifact authorizes the creation and review of a bounded reachability delivery plan only. It does not authorize KG-004 implementation, orphan findings, link parsing or relationship discovery.
 
-**Next authorized action:** Tech Lead review of the orphan boundary and native-convention policy, followed by a bounded delivery plan if approved.
+**Next gate:** `approved_for_reachability_delivery_plan`, `revision_requested` or `rejected`.

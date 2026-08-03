@@ -1,7 +1,7 @@
 # Knowledge Guardian — Product Status
 
 **Date:** 2026-08-03
-**Overall status:** KG-003 merged; KG-004 shaping proposal pending review
+**Overall status:** KG-003 merged; KG-004 reachability delivery plan pending gate
 **Confidence:** High
 
 ## Current position
@@ -43,6 +43,8 @@ Decision: `KGD-015` records the approved shaping boundaries.
 
 KG-004 shaping: `portfolio/KG_004_SHAPING.md`.
 
+KG-004 delivery plan: `portfolio/KG_004_DELIVERY_PLAN.md`. The plan remains limited to reachability evidence from explicit relationship input; implementation is not authorized.
+
 ## Diagnostic boundary
 
 Diagnostics are operational evidence, not findings. They cover ignored paths, symlinks, invalid paths, unreadable files, stat failures and checksum failures. They must not contain file contents, stack traces or durable absolute paths.
@@ -65,4 +67,4 @@ Diagnostics are operational evidence, not findings. They cover ignored paths, sy
 
 ## Next checkpoint
 
-KG-003 is merged and its delivery evidence is complete. KG-004 requires a separate shaping decision, especially for native entry-point conventions and orphan reachability inputs.
+KG-003 is merged and its delivery evidence is complete. KG-004 boundaries are shaped; the reachability delivery plan awaits the next human gate and relationship-input decision.
