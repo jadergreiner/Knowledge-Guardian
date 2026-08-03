@@ -1,0 +1,27 @@
+{
+  "contract": {"name": "knowledge-guardian-finding", "version": "0.1.0"},
+  "id": "KGF-GB-006",
+  "fingerprint": "sha256:00000000000000000000000000000006",
+  "rule_id": "KG-RUNTIME-001",
+  "type": "interpretative",
+  "category": "documentation_drift",
+  "title": "Document presents future behavior as current behavior",
+  "description": "docs/operations.md states that pull requests are blocked, while the roadmap identifies blocking as a future capability and no runtime evidence is present.",
+  "authority": {"type": "canonical_source", "reference": "GB-006/portfolio/ROADMAP.md", "version": "batch-02-v1"},
+  "subject": {"resource": "GB-006/docs/operations.md", "resource_type": "markdown", "location": {"scope": "exact", "line_start": 3, "line_end": 3}},
+  "evidence": [
+    {"type": "future_capability_statement", "resource": "GB-006/portfolio/ROADMAP.md", "location": {"scope": "exact", "line_start": 3, "line_end": 3}, "observed": "Future capability: pull request blocking", "expected": "Future-state wording", "snapshot_reference": "kg-golden-baseline-batch-02-v1"},
+    {"type": "current_behavior_statement", "resource": "GB-006/docs/operations.md", "location": {"scope": "exact", "line_start": 3, "line_end": 3}, "observed": "Knowledge Guardian blocks pull requests", "expected": "Current-state claim supported by runtime evidence", "snapshot_reference": "kg-golden-baseline-batch-02-v1"}
+  ],
+  "analysis": {
+    "observation": "The roadmap classifies blocking as future capability, while the operations document describes it in the present tense.",
+    "inference": {"statement": "The operations document may overstate current product behavior.", "rationale": "The evidence shows conflicting temporal framing, but absence of runtime evidence is not proof that blocking is not implemented elsewhere."}
+  },
+  "impact": {"status": "potential", "level": "high", "dimensions": ["operational", "governance", "product"], "statement": "Maintainers may rely on a governance control that is not demonstrably active.", "affected_scope": ["GB-006/docs/operations.md"]},
+  "confidence": {"level": "medium", "rationale": "The documentation conflict is explicit, but runtime state is unknown."},
+  "treatment": {"group": "probable_risk", "recommended_action": "prioritized_human_review", "rationale": "The possible governance misstatement is material but not fully confirmed."},
+  "recommendation": {"summary": "Verify runtime behavior and then update either the roadmap or operations document to reflect the approved current state."},
+  "review": {"required": true, "status": "pending_review"},
+  "generated_at": "2026-08-02T21:15:00-03:00",
+  "repository_snapshot": {"repository": "jadergreiner/Knowledge-Guardian", "ref": "golden-baseline-batch-02", "commit_sha": "677b34e4ebc2c6467b2e197d14eb263046f57efb"}
+}
