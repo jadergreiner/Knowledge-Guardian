@@ -1,0 +1,27 @@
+{
+  "contract": {"name": "knowledge-guardian-finding", "version": "0.1.0"},
+  "id": "KGF-GB-005",
+  "fingerprint": "sha256:00000000000000000000000000000005",
+  "rule_id": "KG-TERM-001",
+  "type": "interpretative",
+  "category": "semantic_inconsistency",
+  "title": "Active document diverges from a declared canonical term",
+  "description": "docs/journey.md uses User where glossary.md declares Professional as the canonical term for the same role.",
+  "authority": {"type": "canonical_source", "reference": "GB-005/glossary.md", "version": "batch-02-v1"},
+  "subject": {"resource": "GB-005/docs/journey.md", "resource_type": "markdown", "location": {"scope": "exact", "line_start": 3, "line_end": 3}},
+  "evidence": [
+    {"type": "canonical_term_declaration", "resource": "GB-005/glossary.md", "location": {"scope": "exact", "line_start": 3, "line_end": 3}, "observed": "Professional", "expected": "Professional", "snapshot_reference": "kg-golden-baseline-batch-02-v1"},
+    {"type": "alternative_term_usage", "resource": "GB-005/docs/journey.md", "location": {"scope": "exact", "line_start": 3, "line_end": 3}, "observed": "User", "expected": "Professional", "snapshot_reference": "kg-golden-baseline-batch-02-v1"}
+  ],
+  "analysis": {
+    "observation": "The canonical source declares Professional while the active journey document uses User for the described plan owner.",
+    "inference": {"statement": "The two resources likely refer to the same domain role using inconsistent terminology.", "rationale": "Both passages describe the person who creates and reviews a development plan, but semantic equivalence still requires human confirmation."}
+  },
+  "impact": {"status": "potential", "level": "medium", "dimensions": ["product", "onboarding", "agent_behavior"], "statement": "Readers and agents may interpret User and Professional as distinct concepts.", "affected_scope": ["GB-005/glossary.md", "GB-005/docs/journey.md"]},
+  "confidence": {"level": "medium", "rationale": "The textual roles appear equivalent, but the fixture contains no formal ontology relationship proving identity."},
+  "treatment": {"group": "informational", "recommended_action": "inform", "rationale": "The divergence is plausible but requires human confirmation before remediation."},
+  "recommendation": {"summary": "Confirm whether both terms represent the same role and, if so, align the active document with the approved canonical term."},
+  "review": {"required": true, "status": "pending_review"},
+  "generated_at": "2026-08-02T21:15:00-03:00",
+  "repository_snapshot": {"repository": "jadergreiner/Knowledge-Guardian", "ref": "golden-baseline-batch-02", "commit_sha": "677b34e4ebc2c6467b2e197d14eb263046f57efb"}
+}
